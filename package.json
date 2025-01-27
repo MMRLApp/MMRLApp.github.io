@@ -1,0 +1,19 @@
+{
+  "name": "mmrl_website",
+  "version": "1.0.0",
+  "description": "MMRL official website: https://mmrlapp.github.io",
+  "main": "index.js",
+  "repository": "https://mmrlapp.github.io",
+  "author": "Der_Googler",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "type": "module"
+}
