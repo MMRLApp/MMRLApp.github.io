@@ -3,7 +3,7 @@ layout: home
 title: Build your own modules repository
 
 hero:
-  name: KernelSU
+  name: MMRL
   text: Build your own modules repository
   tagline: ""
   image:
@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: Get started
-      link: /guide/what-is-kernelsu
+      link: /guide/
     - theme: alt
       text: Get it on GitHub
       link: https://github.com/MMRLApp/MMRL
