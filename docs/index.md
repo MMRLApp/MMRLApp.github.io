@@ -7,7 +7,7 @@ hero:
   text: Build your own modules repository
   tagline: ""
   image:
-    src: /logo.png
+    src: /logo.svg
     alt: MMRL
   actions:
     - theme: brand

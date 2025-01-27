@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g id="logo">
+    <g>
+      <rect width="200" height="200" />
+      <path id="Path" d="M0 0L200 0L200 200L0 200L0 0Z" />
+      <path id="Path" d="M66.6667 0L133.333 37.5L133.333 112.5L66.6667 150L0 112.5L0 37.5L66.6667 0" fill="none" stroke-width="15.5" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" transform="translate(33.333 25)" />
+      <path id="Path" d="M0 37.5L66.6667 0" fill="none" stroke-width="15.5" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" transform="translate(100 62.5)" />
+      <path id="Path" d="M0 0L0 75" fill="none" stroke-width="15.5" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" transform="translate(100 100)" />
+      <path id="Path" d="M66.6667 37.5L0 0" fill="none" stroke-width="15.5" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" transform="translate(33.333 62.5)" />
+      <path id="Path" d="M66.6667 0L0 37.5" fill="none" stroke-width="15.5" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" transform="translate(66.667 43.75)" />
+    </g>
+  </g>
+</svg>
