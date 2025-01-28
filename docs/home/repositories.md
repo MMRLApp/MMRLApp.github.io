@@ -5,7 +5,7 @@ Some repositories don't use the MMRL Repo format. Those repositories may lack of
 :::
 
 <script setup>
-import data from '../repos.json'
+import data from '../public/repositories.json'
 </script>
 
 <table>
