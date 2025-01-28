@@ -20,8 +20,10 @@ To use window safe area insets which you basiclly need here, otherwise your conf
 > [!IMPORTANT]
 > `ksu.spawn` and `ksu.exec` needs to be enabled by the user first. You can check it with `<sanitizedModId>.getHasAccessToAdvancedKernelSuAPI()`.
 
-- [FileInterface](./API/FileInterface.md)
-- [MMRLInterface](./API/MMRLInterface.md)
+- [FileInterface](./api/filesystem.md)
+- [MMRLInterface](./api/mmrlinterface.md)
+- [Toast](./api/toast.md)
+- [VersionInterface](./api/versioninterface.md)
 - [KernelSU WebUI](https://kernelsu.org/guide/module-webui.html)
 - [KernelSU NPM Package](https://www.npmjs.com/package/kernelsu)
 
