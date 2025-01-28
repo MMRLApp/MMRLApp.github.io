@@ -24,13 +24,13 @@ export default defineConfig({
     ],
 
     footer: {
-        message: 'Released under the GPL3 License.',
-        copyright: 'Copyright © 2022-present Der_Googler and its contributors'
+      message: 'Released under the GPL3 License.',
+      copyright: 'Copyright © 2022-present Der_Googler and its contributors'
     },
 
     editLink: {
-        pattern: 'https://github.com/MMRLApp/MMRLApp.github.io/edit/master/docs/:path',
-        text: 'Edit this page on GitHub'
+      pattern: 'https://github.com/MMRLApp/MMRLApp.github.io/edit/master/docs/:path',
+      text: 'Edit this page on GitHub'
     }
   }
 })
@@ -38,18 +38,41 @@ export default defineConfig({
 function nav() {
   return [
     { text: 'Home', link: '/home/repositories' },
-    { text: 'Guide', link: '/guide/index' },
+    { text: 'Guide', link: '/guide' },
   ]
 }
 
 function sidebarGuide() {
   return [
     {
-        text: 'Guide',
-        items: [
-          { text: 'Module WebUI', link: '/guide/module-webui.md' },
-          { text: 'FAQ', link: '/guide/faq' },
-        ]
+      text: 'Guide',
+      items: [
+        {
+          text: 'WebUI',
+          items: [
+            { text: 'Getting Started', link: '/guide/webui/' },
+            {
+              text: 'API',
+              items: [
+                { text: 'FileSystem', link: '/guide/webui/api/filesystem' },
+                { text: 'MMRLInterface', link: '/guide/webui/api/mmrlinterface' },
+                { text: 'Toast', link: '/guide/webui/api/toast' },
+                { text: 'VersionInterface', link: '/guide/webui/api/versioninterface' },
+              ]
+            },
+          ]
+        },
+        {
+          text: 'MMRL-Util',
+          items: [
+            { text: 'Getting Started', link: '/guide/mmrl-util/' },
+            { text: 'repo.json', link: '/guide/mmrl-util/repo-json' },
+            { text: 'track.json', link: '/guide/mmrl-util/track-json' },
+            { text: 'config.json', link: '/guide/mmrl-util/config-json' },
+          ]
+        },
+        { text: 'FAQ', link: '/guide/faq' },
+      ]
     }
   ]
 }
@@ -58,10 +81,10 @@ function sidebarGuide() {
 function sidebarHome() {
   return [
     {
-        text: 'Home',
-        items: [
-          { text: 'Repositories', link: '/home/repositories' },
-        ]
+      text: 'Home',
+      items: [
+        { text: 'Repositories', link: '/home/repositories' },
+      ]
     }
   ]
 }

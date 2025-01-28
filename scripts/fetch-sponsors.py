@@ -41,7 +41,7 @@ def fetch_sponsors(github_token):
 
     return response.json()
 
-def save_sponsors_to_file(sponsors_data, filename="json/sponsors.json"):
+def save_sponsors_to_file(sponsors_data, filename="docs/public/api/sponsors.json"):
     print(sponsors_data)
     
     sponsors = [
