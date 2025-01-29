@@ -25,7 +25,7 @@ jobs:
           
       - name: Fetch GitHub Sponsors
         env:
-          GITHUB_TOKEN: ${{ secrets.SPONSORS_TOKEN }}
+          SPONSORS_TOKEN: ${{ secrets.SPONSORS_TOKEN }}
         run: python scripts/fetch-sponsors.py
         
       - name: Configure Git
