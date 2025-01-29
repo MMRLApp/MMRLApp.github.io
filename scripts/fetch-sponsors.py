@@ -59,7 +59,7 @@ def save_sponsors_to_file(sponsors_data, filename="docs/public/api/sponsors.json
         json.dump(sponsors, f, indent=2)
 
 def main():
-    github_token = os.getenv("GITHUB_TOKEN")
+    github_token = os.getenv("SPONSORS_TOKEN")
     if not github_token:
         raise ValueError("GitHub token is not set in environment variables")
     
