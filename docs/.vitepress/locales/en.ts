@@ -49,7 +49,7 @@ function sidebarGuide() {
       items: [
         { text: 'What is MMRL', link: '/guide/' },
         { text: 'Anti-Features', link: '/guide/antifeatures' },
-        { text: 'Repositories', link: '/guide/i' },
+        { text: 'Installer API', link: '/guide/installer' },
         { text: 'Repositories', link: '/guide/repositories' },
         {
           text: 'WebUI',
