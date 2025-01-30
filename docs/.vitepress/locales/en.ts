@@ -15,7 +15,7 @@ export default defineConfig({
 
     sidebar: {
       '/guide/': sidebarGuide(),
-      '/home/': sidebarHome()
+      '/legal/': sidebarLegal()
     },
 
     socialLinks: [
@@ -48,6 +48,7 @@ function sidebarGuide() {
       text: 'Guide',
       items: [
         { text: 'What is MMRL', link: '/guide/' },
+        { text: 'Repositories', link: '/guide/repositories' },
         {
           text: 'WebUI',
           items: [
@@ -79,12 +80,13 @@ function sidebarGuide() {
 }
 
 
-function sidebarHome() {
+function sidebarLegal() {
   return [
     {
-      text: 'Home',
+      text: 'Legal',
       items: [
-        { text: 'Repositories', link: '/home/repositories' },
+        { text: 'Privacy Policy', link: '/legal/privacy' },
+        { text: 'Chat Rules', link: '/legal/chat-rules' },
       ]
     }
   ]
