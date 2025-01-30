@@ -47,6 +47,7 @@ function sidebarGuide() {
     {
       text: 'Guide',
       items: [
+        { text: 'What is MMRL', link: '/guide/' },
         {
           text: 'WebUI',
           items: [
