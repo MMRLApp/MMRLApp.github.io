@@ -1,4 +1,4 @@
-This privacy notice for MMRL (GR ("we," "us," or "our"), describes how and why we might collect, store, use, and/or share ("process") your information when you use our services ("Services"), such as when you:
+This privacy notice for MMRL ("we," "us," or "our"), describes how and why we might collect, store, use, and/or share ("process") your information when you use our services ("Services"), such as when you:
 
 - Visit our website at https://mmrl.dev or any website of ours that links to this privacy notice
 - Download and use our mobile application (any app), or any other application of ours that links to this privacy notice
