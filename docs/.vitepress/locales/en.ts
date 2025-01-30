@@ -37,8 +37,8 @@ export default defineConfig({
 
 function nav() {
   return [
-    { text: 'Home', link: '/home/repositories' },
     { text: 'Guide', link: '/guide' },
+    { text: 'Legal', link: '/legal/privacy' },
   ]
 }
 
