@@ -48,6 +48,8 @@ function sidebarGuide() {
       text: 'Guide',
       items: [
         { text: 'What is MMRL', link: '/guide/' },
+        { text: 'Anti-Features', link: '/guide/antifeatures' },
+        { text: 'Repositories', link: '/guide/i' },
         { text: 'Repositories', link: '/guide/repositories' },
         {
           text: 'WebUI',
