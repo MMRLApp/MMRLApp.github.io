@@ -53,6 +53,7 @@ function sidebarGuide() {
         { text: 'Repositories', link: '/guide/repositories' },
         {
           text: 'WebUI',
+          collapsible: true,
           items: [
             { text: 'Getting Started', link: '/guide/webui/' },
             {
@@ -68,6 +69,7 @@ function sidebarGuide() {
         },
         {
           text: 'MMRL-Util',
+          collapsible: true,
           items: [
             { text: 'Getting Started', link: '/guide/mmrl-util/' },
             { text: 'repo.json', link: '/guide/mmrl-util/repo-json' },
