@@ -97,3 +97,21 @@
   antifeatures:
     - Tracking
     - Obfuscation
+
+- id: free_cheats_real
+  source: DON@T INSTALL RAMDOM MODULES
+  notes: DON@T INSTALL RAMDOM MODULES
+  antifeatures:
+    - Ads
+    - Tracking
+    - NonFreeNet
+    - NonFreeAdd
+    - NonFreeDep
+    - NSFW
+    - UpstreamNonFree
+    - NonFreeAssets
+    - KnownVuln
+    - NoSourceSince
+    - Obfuscation
+    - UnaskedRemoval
+    - LLM
