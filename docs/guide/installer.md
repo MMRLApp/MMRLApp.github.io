@@ -6,6 +6,9 @@ Optionally you can append `> /dev/null 2>&1` to the `am` commands to hide the ou
 
 ## Clear Terminal
 
+> [!NOTE]
+> Since **v5.30.40** the `clear` command is supported in the action and installer environment
+
 Clears the terminal. No arguments can be passed
 
 ```shell

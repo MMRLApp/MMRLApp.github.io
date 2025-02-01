@@ -4,7 +4,7 @@ This JSON configuration file contains settings related to a Magisk repository. B
 
 ---
 
-### `name` (required)
+### `name` <Badge type="danger" text="required" />
 
 The name of the repository.
 
@@ -12,7 +12,7 @@ The name of the repository.
 "name": "Template Magisk Modules Repository"
 ```
 
-### `base_url` (required)
+### `base_url` <Badge type="danger" text="required" />
 
 The base URL for fetching repository modules and tracks. The end slash is required!
 

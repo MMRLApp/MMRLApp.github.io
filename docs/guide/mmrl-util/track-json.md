@@ -18,7 +18,7 @@ The following fields are **required** for the track to be valid and functional:
 
 ---
 
-### `id` (required)
+### `id` <Badge type="danger" text="required" />
 
 A unique identifier for the track. This helps differentiate between various tracks.
 
@@ -26,7 +26,7 @@ A unique identifier for the track. This helps differentiate between various trac
 id: "unique-track-id"
 ```
 
-### `enable` (required)
+### `enable` <Badge type="danger" text="required" />
 
 A flag to enable or disable the track. Set to `true` to enable the track.
 
@@ -34,15 +34,15 @@ A flag to enable or disable the track. Set to `true` to enable the track.
 enable: true
 ```
 
-### `verified`
+### `source` <Badge type="danger" text="required" />
 
-Indicates whether the track has been verified.
+The URL or path to the source code repository for the track.
 
 ```yaml
-verified: true
+source: "https://github.com/owner/track-source"
 ```
 
-### `update_to` (required)
+### `update_to` <Badge type="danger" text="required" />
 
 The version to which the track should be updated.
 
@@ -121,12 +121,12 @@ A URL to the official homepage for the track.
 homepage: "https://example.com"
 ```
 
-### `source`
+### `verified`
 
-The URL or path to the source code repository for the track.
+Indicates whether the track has been verified.
 
 ```yaml
-source: "https://github.com/owner/track-source"
+verified: true
 ```
 
 ### `support`
