@@ -46,6 +46,7 @@ function nav() {
   return [
     { text: "Guide", link: "/guide" },
     { text: "Repositories", link: "/repository" },
+    { text: "Blacklist", link: "/blacklist" },
     { text: "Legal", link: "/legal/privacy" },
   ];
 }
