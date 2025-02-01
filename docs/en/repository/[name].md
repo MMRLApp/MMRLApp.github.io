@@ -61,7 +61,7 @@ const openUrl = (url) => {
                 >Anti-Features</span
               >
               <span
-                @click="openUrl(module.versions[0].zipUrl)"
+                @click="openUrl(module.versions.toReversed()[0].zipUrl)"
                 :class="$style.chip"
                 >Download</span
               >
