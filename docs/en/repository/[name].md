@@ -7,7 +7,7 @@ next: false
 <script setup>
 import { ref, onMounted } from "vue";
 import { useData } from 'vitepress'
-import repositories from '../data/repositories.yaml'
+import repositories from '../../data/repositories.yaml'
 
 const { params } = useData()
 

@@ -1,5 +1,5 @@
 <script setup>
-import repositories from '../data/repositories.yaml'
+import repositories from '../../data/repositories.yaml'
 </script>
 
 # Repositories

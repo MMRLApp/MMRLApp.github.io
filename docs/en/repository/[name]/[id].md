@@ -1,5 +1,4 @@
 ---
-title: Module
 editLink: false
 prev: false
 next: false
@@ -12,8 +11,6 @@ import { useData } from 'vitepress'
 const { params } = useData()
 
 const module = ref(params.value.module)
-
-document.title = module.value.name + " | MMRL"
 
 const openUrl = (url) => {
   window.open(url);

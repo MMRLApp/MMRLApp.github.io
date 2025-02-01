@@ -1,21 +1,22 @@
-import { defineConfig, HeadConfig, SiteConfig } from "vitepress";
-import locales from "./locales";
+import { defineConfig, SiteConfig } from "vitepress";
 import ViteYaml from "@modyfi/vite-plugin-yaml";
-import { writeFile, readFile } from "fs/promises";
-import { parse } from "yaml";
+import { writeFile } from "fs/promises";
 import { resolve } from "path";
-import { repositoriesJSONstringify } from "../data/repositories";
-import { blacklistJSONstringify } from "../data/blacklist";
+import { repositoriesJSONstringify } from "../../data/repositories";
+import { blacklistJSONstringify } from "../../data/blacklist";
 
-export default defineConfig({
+export const shared = defineConfig({
   vite: {
     plugins: [ViteYaml()],
   },
   markdown: {
     lineNumbers: true,
   },
+  rewrites: {
+    "en/:rest*": ":rest*",
+  },
+  cleanUrls: true,
   title: "MMRL",
-  locales: locales.locales,
   sitemap: {
     hostname: "https://mmrl.dev",
   },
@@ -29,6 +30,15 @@ export default defineConfig({
       },
     ],
   ],
+  transformPageData(pageData, ctx) {
+    if (pageData.params?.title) {
+      pageData.title = pageData.params.title;
+    }
+
+    if (pageData.params?.description) {
+      pageData.description = pageData.params.description;
+    }
+  },
   buildEnd: async (config: SiteConfig) => {
     const publicApi = resolve(config.outDir, "api");
     const publicRepoList = resolve(publicApi, "repositories.json");

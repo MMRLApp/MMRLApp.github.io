@@ -1,4 +1,4 @@
-import { repositories } from "../../data/repositories";
+import { repositories } from "../../../data/repositories";
 
 export default {
     async paths() {
@@ -9,9 +9,9 @@ export default {
           const modulePaths = await Promise.all(
             rep.modules.map(async (module) => {
               return {
-                title: module.title,
-                description: module.description,
                 params: {
+                  title: module.name,
+                  description: module.description,
                   module: module,
                   name: repo.id,
                   id: module.id,
