@@ -5,6 +5,7 @@ import { writeFile, readFile } from "fs/promises";
 import { parse } from "yaml";
 import { resolve } from "path";
 import { repositoriesJSONstringify } from "../data/repositories";
+import { blacklistJSONstringify } from "../data/blacklist";
 
 export default defineConfig({
   vite: {
@@ -31,8 +32,9 @@ export default defineConfig({
   buildEnd: async (config: SiteConfig) => {
     const publicApi = resolve(config.outDir, "api");
     const publicRepoList = resolve(publicApi, "repositories.json");
+    const publicBlackList = resolve(publicApi, "blacklist.json");
 
-    console.log("Writing repositories.json");
     await writeFile(publicRepoList, repositoriesJSONstringify);
+    await writeFile(publicRepoList, blacklistJSONstringify);
   },
 });

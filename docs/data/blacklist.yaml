@@ -1,0 +1,99 @@
+- id: ATWEAKER
+  source: https://github.com/C0d3h01/AndroidTweaker
+  hidden: false
+  notes: ""
+  antifeatures:
+    - NoSourceSince
+
+- id: STRP
+  source: https://github.com/CRANKV2/CRV2
+  hidden: false
+  notes:
+    Aggressive terminal logging - Sends device specs to external server - Includes
+    APK without source - Includes obfuscated scripts
+  antifeatures:
+    - UnaskedRemoval
+    - Tracking
+    - NoSourceSince
+    - Obfuscation
+
+- id: STRPxZRAM
+  source: https://github.com/CRANKV2/ZRAM
+  hidden: false
+  notes: ""
+  antifeatures:
+    - UnaskedRemoval
+    - Tracking
+    - NoSourceSince
+    - Obfuscation
+
+- id: STRPxSPOOFER
+  source: https://github.com/CRANKV2/STRPxSPOOFER
+  hidden: false
+  notes: Sends device specs to external server
+  antifeatures:
+    - UnaskedRemoval
+    - Tracking
+    - Obfuscation
+
+- id: movecerts
+  source: https://www.androidacy.com/magisk-modules-repository#movecerts
+  notes:
+    Device specs are send with `apiClient.sh` to **Androidacy** servers. Remove
+    `apiClient.sh` to avoid tracking.
+  hidden: false
+  antifeatures:
+    - NonFreeNet
+    - Tracking
+
+- id: fontrevival
+  source: https://www.androidacy.com/magisk-modules-repository#fontrevival
+  notes: Uses `utm_source` and `utm_medium` parameters in openable URLs
+  hidden: false
+  antifeatures:
+    - NonFreeNet
+    - Tracking
+
+- id: bromitewebview
+  source: https://www.androidacy.com/magisk-modules-repository#bromitewebview
+  notes:
+    Device specs are send with `apiClient.sh` to **Androidacy** servers. Remove
+    `apiClient.sh` to avoid tracking.
+  hidden: false
+  antifeatures:
+    - NonFreeNet
+    - Tracking
+
+- id: encore
+  source: https://encore.rem01gaming.dev/download/
+  notes: ""
+  hidden: false
+  antifeatures:
+    - NoSourceSince
+
+- id: GD
+  source: https://t.me/modulosdec/1075
+  notes: ""
+  hidden: false
+  antifeatures:
+    - Ads
+    - Tracking
+    - Obfuscation
+
+- id: GSUnlocker
+  source: https://t.me/modulosdec/1069
+  notes: ""
+  hidden: false
+  antifeatures:
+    - Ads
+    - Tracking
+    - Obfuscation
+
+- id: android_enhancer
+  source: https://github.com/iamlooper/Android-Enhancer-Module
+  notes: |
+    Maybe contains a residential proxy.
+  hidden: false
+  antifeatures:
+    - Tracking
+    - Obfuscation
