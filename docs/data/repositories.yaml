@@ -1,39 +1,39 @@
-- slug: gmr
+- id: gmr
   name: Googlers Magisk Repo
   maintainers: []
   url: https://gr.dergoogler.com/gmr/
 
-- slug: mmar
+- id: mmar
   name: Magisk Modules Alternative Repo
   maintainers: []
   url: https://magisk-modules-alt-repo.github.io/json-v2/
 
-- slug: imr
+- id: imr
   name: IzzyOnDroid Magisk Repository
   maintainers: []
   url: https://apt.izzysoft.de/magisk/
 
-- slug: mmrr
+- id: mmrr
   name: Magisk Modules Rikj000 Repo
   maintainers: []
   url: https://rikj000.github.io/Magisk-Modules-Rikj000-Repo/
 
-- slug: cmmr
+- id: cmmr
   name: Celica Magisk Modules Repo
   maintainers: []
   url: https://natsumerinchan.github.io/celica-magisk-modules-repo/
 
-- slug: mfcr
+- id: mfcr
   name: Magisk Font Collection Repository
   maintainers: []
   url: https://codeberg.org/fruitsnack/magisk-font-repo/raw/branch/main/
 
-- slug: lmr
+- id: lmr
   name: LelouBil Magisk Repo
   maintainers: []
   url: https://leloubil.github.io/magisk-repo/
 
-- slug: m-mr
+- id: m-mr
   name: Misaki-Modules Repo
   maintainers: []
   url: https://misak10.github.io/mmrl-repo/

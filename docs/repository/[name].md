@@ -1,3 +1,9 @@
+---
+editLink: false
+prev: false
+next: false
+---
+
 <script setup>
 import { ref, onMounted } from "vue";
 import { useData } from 'vitepress'
@@ -6,7 +12,7 @@ import repositories from '../data/repositories.yaml'
 const { params } = useData()
 
 const name = params.value.name
-const repository = repositories.find((repo) => repo.slug === name)
+const repository = repositories.find((repo) => repo.id === name)
 
 const data = ref(null);
 
@@ -36,7 +42,7 @@ const openUrl = (url) => {
     <div :class="$style.items" v-for="module in data.modules">
       <div :class="$style.item">
         <div :class="[$style.feature, $style.grid_4]">
-          <article :class="$style.box">
+          <article :class="$style.box" @click="openUrl($params.name + '/' + module.id)">
             <h2 :class="$style.title" :id="module.id">{{ module.name }}</h2>
             <span :class="$style.author">
               {{ module.version }} ({{ module.versionCode }}) by

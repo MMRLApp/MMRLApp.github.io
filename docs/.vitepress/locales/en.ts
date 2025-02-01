@@ -1,5 +1,6 @@
 import { createRequire } from "module";
 import { defineConfig } from "vitepress";
+import request from "sync-request";
 import { repositories } from "../../data/repositories";
 
 const require = createRequire(import.meta.url);
@@ -44,7 +45,7 @@ export default defineConfig({
 function nav() {
   return [
     { text: "Guide", link: "/guide" },
-    { text: "Repositories", link: "/repository/gmr" },
+    { text: "Repositories", link: "/repository" },
     { text: "Legal", link: "/legal/privacy" },
   ];
 }
@@ -110,10 +111,23 @@ function sidebarLegal() {
 }
 
 function repos() {
-  return repositories.map((repo) => ({
-    text: repo.name,
-    link: `/repository/${repo.slug}`,
-  }));
+  return repositories.map((repo) => {
+    const response = request("GET", `${repo.url}json/modules.json`);
+    const rep = JSON.parse(response.getBody("utf8"));
+    const modules = rep.modules.map((module) => {
+      return {
+        text: module.name,
+        link: `/repository/${repo.id}/${module.id}`,
+      };
+    });
+
+    return {
+      text: repo.name,
+      link: `/repository/${repo.id}`,
+      collapsed: true,
+      items: modules,
+    };
+  });
 }
 
 function sidebarRepositories() {
