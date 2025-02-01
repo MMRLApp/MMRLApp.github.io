@@ -7,7 +7,7 @@ hero:
   text: Build your own modules repository
   tagline: ""
   image:
-    src: /logo.svg
+    src: /VitePressLogo-512px.webp
     alt: MMRL
   actions:
     - theme: brand
@@ -28,7 +28,7 @@ features:
   - title: Bulk Installation Support
     details: Effortlessly install modules in bulk, both online and locally.
   - title: Magisk Modules Repositories
-    details: A community-driven platform that allows anyone to contribute and access Magisk modules.
+    details: A <span class="vp-doc"><a href="./repository/gmr">community-driven</a></span> platform that allows anyone to contribute and access Magisk modules.
   - title: Customizable Module Pages
     details: Personalize module pages with categories, screenshots, icons, covers, and other content for a tailored presentation.
   - title: User Transparency with Blacklist

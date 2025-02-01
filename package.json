@@ -1,14 +1,16 @@
 {
   "name": "mmrl_website",
   "version": "1.0.0",
-  "description": "MMRL official website: https://mmrlapp.github.io",
+  "description": "MMRL official website: https://mmrl.dev",
   "main": "index.js",
-  "repository": "https://mmrlapp.github.io",
+  "repository": "https://github.com/MMRLApp/MMRLApp.github.io",
   "author": "Der_Googler",
   "license": "MIT",
   "devDependencies": {
+    "@modyfi/vite-plugin-yaml": "^1.1.0",
     "vitepress": "^1.6.3",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "yaml": "^2.7.0"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
