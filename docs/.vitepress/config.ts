@@ -35,6 +35,6 @@ export default defineConfig({
     const publicBlackList = resolve(publicApi, "blacklist.json");
 
     await writeFile(publicRepoList, repositoriesJSONstringify);
-    await writeFile(publicRepoList, blacklistJSONstringify);
+    await writeFile(publicBlackList, blacklistJSONstringify);
   },
 });
