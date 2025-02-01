@@ -102,6 +102,7 @@ function sidebarLegal() {
       text: "Legal",
       items: [
         { text: "Privacy Policy", link: "/legal/privacy" },
+        { text: "Terms of Service", link: "/legal/terms" },
         { text: "Chat Rules", link: "/legal/chat-rules" },
       ],
     },

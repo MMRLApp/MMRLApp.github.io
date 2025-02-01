@@ -56,4 +56,4 @@ This policy is effective as of 30.01.2025
 ```
 
 ## Contact Us
-If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at [jimmy@dergoogler.com](mailto:jimmy@dergoogler.com).
+If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at jimmy@dergoogler.com.
