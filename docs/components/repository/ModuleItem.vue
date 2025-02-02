@@ -10,7 +10,7 @@ defineProps(["module", "params"]);
     <div :class="$style.feature">
       <article :class="$style.box">
         <h2 :class="$style.title" :id="module.id">{{ module.name }}</h2>
-        <span :class="$style.author"> {{ module.version }} ({{ module.versionCode }}) by {{ module.author }}</span>
+        <span :class="$style.author">{{ module.version }} ({{ module.versionCode }}) by {{ module.author }}</span>
         <span :class="$style.details">{{ module.description }}</span>
         <div :class="$style.actionsContainer">
           <Badge v-if="module.size" type="info" :text="toFormattedFileSize(module.size)" />

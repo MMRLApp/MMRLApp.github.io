@@ -1,27 +1,50 @@
-# Anti-Features in MMRL
+# Anti-Features in MMRL  
 
-MMRL supports like in F-Droid Anti-Features to mark module you may not like
+MMRL supports anti-features similar to F-Droid, allowing modules to be marked with characteristics users may want to avoid.  
 
-Those Anti-Features can only be set from `track.json`.
+These anti-features can only be set in `track.json`:  
 
 ```json
 "antifeatures": ["Ads"]
 ```
 
-## List
+## List of Anti-Features  
 
-| Name                      | ID                | Description                                                                                                                  |
-|---------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------|
-| Ads                       | `Ads`             | Advertising                                                                                                                  |
-| Tracking                  | `Tracking`        | Tracks and/or reports your activity to somewhere, even when it can be turned off                                             |
-| Non-Free Network Services | `NonFreeNet`      | Promotes or depends entirely on a non-changeable or non-free network service                                                 |
-| Non-Free Addons           | `NonFreeAdd`      | Promotes other non-libre module or plugins                                                                                   |
-| Non-Free Dependencies     | `NonFreeDep`      | Needs a non-libre module to work (e.g. Google Maps, Market)                                                                  |
-| NSFW                      | `NSFW`            | Contains content that the user may not want to be publicized or visible everywhere                                           |
-| Upstream Non-Free         | `UpstreamNonFree` | Upstream source code is not libre, and this version has those parts replaced or rewritten                                    |
-| Non-Free Assets           | `NonFreeAssets`   | Non-libre media in things that are not code (e.g. images, sound, music, 3D-models, or video)                                 |
-| Known Vulnerability       | `KnownVuln`       | Known security vulnerability                                                                                                 |
-| No Source Since           | `NoSourceSince`   | Source code no longer available, making new releases impossible                                                              |
-| Obfuscation               | `Obfuscation`     | Module includes obfuscated code                                                                                              |
-| Unasked removal           | `UnaskedRemoval`  | Module removes app, permissions and other modules without approval. This does not include modules that disable other modules |
-| Large Language Model      | `LLM`             | The module maybe written partially or fully by an LLM                                                                        |
+### `Ads`  
+Includes advertising.  
+
+### `Tracking`  
+Tracks and/or reports your activity, even if it can be turned off.  
+
+### `NonFreeNet`  
+Promotes or depends entirely on a non-changeable or non-free network service.  
+
+### `NonFreeAdd`  
+Promotes other non-libre modules or plugins.  
+
+### `NonFreeDep`  
+Requires a non-libre module to function (e.g., Google Maps, Market).  
+
+### `NSFW`  
+Contains content the user may not want to be publicized or visible everywhere.  
+
+### `UpstreamNonFree`  
+Upstream source code is not libre, with non-free parts replaced or rewritten.  
+
+### `NonFreeAssets`  
+Includes non-libre media (e.g., images, sound, music, 3D models, video).  
+
+### `KnownVuln`  
+Contains a known security vulnerability.  
+
+### `NoSourceSince`  
+Source code is no longer available, preventing new releases.  
+
+### `Obfuscation`  
+Includes obfuscated code.  
+
+### `UnaskedRemoval`  
+Removes apps, permissions, or modules without user approval (excluding modules that disable other modules).  
+
+### `LLM`  
+Partially or fully written by an LLM.  

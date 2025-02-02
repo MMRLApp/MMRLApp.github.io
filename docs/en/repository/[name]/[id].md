@@ -14,6 +14,7 @@ import VPButton from "../../../components/vite/VPButton.vue"
 const { params } = useData()
 
 const module = ref(params.value.module)
+const showModal = ref(false)
 
 const versions = computed(() => {
   return module.value.versions.toReversed();
@@ -28,11 +29,17 @@ const latestVersion = computed(() => {
 
 # {{ module.name }}
 
+<div :class="$style.moduleDetailsContainer">
+    <span :class="$style.author">{{ module.author }}</span>
+    <span v-if="module.track.antifeatures && module.track.antifeatures.lenght !== 0" :class="$style.details">Contains Anti-Features.</span>
+</div>
+
 <Badge :style="{ marginTop: '8px' }" type="tip" :text="module.version" /> <Badge type="warning" :text="module.versionCode" /> <span v-if="module.verified" :class="[$style.chip, $style.chipGreen]">Verified</span>
 
 <div v-if="module.note">
 
-> [!NOTE] > {{ module.note.message }}
+> [!NOTE]
+> {{ module.note.message }}
 
 </div>
 
@@ -52,6 +59,18 @@ const latestVersion = computed(() => {
     </div>
 </div>
 
+
+
+<div v-if="module.track.antifeatures && module.track.antifeatures.length">
+    <h2>Anti-Features</h2>
+    <p>The following Anti-Features have been found.</p>
+    <ul v-for="(af, index) in module.track.antifeatures">
+        <li>
+            <VPLink :href="'/guide/antifeatures#' + af.toLowerCase()" :key="index" target="_blank">{{ af }}</VPLink>
+        </li>
+    </ul>
+</div>
+
 ## Versions
 
 <ul v-for="(version, index) in versions">
@@ -69,6 +88,21 @@ const latestVersion = computed(() => {
     </article>
 </div>
 
+<Teleport to="body">
+  <Transition name="modal">
+    <div v-show="showModal" class="modal-mask">
+      <div class="modal-container">
+        <p>Hello from the modal!</p>
+        <div class="model-footer">
+          <button class="modal-button" @click="showModal = false">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </Transition>
+</Teleport>
+
 <style module>
 .moduleCover {
     width: 100%;
@@ -81,36 +115,6 @@ const latestVersion = computed(() => {
     gap: 8px;
 }
 
-.VPButton {
-    display: inline-block;
-    border: 1px solid transparent;
-    text-align: center;
-    font-weight: 600;
-    white-space: nowrap;
-    color: unset !important;
-    text-decoration: unset !important;
-    transition: color 0.25s, border-color 0.25s, background-color 0.25s;
-}
-
-.VPButton_medium {
-    border-radius: 20px;
-    padding: 0 20px;
-    line-height: 38px;
-    font-size: 14px;
-}
-
-.VPButton_alt {
-    border-color: var(--vp-button-alt-border);
-    color: var(--vp-button-alt-text);
-    background-color: var(--vp-button-alt-bg);
-}
-
-.VPButton_brand {
-    border-color: var(--vp-button-brand-border);
-    color: var(--vp-button-brand-text);
-    background-color: var(--vp-button-brand-bg);
-}
-
 .screenshotsContainer {
   display: flex;
   gap: 1rem;
@@ -121,6 +125,30 @@ const latestVersion = computed(() => {
   width: 200px;
   height: auto;
   border-radius: 12px;
+}
+
+.moduleDetailsContainer {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.author {
+  flex-grow: 1;
+  padding-top: 8px;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vp-badge-tip-text);
+}
+
+.details {
+  flex-grow: 1;
+  line-height: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
 }
 
 .feature {
@@ -175,5 +203,60 @@ const latestVersion = computed(() => {
     font-weight: 500;
     margin: 4px;
     transform: translateY(-2px);
+}
+</style>
+
+<style scoped>
+.modal-mask {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.modal-container {
+  width: 300px;
+  margin: auto;
+  padding: 20px 30px;
+  background-color: var(--vp-c-bg);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+}
+
+.model-footer {
+  margin-top: 8px;
+  text-align: right;
+}
+
+.modal-button {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border-color: var(--vp-button-alt-border);
+  color: var(--vp-button-alt-text);
+  background-color: var(--vp-button-alt-bg);
+}
+
+.modal-button:hover {
+  border-color: var(--vp-button-alt-hover-border);
+  color: var(--vp-button-alt-hover-text);
+  background-color: var(--vp-button-alt-hover-bg);
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-from .modal-container,
+.modal-leave-to .modal-container {
+  transform: scale(1.1);
 }
 </style>
