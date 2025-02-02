@@ -4,6 +4,15 @@ This JSON configuration file contains settings related to a Magisk repository. B
 
 ---
 
+### `id` <Badge type="warning" text="required af of 1 Jan, 2026" />
+
+An unique id for your repository
+
+```json
+"id": "gmr"
+```
+
+
 ### `name` <Badge type="danger" text="required" />
 
 The name of the repository.
