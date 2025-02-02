@@ -7,7 +7,7 @@ next: false
 <script setup>
 import { ref, onMounted } from "vue";
 import { useData } from 'vitepress'
-import repositories from '../../data/repositories.yaml'
+import repositories from '../../../meta/repositories.yaml'
 
 import ModuleItem from '../../components/repository/ModuleItem.vue'
 import RepoHeader from '../../components/repository/RepoHeader.vue'
