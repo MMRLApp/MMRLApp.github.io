@@ -34,7 +34,7 @@ const openUrl = (url) => {
 {{ module.description }}
 
 <div :class="$style.moduleActions">
-    <a v-if="module.versions" :href="module.versions[0].zipUrl" target="_blank" :class="[$style.VPButton, $style.VPButton_medium, $style.VPButton_brand]">Download latest version</a>
+    <a v-if="module.versions" :href="module.versions.toReversed()[0].zipUrl" target="_blank" :class="[$style.VPButton, $style.VPButton_medium, $style.VPButton_brand]">Download latest version</a>
     <a v-if="module.support" :href="module.support" target="_blank" :class="[$style.VPButton, $style.VPButton_medium, $style.VPButton_alt]">Support</a>
 </div>
 
@@ -50,7 +50,7 @@ const openUrl = (url) => {
 
 ## Versions
 
-<ul v-for="(version, index) in module.versions">
+<ul v-for="(version, index) in module.versions.toReversed()">
     <li>
         <a :href="version.zipUrl" :key="index">{{ version.version }} ({{ version.versionCode }})</a>
     </li>

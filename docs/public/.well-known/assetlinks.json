@@ -1,0 +1,15 @@
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls",
+        "delegate_permission/common.get_login_creds"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.dergoogler.mmrl",
+        "sha256_cert_fingerprints": [
+          "75:6D:AE:FE:28:A0:5E:0C:AB:48:D5:26:BF:D9:AA:9F:56:56:81:63:E0:5C:34:09:4F:D8:E8:92:86:93:AC:1D"
+        ]
+      }
+    }
+  ]
