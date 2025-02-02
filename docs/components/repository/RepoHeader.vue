@@ -2,10 +2,6 @@
 import VPButton from "../vite/VPButton.vue";
 
 defineProps(["repo"]);
-
-const openUrl = (url) => {
-  window.open(url);
-};
 </script>
 
 <template>

@@ -1,5 +1,8 @@
-import { defineConfig, SiteConfig } from "vitepress";
+// Plugins
 import ViteYaml from "@modyfi/vite-plugin-yaml";
+import { pagefindPlugin } from "vitepress-plugin-pagefind";
+// Imports
+import { defineConfig, SiteConfig } from "vitepress";
 import { writeFile } from "fs/promises";
 import { resolve } from "path";
 import { repositoriesJSONstringify } from "../../data/repositories";
@@ -7,7 +10,7 @@ import { blacklistJSONstringify } from "../../data/blacklist";
 
 export const shared = defineConfig({
   vite: {
-    plugins: [ViteYaml()],
+    plugins: [ViteYaml(), pagefindPlugin()],
   },
   markdown: {
     lineNumbers: true,
@@ -30,6 +33,11 @@ export const shared = defineConfig({
       },
     ],
   ],
+  themeConfig: {
+    search: {
+      provider: "local",
+    },
+  },
   transformPageData(pageData, ctx) {
     if (pageData.params?.title) {
       pageData.title = pageData.params.title;

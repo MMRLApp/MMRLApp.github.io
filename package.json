@@ -10,6 +10,7 @@
     "@modyfi/vite-plugin-yaml": "^1.1.0",
     "sync-request": "^6.1.0",
     "vitepress": "^1.6.3",
+    "vitepress-plugin-pagefind": "^0.4.13",
     "vue": "^3.5.13",
     "yaml": "^2.7.0"
   },
