@@ -7,7 +7,7 @@ next: false
 ---
 
 <script setup>
-import blacklist from '../../data/blacklist.yaml'
+import blacklist from '../../../meta/blacklist.yaml'
 
 const openUrl = (url) => {
   window.open(url);
