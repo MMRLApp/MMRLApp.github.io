@@ -5,18 +5,24 @@ next: false
 ---
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useData } from 'vitepress'
+
+import VPLink from "../../../components/vite/VPLink.vue"
+import VPButton from "../../../components/vite/VPButton.vue"
 
 const { params } = useData()
 
 const module = ref(params.value.module)
 
-const openUrl = (url) => {
-  window.open(url);
-};
-</script>
+const versions = computed(() => {
+  return module.value.versions.toReversed();
+}); 
 
+const latestVersion = computed(() => {
+  return versions.value[0];
+});
+</script>
 
 <img v-if="module.cover" :class="$style.moduleCover" :src="module.cover"/>
 
@@ -26,16 +32,15 @@ const openUrl = (url) => {
 
 <div v-if="module.note">
 
-> [!NOTE]
-> {{ module.note.message }}
+> [!NOTE] > {{ module.note.message }}
 
 </div>
 
 {{ module.description }}
 
 <div :class="$style.moduleActions">
-    <a v-if="module.versions" :href="module.versions.toReversed()[0].zipUrl" target="_blank" :class="[$style.VPButton, $style.VPButton_medium, $style.VPButton_brand]">Download latest version</a>
-    <a v-if="module.support" :href="module.support" target="_blank" :class="[$style.VPButton, $style.VPButton_medium, $style.VPButton_alt]">Support</a>
+    <VPButton text="Download latest version" size="medium" target="_blank" theme="brand" :href="latestVersion.zipUrl" />
+    <VPButton v-if="module.support" :href="module.support" target="_blank" text="Support" size="medium" theme="alt" />
 </div>
 
 <div v-if="module.screenshots && module.screenshots.length">
@@ -47,12 +52,11 @@ const openUrl = (url) => {
     </div>
 </div>
 
-
 ## Versions
 
-<ul v-for="(version, index) in module.versions.toReversed()">
+<ul v-for="(version, index) in versions">
     <li>
-        <a :href="version.zipUrl" :key="index">{{ version.version }} ({{ version.versionCode }})</a>
+        <VPLink :href="version.zipUrl" :key="index" target="_blank">{{ version.version }} ({{ version.versionCode }})</VPLink>
     </li>
 </ul>
 
@@ -64,7 +68,6 @@ const openUrl = (url) => {
         Timestamp: {{ new Date(module.timestamp * 1000) }}
     </article>
 </div>
-
 
 <style module>
 .moduleCover {
