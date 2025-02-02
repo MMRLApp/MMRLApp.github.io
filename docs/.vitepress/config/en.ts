@@ -2,6 +2,7 @@ import { createRequire } from "module";
 import { defineConfig } from "vitepress";
 import request from "sync-request";
 import { repositories } from "../../data/repositories";
+import { changelog } from "../../data/changelog";
 
 const require = createRequire(import.meta.url);
 const pkg = require("vitepress/package.json");
@@ -18,6 +19,7 @@ export default defineConfig({
     sidebar: {
       "/guide/": sidebarGuide(),
       "/repository/": sidebarRepositories(),
+      "/changelog/": sidebarChangelog(),
       "/legal/": sidebarLegal(),
     },
 
@@ -35,8 +37,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern:
-        "https://github.com/MMRLApp/MMRLApp.github.io/edit/master/docs/:path",
+      pattern: "https://github.com/MMRLApp/MMRLApp.github.io/edit/master/docs/:path",
       text: "Edit this page on GitHub",
     },
   },
@@ -47,6 +48,7 @@ function nav() {
     { text: "Guide", link: "/guide" },
     { text: "Repositories", link: "/repository" },
     { text: "Blacklist", link: "/blacklist" },
+    { text: "Changelog", link: `/changelog/${changelog[0].versionCode}` },
     { text: "Legal", link: "/legal/privacy" },
   ];
 }
@@ -136,6 +138,34 @@ function sidebarRepositories() {
     {
       text: "Repositories",
       items: repos(),
+    },
+  ];
+}
+
+function sidebarChangelog() {
+  return [
+    {
+      text: "Changelog",
+      items: changelog.map((log) => {
+        const spanCss = `
+          border-color: var(--vp-badge-warning-border);
+          color: var(--vp-badge-warning-text);
+          background-color: var(--vp-badge-warning-bg);
+          display: inline-block;
+          border: 1px solid transparent;
+          border-radius: 12px;
+          padding: 0 10px;
+          line-height: 22px;
+          font-size: 12px;
+          font-weight: 500;
+          transform: translateY(-2px);
+        `;
+
+        return {
+          text: `${log.versionName} (${log.versionCode}) ${log.preRelease ? `<span style="${spanCss}">PR</span>` : ""}`,
+          link: `/changelog/${log.versionCode}`,
+        };
+      }),
     },
   ];
 }

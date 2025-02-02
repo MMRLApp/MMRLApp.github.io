@@ -7,6 +7,7 @@ import { writeFile } from "fs/promises";
 import { resolve } from "path";
 import { repositoriesJSONstringify } from "../../data/repositories";
 import { blacklistJSONstringify } from "../../data/blacklist";
+import { changelogJSONstringify } from "../../data/changelog";
 
 export const shared = defineConfig({
   vite: {
@@ -51,8 +52,10 @@ export const shared = defineConfig({
     const publicApi = resolve(config.outDir, "api");
     const publicRepoList = resolve(publicApi, "repositories.json");
     const publicBlackList = resolve(publicApi, "blacklist.json");
+    const publicChangelogList = resolve(publicApi, "changelog.json");
 
     await writeFile(publicRepoList, repositoriesJSONstringify);
     await writeFile(publicBlackList, blacklistJSONstringify);
+    await writeFile(publicChangelogList, changelogJSONstringify);
   },
 });

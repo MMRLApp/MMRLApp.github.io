@@ -1,0 +1,308 @@
+- versionName: v5.31.42
+  versionCode: 33033
+  preRelease: false
+  changes: |-
+    - Improved WebUI
+    - Added filters for repositories
+    - BottomSheets are now animated when content size changes
+    - Fixed incorrectly displayed Action feature
+    - Improve blacklist adding mechanism
+    - Added a NPM [library](https://www.npmjs.com/package/mmrl)
+    - Others
+
+- versionName: v5.30.41
+  versionCode: 33016
+  preRelease: false
+  changes: |-
+    I need to take time for myself.
+
+    Changes
+    [https://github.com/DerGoogler/MMRL/compare/v5.30.40...v5.30.41](https://github.com/DerGoogler/MMRL/compare/v5.30.40...v5.30.41)
+
+- versionName: v5.30.40
+  versionCode: 32987
+  preRelease: false
+  changes:
+    "## Important and bracking changes\n- **Backup Notice:** This version will
+    delete all added repos! Please backup before updating due to major internal repo
+    structure changes. Migration isn't feasible for this update.\n- Users must select
+    a root provider manually now.\n- JavaScript KernelSU API and FileSystem API must
+    be allowed by the user for access.\n\n## What's New\n- **New Screens & Features:**\n
+    \ - Repositories have been split into their own screen.\n  - Re-worked Module,
+    Repo cards, and layout.\n  - Repositories moved to the main screen.\n  - New red
+    border added to blacklisted modules.\n  - Added the ability to open WebUI by clicking
+    on the module card.\n  - WebUI now supports dynamic theme colors and more customizable
+    options.\n  - WebUI's API access is now restricted by default for increased security.\n
+    \ - Added the `track.json` file option to modules for easier tracking.\n  - Platform
+    management improvements and added support for unsupported compressions.\n  \n-
+    **Enhanced Features:**\n  - Improved navigation and UI with a new `CompositionLocalProvider`
+    for `navController`.\n  - Action and Module install process can now be canceled
+    (developer-only feature).\n  - New `MAGISKTMP` and `ASHSTANDALONE=1` added to
+    actions.\n  - Re-enabled updaters, though functionality is uncertain.\n  - Added
+    KernelSU Next support and improved related features.\n  - Added option to sort
+    modules by action or WebUI.\n  - Added date preview for events.\n  - A new option
+    to export modules as text has been included.\n  \n- **Other Improvements:**\n
+    \ - Updated translations and added new languages.\n  - Storage usage display improved,
+    replacing the ratio placeholder.\n  - Fixed issues with root status card, corner
+    radius, and module analytics.\n  - Reworked Module cover design and added category
+    labels to cards.\n  - Improved the action and install cancel functionality.\n
+    \ - Action and install cancellation now works more universally.\n  - Improved
+    internal components and clearer error reporting (e.g., crash screen, deprecated
+    icons).\n  - Clear command added to both action and module installers.\n\n- **Security
+    Enhancements:**\n  - User now needs to allow JavaScript KernelSU API access for
+    increased security.\n  - WebUI access now requires manual permission for API functionality.\n
+    \ - Blacklist blocks listed modules from being installed locally, with an option
+    to disable via Settings > Security > Blacklist Alerts.\n\n## Translation Updates:\n-
+    Polish by [@Daviteusz](https://github.com/Daviteusz) & Eryk Michalak\n- German
+    by [@DerGoogler](https://github.com/DerGoogler), [@MrAnderson187](https://github.com/MrAnderson187),
+    [@ImBss](https://github.com/ImBss)\n- Arabic by [@ZG089](https://github.com/ZG089)\n-
+    Japanese by [@reindex-ot](https://github.com/reindex-ot)\n- Portuguese by [@ggeo-git
+    (404)](https://github.com/ggeo-git)\n- Vietnamese by Lnothem\n- Chinese (Traditional
+    Han script) by [@GenshoOpen](https://github.com/GenshoOpen)\n- Chinese (Simplified
+    Han script) by [@Uiugkhbkhbkg](https://github.com/Uiugkhbkhbkg) & [@AronnaxM](https://github.com/AronnaxM)\n-
+    Indonesian by [@Rem01Gaming](https://github.com/Rem01Gaming)\n- Spanish by [@GuestAnotdev](https://github.com/GuestAnotdev)
+    & gallegonovato\n- Italian by [@diegoberaldin](https://github.com/diegoberaldin)\n\n##
+    Other Notes:\n- Weblate support added to the about screen.\n- Some components,
+    like the `repo.json` API, have been extended.\n- Some deprecated modules now display
+    an icon.\n- WebUI can now load assets either with or without shell support.\n-
+    Fixed some issues with non-scrollable settings and fixed the install process when
+    choosing modules from other apps (e.g., Telegram).\n\n---\n\nThis version includes
+    significant internal improvements, security measures, and a more streamlined user
+    experience."
+
+- versionName: v5.30.40-RC-5
+  versionCode: 32986
+  preRelease: true
+  changes: |-
+    - Added translatrion for action and install ([weblate](https://hosted.weblate.org/projects/mmrl/terminal/))
+    - Fixed missing modules label for repo cards without cover
+    - Imrpoved settings view model by not re-creating
+    - Improved navigation
+    - Fixed Author and Category search from module page
+    - Updated translations
+
+- versionName: v5.30.40-RC-4
+  versionCode: 32978
+  preRelease: true
+  changes:
+    "## Important!!\nThis version will delete all added repos! Do a backup
+    before you update to this version.\n   \nWhy? There are huge internal repo structure
+    changes, it is not worth to make a migration!\n\n## What's new\n\n- Splitted repositories
+    into its own screen\n- Re-worked Module, Repos cards etc\n- Repositories moved
+    to the main screen\n- Added red border to blacklisted modules\n- Updated KernelSU
+    Next icon\n- Design changes\n- Updated events\n- Added date preview\n- Updated
+    translations\n- Fixed storage usage"
+
+- versionName: v5.30.40-RC-3
+  versionCode: 32924
+  preRelease: true
+  changes: |-
+    - Fixed root status card corner radius
+    - Made working mode items more universal
+    - `navController` is now passed via a `CompositionLocalProvider`
+    - Added `KSU_NEXT` export to action for KernelSU Next
+    - Added option to use a local domain for WebUI. You can enable this through the developer settings.
+    - Updated translations (full contributor list at gold-release)
+    - Added clear command to action and module installer
+    - Improved internal components
+    - Added a option to cancel action or the module install process. This is a developer options only feature and should only used by people that know what they doing
+    - Fixed christmas event was to long. Should have ended on 27.12, not 28.12
+    - Improved action handling for disabled modules
+    - Fixed module analytics and removed the ratio placeholder (replaced by storage usage now)
+    - Added option to sort modules by action or WebUI
+    - Added sponsors to about screen
+    - Improve WebUI assets loader. You can now choose with want to load assets with shell or without
+    - Updated WebUI docs
+
+- versionName: v5.30.40-RC-2
+  versionCode: 32883
+  preRelease: true
+  changes:
+    "### BREAKING\n\n- The user has now to allow the usage of the JavaScript
+    KernelSU API. This desicion was made for security. Same applies for the new FileSystem
+    API\n- You'll have now to select the root provider by your own.\n\n### What's
+    new\n\n- Updated translations\n- Generic Action setting is now default\n- Added
+    `MAGISKTMP` to action \n- Added `ASHSTANDALONE=1` to action\n- Added a FileSystem
+    API for WebUI\n- WebUI can now be opened by clicking on the module card\n- Improved
+    UI in general\n- Improved Platform management\n- Labels have been improved\n-
+    Category label have been added to the card. The first one will picked\n- Added
+    option to export modules as text\n- \"deprecated\" note has now an icon\n- Added
+    Weblate button\n- Re-enabled updaters (idk if they work)\n- Added KernelSU Next
+    support\n- Improved crash screen\n- Improved home screen "
+
+- versionName: v5.30.40-RC-1
+  versionCode: 32772
+  preRelease: true
+  changes:
+    "## Important!!\nThis version will delete all added repos! Do a backup
+    before you update to this version.\n   \nWhy? There are huge internal repo structure
+    changes, it is not worth to make a migration!\n\n---\n\n- Update Polish by [@Daviteusz](https://github.com/Daviteusz)\n-
+    Update German by [@DerGoogler](https://github.com/DerGoogler) & [@MrAnderson187](https://github.com/MrAnderson187)\n-
+    Update Arabic by [@ZG089](https://github.com/ZG089)\n- Update Japanese by [@reindex-ot](https://github.com/reindex-ot)\n-
+    Update Portuguese by [@ggeo-git](https://github.com/ggeo-git)\n- Update Chinese
+    (Traditional Han script) by [@GenshoOpen](https://github.com/GenshoOpen)\n- Updated
+    Installer docs\n- Added initial `action.sh` support\n- `minApi` will now passed
+    down\n- Added a new Anti-Feature called **LLM**. [Learn more](https://github.com/DerGoogler/MMRL/blob/master/docs/ANTI-FEATURES.md)\n-
+    Added new WebUI JavaScript functions. [Learn more](https://github.com/DerGoogler/MMRL/blob/master/docs/WEBUI.md#check-if-running-in-mmrl)\n-
+    Added a option to open the `track.json` file of the module\n- Added new WebUI
+    dynamic theme colors. Filled Tonal Button & Filled Card Colors\n- Extended `repo.json`
+    API. [Learn more](https://github.com/DerGoogler/MMRL/blob/master/docs/REPO-JSON.md#manager)\n-
+    WebUI and Action are now in a bottomsheet called \"Runners\"\n- Some other bug
+    fixes and improvements"
+
+- versionName: v5.29.39
+  versionCode: 32717
+  preRelease: false
+  changes: |-
+    ### Improvements
+
+    - Improved module note handling
+    - Improved WebUI security. External links will now opned in a browser
+    - Improved how are link opned in the whole app
+
+    ### Addings
+
+    - Added a feature where you can share author and a category
+    - Added a option where you can choose if modules should removed, disabled or enabled with shell (not available for Magisk)
+    - Added Installer API, with this API you can control some parts of the terminal. [Learn more](https://github.com/DerGoogler/MMRL/blob/master/docs/INSTALLER.md)
+
+    ### Other Changes
+
+    - Removed unnecessary module manager listing in features (only in english)
+    - Fixed Anti-Features text size and match it with Module Support section elements
+    - Markdown system has been changed. You may can encounter some visual bugs
+    - Updated Simplified Chinese by [@AronnaxM](https://github.com/AronnaxM)
+
+- versionName: v5.28.38
+  versionCode: 32689
+  preRelease: false
+  changes:
+    "- Again fixed Re-Install in differnet languages\n- Fixed non-root item
+    padding\n- Updated Polish by [@Daviteusz](https://github.com/Daviteusz)\n- You
+    can now install also requires from modules\n- Added bulk install for online modules
+    (beta)\n- Version's button moved to toolbar\n- Fixed Update, Re-Install state
+    etc\n- Fixed missing \"Features\" section "
+
+- versionName: v5.27.37
+  versionCode: 32669
+  preRelease: false
+  changes: |-
+    - Fixed WebUI dynamic colors
+    - Updated Traditional Chinese by [@GenshoOpen](https://github.com/GenshoOpen)
+    - Fixed missing dots in Anti-Features by [@GenshoOpen](https://github.com/GenshoOpen)
+
+- versionName: v5.27.36
+  versionCode: 32666
+  preRelease: true
+  changes: |-
+    - Added WebUI
+      - ([Documentation](https://github.com/DerGoogler/MMRL/blob/master/docs/WEBUI.md))
+    - Added bulk support for installing multiple **local** modules at once
+    - Added options to clear terminal when installing multiple modules
+    - `action.sh`, `post-mount.sh` or `boot-completed.sh` could also be used for last module updated time
+    - Fixed "Re-Install" when app is used in a different language
+    - Updated Japanese by [@reindex-ot](https://github.com/reindex-ot)
+    - Updated Traditional Chinese by [@GenshoOpen](https://github.com/GenshoOpen)
+
+- versionName: v5.26.35
+  versionCode: 32638
+  preRelease: false
+  changes:
+    "#### **Homepage Updates**\n- The root provider status has been moved to
+    its own dedicated page!\n- You can now view your device's general specifications
+    directly in MMRL, including:\n  - **Kernel Version**\n  - **Manager Version**\n
+    \ - **Fingerprint**\n  - **SELinux Status**\n- To prioritize privacy, the **fingerprint**
+    is **hidden by default**.\n\n- The homepage now shows:\n  - The number of modules
+    with **service files**.\n  - The number of **disabled modules**.\n\nIf you’re
+    not a fan of this new layout, don’t worry! You can switch back to a classic view
+    via **Settings > Appearance > App Homepage**.\n\n---\n\n#### **A New Way to View
+    Modules**\n\nThe Modules page has been completely redesigned with a fresh look
+    and enhanced functionality:\n\n- **Covers and Screenshots** are now displayed
+    together.\n- Modules can be removed directly from this page.\n- Categories and
+    Authors are now clickable for easier navigation.\n- All module details are consolidated
+    into one page, including:\n  - Features\n  - Anti-Features\n  - Module Support\n
+    \ - Dependencies\n\n---\n\n#### **New Features & Improvements**\n\n- **Progress
+    Bar for Downloads**: A new progress bar provides clear feedback during downloads.\n-
+    **ReadMe Updates**:\n  - ReadMe files are now displayed separately.\n  - ReadMe
+    content is **selectable**, allowing for easier copying and sharing.\n- **Deeplinks
+    Support**:  \n  Access MMRL directly via the following links:\n  - [Module](https://mmrl.dergoogler.com/module/mmrl)\n
+    \ - [Search by Author](https://mmrl.dergoogler.com/search/author/der_googler)\n
+    \ - [Search by Category](https://mmrl.dergoogler.com/search/category/system)\n-
+    **Module Sharing**: Modules can now be shared seamlessly.\n- **Developer Mode**:\n
+    \ Enable Developer Mode to access advanced features such as module IDs and more—explore
+    and discover!\n- **Changelog Download Button**:\n  - A new download button is
+    added for MMRL changelogs.\n  - For Google Play builds, this redirects directly
+    to the Play Store.\n- **Privacy Policy**:\n  - For Google Play builds, the Privacy
+    Policy is now displayed in **Settings** (at the bottom).\n- **Improved Explore
+    Descriptions**:\n  - Module descriptions in the Explore section are now limited
+    to **5 lines**, so choose wisely.\n- **Japanese Localization**:\n  - Thanks to
+    [@reindex-ot](https://github.com/reindex-ot) for updating the Japanese translation.\n\n---\n\n####
+    **Bug Fixes**\n\n- Fixed a `copyToDir` issue as reported by Google Play.\n\n---\n\nThis
+    revision ensures clarity, better structure, and consistency in tone. Let me know
+    if you'd like further adjustments!\n"
+
+- versionName: v4.26.34
+  versionCode: 32583
+  preRelease: false
+  changes:
+    "This updates only includes a new API for Recommended Repositories, Changelog
+    and Blacklisted Modules.\n\n\n![](https://raw.githubusercontent.com/DerGoogler/cdn/refs/heads/master/images/mmrl-1-min.png)\n\n###
+    Improved Changelogs\n\nIt's now quite easier to view the changelogs of MMRL because
+    every changelog is get over [mmrl.dergoogler.com/changelog.json](https://mmrl.dergoogler.com/changelog.json).
+    There is also a web version at [mmrl.dergoogler.com/changelog](https://mmrl.dergoogler.com/changelog)
+    to view the changelog!\n\n![](https://raw.githubusercontent.com/DerGoogler/cdn/refs/heads/master/images/mmrl-2-min.png)\n\n###
+    Missing Source Button\n\nBlacklisted modules having finally an \"Open Source\"
+    button to open the source of the module. But of those are closed source. It cannot
+    always provided a source URL!\nSame here you can access the API over [mmrl.dergoogler.com/blacklist.json](https://mmrl.dergoogler.com/blacklist.json)
+    and the web version over [mmrl.dergoogler.com/blacklist](https://mmrl.dergoogler.com/blacklist)\n\n![](https://raw.githubusercontent.com/DerGoogler/cdn/refs/heads/master/images/mmrl-3-min.png)\n\n###
+    Gonna be Purrfect!\n\nRecommended Repositories are getting better (as always).
+    This feature is for lazy people who don't want to copy mutiple repo URLs.\n\n>
+    **Behavior changed!**         \n> Now will open an bottom sheet insted of adding
+    the repo instantly. Holding the list item long and your repo will added immediately\n\nAPI
+    access over [mmrl.dergoogler.com/repositories.json](https://mmrl.dergoogler.com/repositories.json)
+    and the web version can be accessed over [mmrl.dergoogler.com/repositories](https://mmrl.dergoogler.com/repositories)"
+
+- versionName: v4.26.33
+  versionCode: 32576
+  preRelease: false
+  changes: |-
+    - Added ModConf back as *ModConf Compose* (undocumented)
+    - Updated Japanese by [@reindex-ot]
+    - Updated Arabic by [@muhammadbahaa2001]
+    - Fixed a issue where the reboot button wasn't clickable
+    - Added a screen to add recommended repos
+    - Added a screen to view blacklist modules (doesn't affect experience)
+    - Added the ability to use your own date format/pattern
+    - Improved module notes
+      - Notes that have `Deprecated` in the tittle will display with a red background
+    - Improved Markdown a bit
+    - Updated Polish by [@Daviteusz]
+    - Added a label to "@" in repositories
+    - Added a functionality to keep the screen on when installing modules
+    - Pressing on a bottom bar item take you back to the root
+    - Fixed a issue where the search forgets the entered text
+    - Added some events like halloween, christmas etc
+    - Added option to choose your start page (repositories or modules)
+    - Added the ability to filter module by `id:`, `name:`, `author:` or `category:` (only for online modules)
+    - Improved screenshots padding
+    - Replaced title with app icon
+
+- versionName: v4.25.33
+  versionCode: 32469
+  preRelease: false
+  changes: |-
+    > Weblate? No. I don't fuck around with their setup nor having interest
+    for it.
+    - Moved provider info to about\n- Using custom tabs to open link
+    - Some fixes
+
+- versionName: v4.25.32
+  versionCode: 32448
+  preRelease: false
+  changes: |-
+    - Updated strings
+    - Added back old repo list. You can choose between detailed and compact
+    - Added reboot protection (enabled by default)
+    - Added changelog to settings
+    - Added option to turn on text wrap
+    - Organized settings tab
