@@ -35,6 +35,6 @@ jobs:
             
       - name: Commit and Push Sponsors JSON
         run: |
-            git add json/sponsors.json
+            git add docs/public/api/sponsors.json
             git commit -m "Update Sponsors" || true
             git push || true

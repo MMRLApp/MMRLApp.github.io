@@ -27,6 +27,27 @@ query {
       }
     }
   }
+  user(login: "MMRLApp") {
+     sponsorshipsAsMaintainer(activeOnly: false, first: 100) {
+      nodes {
+        sponsorEntity {
+          ... on User {
+            login
+            avatarUrl
+            url
+          }
+          ... on Organization {
+            login
+            avatarUrl
+            url
+          }
+        }
+        tier {
+          monthlyPriceInCents
+        }
+      }
+    }
+  }
 }
 """
 
