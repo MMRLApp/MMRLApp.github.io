@@ -32,6 +32,7 @@ defineProps(["repo"]);
   width: 100%;
   margin-bottom: 16px;
   border-radius: 16px;
+  aspect-ratio: 2.048;
 }
 
 .repoTitle {

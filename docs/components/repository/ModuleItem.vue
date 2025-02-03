@@ -29,7 +29,7 @@ const getLastUpdated = () => {
   <VPLink decoration="none" :href="'repository/' + params.name + '/' + module.id">
     <div :class="$style.feature">
       <article>
-        <img v-if="module.cover" :style="{ borderRadius: '12px 12px 0px 0px' }" :src="module.cover" />
+        <img v-if="module.cover" :class="$style.moduleCover" :src="module.cover" />
         <article :class="$style.box">
           <h2 :class="$style.title" :id="module.id">{{ module.name }}</h2>
           <span :class="$style.author">{{ module.version }} ({{ module.versionCode }}) by {{ module.author }}</span>
@@ -133,6 +133,13 @@ const getLastUpdated = () => {
   font-size: 14px;
   font-weight: 500;
   color: var(--vp-c-text-2);
+}
+
+.moduleCover {
+  border-radius: 12px 12px 0px 0px;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 2.048;
 }
 
 .moduleMeta {
