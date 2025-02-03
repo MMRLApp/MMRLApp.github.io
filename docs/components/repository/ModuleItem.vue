@@ -101,6 +101,10 @@ const getLastUpdated = () => {
   transition: border-color 0.25s, background-color 0.25s;
 }
 
+.feature:hover {
+  border-color: var(--vp-badge-tip-text);
+}
+
 .box {
   display: flex;
   flex-direction: column;
@@ -140,6 +144,7 @@ const getLastUpdated = () => {
   width: 100%;
   height: 100%;
   aspect-ratio: 2.048;
+  object-fit: cover;
 }
 
 .moduleMeta {
