@@ -55,6 +55,12 @@ defineProps([
 .modal-content {
   overflow: scroll;
   height: inherit;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.modal-content::-webkit-scrollbar { 
+    display: none;
 }
 
 .modal-container {
