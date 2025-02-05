@@ -7,9 +7,7 @@ next: false
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useData } from 'vitepress'
-
-import VPLink from "../../../components/vite/VPLink.vue"
-import VPButton from "../../../components/vite/VPButton.vue"
+import { VPLink, VPButton } from 'vitepress/theme'
 
 const { params } = useData()
 
@@ -42,6 +40,8 @@ const latestVersion = computed(() => {
 > {{ module.note.message }}
 
 </div>
+
+{{data}}
 
 {{ module.description }}
 

@@ -1,7 +1,8 @@
 <script setup>
 import { toFormattedFileSize } from "../../helper/toFormattedFileSize";
 import { useData } from "vitepress";
-import VPLink from "../vite/VPLink.vue";
+
+import { VPLink } from 'vitepress/theme'
 
 const props = defineProps(["module", "params"]);
 

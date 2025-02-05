@@ -1,25 +1,86 @@
 - id: gmr
   name: Googlers Magisk Repo
   maintainers: []
+  members:
+  - avatar: https://www.github.com/DerGoogler.png
+    name: Der_Googler
+    title: Owner
+    links:
+    - icon: github
+      link: https://github.com/DerGoogler
   url: https://gr.dergoogler.com/gmr/
 
 - id: mmar
   name: Magisk Modules Alternative Repo
   maintainers: []
+  members:
+  - avatar: https://www.github.com/tytydraco.png
+    name: Tyler Nijmeh
+    title: Owner
+    links:
+    - icon: github
+      link: https://github.com/tytydraco
+  - avatar: https://www.github.com/Atrate.png
+    name: Atrate
+    title: Owner
+    links:
+    - icon: github
+      link: https://github.com/Atrate
+  - avatar: https://www.github.com/DerGoogler.png
+    name: Der_Googler
+    title: Moderator
+    links:
+    - icon: github
+      link: https://github.com/DerGoogler
+  - avatar: https://www.github.com/Fox2Code.png
+    name: Fox2Code
+    title: Moderator
+    links:
+    - icon: github
+      link: https://github.com/Fox2Code
+  - avatar: https://www.github.com/HuskyDG.png
+    name: HuskyDG
+    title: Moderator
+    links:
+    - icon: github
+      link: https://github.com/HuskyDG
   url: https://magisk-modules-alt-repo.github.io/json-v2/
 
 - id: imr
   name: IzzyOnDroid Magisk Repository
   maintainers: []
+  members:
+  - avatar: https://www.github.com/IzzySoft.png
+    name: IzzySoft
+    title: Owner
+    links:
+    - icon: github
+      link: https://github.com/IzzySoft
+    - icon: gitlab
+      link: https://gitlab.com/IzzySoft
   url: https://apt.izzysoft.de/magisk/
 
 - id: mmrr
   name: Magisk Modules Rikj000 Repo
+  members:
+  - avatar: https://www.github.com/Rikj000.png
+    name: Rikj000
+    title: Owner
+    links:
+    - icon: github
+      link: https://github.com/Rikj000
   maintainers: []
   url: https://rikj000.github.io/Magisk-Modules-Rikj000-Repo/
 
 - id: cmmr
   name: Celica Magisk Modules Repo
+  members:
+  - avatar: https://www.github.com/natsumerinchan.png
+    name: natsumerinchan
+    title: Owner
+    links:
+    - icon: github
+      link: https://github.com/natsumerinchan
   maintainers: []
   url: https://natsumerinchan.github.io/celica-magisk-modules-repo/
 

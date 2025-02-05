@@ -32,13 +32,21 @@ const openUrl = (url) => {
 </script>
 
 <div v-if="data">
-    <RepoHeader :repo="data" />
+    <RepoHeader :repo="data" :internalRepo="repository" />
     <div :class="$style.items" v-for="module in data.modules">
         <div :class="$style.item">
             <ModuleItem :module="module" :params="$params" />
         </div>
     </div>
 </div>
+
+
+<style scoped>
+a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+</style>
 
 <style module>
 .item {
