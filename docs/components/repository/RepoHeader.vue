@@ -44,6 +44,7 @@ const showModal = ref(false)
 .repoActions {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
   padding: 16px 0px 16px 0px;
 }
 
