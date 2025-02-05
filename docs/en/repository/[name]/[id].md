@@ -87,6 +87,14 @@ const latestVersion = computed(() => {
     </article>
 </div>
 
+
+
+<style scoped>
+a {
+    text-decoration: none !important;
+}
+</style>
+
 <style module>
 .moduleCover {
     width: 100%;

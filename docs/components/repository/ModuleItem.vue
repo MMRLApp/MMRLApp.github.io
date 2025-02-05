@@ -2,7 +2,7 @@
 import { toFormattedFileSize } from "../../helper/toFormattedFileSize";
 import { useData } from "vitepress";
 
-import { VPLink } from 'vitepress/theme'
+import { VPLink } from "vitepress/theme";
 
 const props = defineProps(["module", "params"]);
 

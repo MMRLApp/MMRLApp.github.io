@@ -1,13 +1,7 @@
 <script setup>
-import { VPButton } from 'vitepress/theme'
+import { VPButton } from "vitepress/theme";
 
-defineProps([
-    "title", 
-    "open",
-    "onClose",
-    "onOpen",
-    "contentStyle"
-]);
+defineProps(["title", "open", "onClose", "onOpen", "contentStyle"]);
 </script>
 
 <template>
@@ -35,7 +29,6 @@ defineProps([
   line-height: 40px;
   font-size: 32px;
   margin: 16px 26px;
-  /*margin-bottom: 16px;*/
 }
 
 .modal-mask {
@@ -59,8 +52,8 @@ defineProps([
   scrollbar-width: none;
 }
 
-.modal-content::-webkit-scrollbar { 
-    display: none;
+.modal-content::-webkit-scrollbar {
+  display: none;
 }
 
 .modal-container {
@@ -70,7 +63,6 @@ defineProps([
   margin: auto;
   display: flex;
   flex-direction: column;
-  /*padding: 20px 30px;*/
   background-color: var(--vp-c-bg);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);

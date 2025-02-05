@@ -1,21 +1,21 @@
 <script setup>
-import { ref } from 'vue'
-import Dialog from '../Dialog.vue'
-import { VPTeamMembers, VPButton } from 'vitepress/theme'
+import { ref } from "vue";
+import Dialog from "../Dialog.vue";
+import { VPTeamMembers, VPButton } from "vitepress/theme";
 
 defineProps(["repo", "internalRepo"]);
 
-const showModal = ref(false)
+const showModal = ref(false);
 
 const openModal = () => {
-  document.body.style.overflow = 'hidden'
-  showModal.value = true
-}
+  document.body.style.overflow = "hidden";
+  showModal.value = true;
+};
 
 const closeModal = () => {
-  document.body.style.overflow = 'unset'
-  showModal.value = false
-}
+  document.body.style.overflow = "unset";
+  showModal.value = false;
+};
 </script>
 
 <template>
@@ -37,8 +37,8 @@ const closeModal = () => {
 
 <style scoped>
 a {
-    color: inherit !important;
-    text-decoration: none !important;
+  color: inherit !important;
+  text-decoration: none !important;
 }
 </style>
 
