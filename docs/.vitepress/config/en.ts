@@ -45,11 +45,41 @@ export default defineConfig({
 
 function nav() {
   return [
-    { text: "Guide", link: "/guide" },
-    { text: "Repositories", link: "/repository" },
-    { text: "Blacklist", link: "/blacklist" },
-    { text: "Changelog", link: `/changelog/${changelog[0].versionCode}` },
-    { text: "Legal", link: "/legal/privacy" },
+    {
+      text: "Guide",
+      link: "/guide",
+      activeMatch: "/guide/",
+    },
+    {
+      text: "Repositories",
+      link: "/repository",
+      activeMatch: "/repository/",
+    },
+    {
+      text: "More",
+      items: [
+        {
+          text: "Downloads",
+          link: "/downloads",
+          activeMatch: "/downloads/",
+        },
+        {
+          text: "Blacklist",
+          link: "/blacklist",
+          activeMatch: "/blacklist/",
+        },
+        {
+          text: "Changelog",
+          link: `/changelog/${changelog[0].versionCode}`,
+          activeMatch: "/changelog/",
+        },
+      ],
+    },
+    {
+      text: "Legal",
+      link: "/legal/privacy",
+      activeMatch: "/legal/",
+    },
   ];
 }
 
