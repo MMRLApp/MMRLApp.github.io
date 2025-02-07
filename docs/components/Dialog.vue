@@ -5,7 +5,7 @@ defineProps(["title", "open", "onClose", "onOpen", "contentStyle"]);
 </script>
 
 <template>
-  <Teleport v-if="open" to="body">
+  <Teleport to="body">
     <Transition name="modal">
       <div v-show="open" class="modal-mask">
         <div class="modal-container">
