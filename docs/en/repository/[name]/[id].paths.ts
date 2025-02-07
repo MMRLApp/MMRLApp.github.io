@@ -1,4 +1,6 @@
 import { repositories } from "../../../data/repositories";
+import { generateRepoId } from "../../../helper/generateRepoId";
+
 
 export default {
     async paths() {
@@ -13,7 +15,7 @@ export default {
                   title: module.name,
                   description: module.description,
                   module: module,
-                  name: repo.id,
+                  name: generateRepoId(repo.url),
                   id: module.id,
                 },
               };

@@ -15,7 +15,8 @@ import RepoHeader from '../../components/repository/RepoHeader.vue'
 const { params } = useData()
 
 const name = params.value.name
-const repository = repositories.find((repo) => repo.id === name)
+const url = params.value.url
+const repository = repositories.find((repo) => repo.url === url)
 
 const data = ref(null);
 
