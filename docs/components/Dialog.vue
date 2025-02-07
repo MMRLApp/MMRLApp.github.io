@@ -46,6 +46,7 @@ defineProps(["title", "open", "onClose", "onOpen", "contentStyle"]);
 }
 
 .modal-content {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 16px, black calc(100% - 16px), transparent 100%);
   overflow: scroll;
   height: inherit;
   -ms-overflow-style: none;
@@ -57,6 +58,7 @@ defineProps(["title", "open", "onClose", "onOpen", "contentStyle"]);
 }
 
 .modal-container {
+  position: relative;
   width: 88%;
   height: 88%;
   max-width: 1152px;

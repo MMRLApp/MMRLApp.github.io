@@ -8,11 +8,34 @@ next: false
 import { ref, onMounted, computed } from 'vue'
 import { useData } from 'vitepress'
 import { VPLink, VPButton } from 'vitepress/theme'
+import Dialog from '../../../components/Dialog.vue'
+import markdownit from 'markdown-it'
+const md = markdownit()
 
 const { params } = useData()
 
 const module = ref(params.value.module)
-const showModal = ref(false)
+
+const readmeContent = ref("No README found.")
+const showReadmeModal = ref(false)
+const openModal = () => {
+  document.body.style.overflow = "hidden";
+  showReadmeModal.value = true;
+};
+
+const closeModal = () => {
+  document.body.style.overflow = "unset";
+  showReadmeModal.value = false;
+};
+
+onMounted(()=> {
+    if (!module.value.readme) return
+    fetch(module.value.readme)
+        .then((res)=> res.text())
+        .then((text)=> {
+            readmeContent.value = text
+        })
+})
 
 const versions = computed(() => {
   return [...module.value.versions].reverse();
@@ -36,8 +59,7 @@ const latestVersion = computed(() => {
 
 <div v-if="module.note">
 
-> [!NOTE]
-> {{ module.note.message }}
+> [!NOTE] > {{ module.note.message }}
 
 </div>
 
@@ -48,6 +70,7 @@ const latestVersion = computed(() => {
 <div :class="$style.moduleActions">
     <VPButton text="Download latest version" size="medium" target="_blank" theme="brand" :href="latestVersion.zipUrl" />
     <VPButton v-if="module.support" :href="module.support" target="_blank" text="Support" size="medium" theme="alt" />
+    <VPButton v-if="module.readme" @click="openModal()" text="README" size="medium" theme="alt" />
 </div>
 
 <div v-if="module.screenshots && module.screenshots.length">
@@ -58,7 +81,6 @@ const latestVersion = computed(() => {
         </div>
     </div>
 </div>
-
 
 <div v-if="module.track.antifeatures && module.track.antifeatures.length">
     <h2>Anti-Features</h2>
@@ -87,7 +109,9 @@ const latestVersion = computed(() => {
     </article>
 </div>
 
-
+<Dialog :open="showReadmeModal" :onClose="closeModal" :onOpen="openModal" :contentStyle="{ padding: '16px 26px' }" title="README">
+    <div class="vp-doc" v-html="md.render(readmeContent)" />
+</Dialog>
 
 <style scoped>
 a {
