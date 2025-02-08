@@ -1,9 +1,8 @@
 import { createRequire } from "module";
 import { defineConfig } from "vitepress";
 import request from "sync-request";
-import { repositories } from "../../data/repositories";
+import { repositories, Repository } from "../../data/repositories";
 import { changelog } from "../../data/changelog";
-import { generateRepoId } from "../../helper/generateRepoId";
 
 const require = createRequire(import.meta.url);
 const pkg = require("vitepress/package.json");
@@ -146,19 +145,20 @@ function sidebarLegal() {
 
 function repos() {
   return repositories.map((repo) => {
+    const r = new Repository(repo.url);
+
     const response = request("GET", `${repo.url}json/modules.json`);
     const rep = JSON.parse(response.getBody("utf8"));
-    const repoId = generateRepoId(repo.url);
     const modules = rep.modules.map((module) => {
       return {
         text: module.name,
-        link: `/repository/${repoId}/${module.id}`,
+        link: `/repository/${r.id}/${module.id}`,
       };
     });
 
     return {
       text: repo.name,
-      link: `/repository/${repoId}`,
+      link: `/repository/${r.id}`,
       collapsed: true,
       items: modules,
     };

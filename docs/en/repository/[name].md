@@ -5,27 +5,29 @@ next: false
 ---
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useData } from 'vitepress'
-import repositories from '../../../meta/repositories.yaml'
+import { repositories, Repository } from '../../data/repositories'
 
 import ModuleItem from '../../components/repository/ModuleItem.vue'
 import RepoHeader from '../../components/repository/RepoHeader.vue'
 
 const { params } = useData()
-
-const name = params.value.name
-const url = params.value.url
-const repository = repositories.find((repo) => repo.url === url)
+const repository = computed(()=> new Repository(params.value.url))
 
 const data = ref(null);
 
 onMounted(async () => {
   const response = await fetch(
-    `${repository.url}json/modules.json`
+    repository.value.modules
   );
   data.value = await response.json();
 });
+
+const repoHeader = computed(()=> {
+  const { modules, ...rest } = data.value;
+  return { url: repository.value.url, ...rest };
+})
 
 const openUrl = (url) => {
   window.open(url);
@@ -33,14 +35,13 @@ const openUrl = (url) => {
 </script>
 
 <div v-if="data">
-    <RepoHeader :repo="data" :internalRepo="repository" />
+    <RepoHeader :repo="repoHeader" />
     <div :class="$style.items" v-for="module in data.modules">
         <div :class="$style.item">
-            <ModuleItem :module="module" :params="$params" />
+            <ModuleItem :module="module" />
         </div>
     </div>
 </div>
-
 
 <style scoped>
 a {

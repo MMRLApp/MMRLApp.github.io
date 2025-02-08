@@ -1,5 +1,14 @@
 <script setup>
-import repositories from '../../../meta/repositories.yaml'
+import { repositories, Repository } from "../../data/repositories";
+
+const repos = repositories.map((repo)=> {
+    const r = new Repository(repo.url)
+
+    return {
+        name: r.name,
+        href: r.id
+    }
+})
 </script>
 
 # Repositories
@@ -8,8 +17,8 @@ import repositories from '../../../meta/repositories.yaml'
 The website will be every 6 (six) hours re-deployed so that every repository will be updated at [mmrl.dev](https://mmrl.dev)!
 :::
 
-<ul v-for="repository in repositories">
+<ul v-for="repository in repos">
     <li>
-        <a :href="repository.id">{{ repository.name }}</a>
+        <a :href="repository.href">{{ repository.name }}</a>
     </li>
 </ul>

@@ -1,33 +1,36 @@
 <script setup>
+import { computed } from "vue";
 import { toFormattedFileSize } from "../../helper/toFormattedFileSize";
+import { Repository } from "../../data/repositories";
 import { useData } from "vitepress";
 
 import { VPLink } from "vitepress/theme";
 
-const props = defineProps(["module", "params"]);
+const { lang, params } = useData();
 
-const { lang } = useData();
+const props = defineProps(["module"]);
+const repo = computed(() => new Repository(params.value.url));
 
-const timestamp = props.module.timestamp;
-const params = props.params;
-const module = props.module;
+
+const timestamp = computed(() => props.module.timestamp);
+const module = computed(() => props.module);
 
 const getLastUpdated = () => {
-  if (!timestamp) {
+  if (!timestamp.value) {
     return "Invalid date";
   }
 
   return Intl.DateTimeFormat(lang, {
     year: "numeric",
     day: "2-digit",
-    month: "short",
+    month: "long",
     hour12: true,
-  }).format(new Date(timestamp * 1000));
+  }).format(new Date(timestamp.value * 1000));
 };
 </script>
 
 <template>
-  <VPLink decoration="none" :href="'repository/' + params.name + '/' + module.id">
+  <VPLink decoration="none" :href="'repository/' + repo.id + '/' + module.id">
     <div :class="$style.feature">
       <article>
         <img v-if="module.cover" :class="$style.moduleCover" :src="module.cover" />
