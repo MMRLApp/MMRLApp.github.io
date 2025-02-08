@@ -6,7 +6,7 @@ GRAPHQL_URL = "https://api.github.com/graphql"
 
 GRAPHQL_QUERY = """
 query {
-  user(login: "DerGoogler") {
+  user(login: "MMRLApp") {
      sponsorshipsAsMaintainer(activeOnly: false, first: 100) {
       nodes {
         sponsorEntity {
