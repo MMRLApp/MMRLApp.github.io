@@ -6,7 +6,7 @@ GRAPHQL_URL = "https://api.github.com/graphql"
 
 GRAPHQL_QUERY = """
 query {
-  user(login: "DerGoogler") {
+  organization(login: "MMRLApp") {
      sponsorshipsAsMaintainer(activeOnly: false, first: 100) {
       nodes {
         sponsorEntity {
@@ -51,7 +51,7 @@ def save_sponsors_to_file(sponsors_data, filename="docs/public/api/sponsors.json
             "url": node["sponsorEntity"]["url"],
             "amount": node["tier"]["monthlyPriceInCents"]
         }
-        for node in sponsors_data["data"]["user"]["sponsorshipsAsMaintainer"]["nodes"]
+        for node in sponsors_data["data"]["organization"]["sponsorshipsAsMaintainer"]["nodes"]
     ]
     
     os.makedirs(os.path.dirname(filename), exist_ok=True)
