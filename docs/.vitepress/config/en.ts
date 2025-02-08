@@ -76,6 +76,11 @@ function nav() {
       ],
     },
     {
+      text: "Thank You",
+      link: "/thankyou",
+      activeMatch: "/thankyou/",
+    },
+    {
       text: "Legal",
       link: "/legal/privacy",
       activeMatch: "/legal/",
