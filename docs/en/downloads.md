@@ -8,7 +8,6 @@ next: false
 
 <script setup>
 import { data } from '../data/downloads.data.ts'
-const data = releases
 
 import { toFormattedFileSize } from "../helper/toFormattedFileSize";
 import { VPLink } from "vitepress/theme";
