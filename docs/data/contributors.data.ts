@@ -1,6 +1,6 @@
 declare let list: any;
 
-async function getContributors(repoName, page = 1) {
+export async function getContributors(repoName: string, page: number = 1) {
     let request = await fetch(`https://api.github.com/repos/${repoName}/contributors?per_page=100&page=${page}`, {
         method: 'GET',
         headers: {
@@ -12,7 +12,7 @@ async function getContributors(repoName, page = 1) {
     return contributorsList;
 };
 
-async function getAlllContributors(repoName) {
+export async function getAlllContributors(repoName: string) {
     let contributors = [];
     let page = 1;
 
@@ -24,7 +24,7 @@ async function getAlllContributors(repoName) {
     return contributors;
 }
 
-async function getAllContributorsRecursive(repoName, page = 1, allContributors = []) {
+export async function getAllContributorsRecursive(repoName: string, page: number = 1, allContributors: any[] = []) {
     const list = await getContributors(repoName, page);
     allContributors = allContributors.concat(list);
 

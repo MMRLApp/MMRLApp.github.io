@@ -3,12 +3,13 @@ import ViteYaml from "@modyfi/vite-plugin-yaml";
 import { pagefindPlugin } from "vitepress-plugin-pagefind";
 // Imports
 import { defineConfig, SiteConfig } from "vitepress";
-import { writeFile, copyFile } from "fs/promises";
+import { writeFile, unlink } from "fs/promises";
 import { resolve } from "path";
 import { blacklistJSONstringify } from "../../data/blacklist";
 import { changelogJSONstringify } from "../../data/changelog";
 import repositories from "../../../meta/repositories.json";
-import { time } from "console";
+import sponsors from "../../../meta/sponsors.json";
+import { getAllContributorsRecursive } from "../../data/contributors.data";
 
 export const shared = defineConfig({
   vite: {
@@ -51,7 +52,10 @@ export const shared = defineConfig({
   },
   buildEnd: async (config: SiteConfig) => {
     const publicApi = resolve(config.outDir, "api");
+    const placeholder = resolve(publicApi, "placeholder");
     const publicRepoList = resolve(publicApi, "repositories.json");
+    const publicSponList = resolve(publicApi, "sponsors.json");
+    const publicConList = resolve(publicApi, "contributors.json");
     const publicBlackList = resolve(publicApi, "blacklist.json");
     const publicChangelogList = resolve(publicApi, "changelog.json");
 
@@ -70,8 +74,29 @@ export const shared = defineConfig({
       };
     });
 
+    const newContributors = async () => {
+      const contributors = await getAllContributorsRecursive("MMRLApp/MMRL");
+
+      const excludedContributors = ["DerGoogler", "dependabot[bot]"]
+
+      const contributorsExluded = contributors
+        .filter((con) => !excludedContributors.includes(con.login))
+
+      return contributorsExluded.map((contributor) => {
+        return {
+          avatarUrl: contributor.avatar_url,
+          login: contributor.login,
+          url: contributor.html_url,
+          contributions: contributor.contributions,
+        };
+      });
+    };
+
     await writeFile(publicRepoList, JSON.stringify(await Promise.all(newRepositories), null, 4));
+    await writeFile(publicSponList, JSON.stringify(await Promise.all(sponsors), null, 4));
+    await writeFile(publicConList, JSON.stringify(await newContributors(), null, 4));
     await writeFile(publicBlackList, blacklistJSONstringify);
     await writeFile(publicChangelogList, changelogJSONstringify);
+    await unlink(placeholder);
   },
 });

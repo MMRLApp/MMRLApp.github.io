@@ -7,7 +7,7 @@ layout: page
 import { VPTeamPage, VPTeamPageTitle, VPTeamMembers, VPTeamPageSection } from "vitepress/theme";
 
 import { data } from "../data/contributors.data.ts";
-import sponsors from "../public/api/sponsors.json";
+import sponsors from "../../meta/sponsors.json";
 
 function toDollars(amount, divideBy = 100.0) {
   return `$${(amount / divideBy).toFixed(2)}`;
