@@ -66,6 +66,7 @@ export const shared = defineConfig({
         cover: response.cover,
         timestamp: response.metadata.timestamp,
         description: response.description,
+        donate: response.donate,
       };
     });
 
