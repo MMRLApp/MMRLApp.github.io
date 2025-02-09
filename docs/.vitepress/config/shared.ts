@@ -7,7 +7,8 @@ import { writeFile, copyFile } from "fs/promises";
 import { resolve } from "path";
 import { blacklistJSONstringify } from "../../data/blacklist";
 import { changelogJSONstringify } from "../../data/changelog";
-
+import repositories from "../../../meta/repositories.json";
+import { time } from "console";
 
 export const shared = defineConfig({
   vite: {
@@ -54,7 +55,21 @@ export const shared = defineConfig({
     const publicBlackList = resolve(publicApi, "blacklist.json");
     const publicChangelogList = resolve(publicApi, "changelog.json");
 
-    await copyFile(resolve(__dirname, "../../../meta/repositories.json"), publicRepoList);
+    const newRepositories = repositories.map(async (repo) => {
+      const response = await (await fetch(`${repo.url}json/modules.json`)).json();
+      const modulesCount = response.modules.length;
+
+      return {
+        ...repo,
+        modules_count: modulesCount,
+        submission: response.submission,
+        cover: response.cover,
+        timestamp: response.metadata.timestamp,
+        description: response.description,
+      };
+    });
+
+    await writeFile(publicRepoList, JSON.stringify(await Promise.all(newRepositories), null, 4));
     await writeFile(publicBlackList, blacklistJSONstringify);
     await writeFile(publicChangelogList, changelogJSONstringify);
   },
