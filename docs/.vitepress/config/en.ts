@@ -96,6 +96,7 @@ function sidebarGuide() {
         { text: "What is MMRL", link: "/guide/" },
         { text: "Anti-Features", link: "/guide/antifeatures" },
         { text: "Installer API", link: "/guide/installer" },
+        { text: "How a Module Card Works", link: "/guide/how-a-module-card-works" },
         {
           text: "WebUI",
           collapsed: true,
