@@ -79,7 +79,7 @@ export const shared = defineConfig({
 
       const excludedContributors = [/DerGoogler/i, /dependabot(-preview)?\[bot\]/i, /(weblate(\[bot\])?|WeblateAdmin)/i];
 
-      const contributorsExluded = contributors.filter((con) => !excludedContributors.some((exc) => con.match(exc)));
+      const contributorsExluded = contributors.filter((con) => !excludedContributors.some((exc) => con.login.match(exc)));
 
       return contributorsExluded.map((contributor) => {
         return {
