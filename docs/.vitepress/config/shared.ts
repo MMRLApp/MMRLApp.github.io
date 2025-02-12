@@ -77,7 +77,7 @@ export const shared = defineConfig({
     const newContributors = async () => {
       const contributors = await getAllContributorsRecursive("MMRLApp/MMRL");
 
-      const excludedContributors = ["DerGoogler", "dependabot[bot]"]
+      const excludedContributors = ["DerGoogler", "dependabot[bot]", "weblate", "dependabot-preview[bot]"];
 
       const contributorsExluded = contributors
         .filter((con) => !excludedContributors.includes(con.login))
