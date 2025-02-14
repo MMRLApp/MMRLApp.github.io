@@ -30,7 +30,7 @@ const closeModal = () => {
     <div v-if="props.repo.submission || props.repo.support || props.repo.donate || props.repo.memebers" :class="$style.repoActions">
       <VPButton tag="a" v-if="props.repo.submission" text="Submit Module" size="medium" theme="brand" :href="props.repo.submission" />
       <VPButton tag="a" v-if="props.repo.support" text="Support" size="medium" theme="alt" :href="props.repo.support" />
-      <VPButton v-if="internalRepo.members.length !== 0" text="Team" size="medium" theme="alt" @click="openModal" />
+      <VPButton v-if="internalRepo.members && internalRepo.members.length !== 0" text="Team" size="medium" theme="alt" @click="openModal" />
       <VPButton tag="a" v-if="props.repo.donate" text="Donate" size="medium" theme="sponsor" :href="props.repo.donate" />
     </div>
     <details class="details custom-block">
@@ -50,7 +50,7 @@ const closeModal = () => {
       </div>
     </details>
   </div>
-  <Dialog :open="showModal" :onClose="closeModal" :onOpen="openModal" :contentStyle="{ padding: '16px 26px' }" title="Repository Members">
+  <Dialog v-if="internalRepo.members" :open="showModal" :onClose="closeModal" :onOpen="openModal" :contentStyle="{ padding: '16px 26px' }" title="Repository Members">
     <VPTeamMembers size="small" :members="internalRepo.members" />
   </Dialog>
 </template>
