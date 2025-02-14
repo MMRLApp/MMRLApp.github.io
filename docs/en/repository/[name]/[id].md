@@ -59,7 +59,10 @@ const latestVersion = computed(() => {
 
 <div v-if="module.note">
 
-> [!NOTE] > {{ module.note.message }}
+<div class="note custom-block github-alert">
+    <p class="custom-block-title">{{ module.note.title || "NOTE" }}</p>
+    <p>{{ module.note.message }}</p>
+</div>
 
 </div>
 
@@ -129,6 +132,7 @@ a {
 .moduleActions {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .screenshotsContainer {
