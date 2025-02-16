@@ -26,9 +26,17 @@ fun sanitizeModIdWithFile(input: String): String {
 
 For example, the module ID `"mmrl_wpd"` would be sanitized to `"$MmFile"`. Play with this code sample [online](https://pl.kotl.in/uHiACLNTQ)
 
+### Setup 
+
+```js
+import { FileSystem } from "mmrl"
+
+const fs = new FileSystem("mmrl_wpd")
+```
+
 ## Methods
 
-### `fileSystem.read(path: string)`
+### `fs.read(path: string)`
 
 Reads the contents of a file located at the specified `path`.
 
@@ -43,13 +51,13 @@ Reads the contents of a file located at the specified `path`.
 #### Example:
 
 ```javascript
-const content = fileSystem.read("/path/to/file.txt");
+const content = fs.read("/path/to/file.txt");
 console.log(content); // Output the file content
 ```
 
 ---
 
-### `fileSystem.read(path: string, bytes: boolean)`
+### `fs.read(path: string, bytes: boolean)`
 
 Reads the contents of a file at the specified `path`. If `bytes` is `true`, the content is returned as a Base64-encoded string.
 
@@ -65,13 +73,13 @@ Reads the contents of a file at the specified `path`. If `bytes` is `true`, the 
 #### Example:
 
 ```javascript
-const base64Content = fileSystem.read("/path/to/image.png", true);
+const base64Content = fs.read("/path/to/image.png", true);
 console.log(base64Content); // Base64-encoded string
 ```
 
 ---
 
-### `fileSystem.write(path: string, data: string)`
+### `fs.write(path: string, data: string)`
 
 Writes the specified `data` to a file at the given `path`. If the file already exists, it will be overwritten.
 
@@ -87,12 +95,12 @@ Writes the specified `data` to a file at the given `path`. If the file already e
 #### Example:
 
 ```javascript
-fileSystem.write("/path/to/output.txt", "Hello, world!");
+fs.write("/path/to/output.txt", "Hello, world!");
 ```
 
 ---
 
-### `fileSystem.readAsBase64(path: string)`
+### `fs.readAsBase64(path: string)`
 
 Reads the content of a file at the specified `path` and returns it as a Base64-encoded string.
 
@@ -107,13 +115,13 @@ Reads the content of a file at the specified `path` and returns it as a Base64-e
 #### Example:
 
 ```javascript
-const base64Content = fileSystem.readAsBase64("/path/to/file.pdf");
+const base64Content = fs.readAsBase64("/path/to/file.pdf");
 console.log(base64Content); // Base64-encoded string
 ```
 
 ---
 
-### `fileSystem.list(path: string)`
+### `fs.list(path: string)`
 
 Lists the files and directories in the specified `path`.
 
@@ -123,18 +131,18 @@ Lists the files and directories in the specified `path`.
 
 #### Returns:
 
-- `string[] | null`: An array of file and directory names, or `null` if not available.
+- `string | null`: An array of file and directory names, or `null` if not available.
 
 #### Example:
 
 ```javascript
-const fileList = fileSystem.list("/path/to/directory");
-console.log(fileList); // ["file1.txt", "file2.txt", "folder1"]
+const fileList = fs.list("/path/to/directory");
+console.log(fileList.split(",")); // ["file1.txt", "file2.txt", "folder1"]
 ```
 
 ---
 
-### `fileSystem.list(path: string, delimiter: string)`
+### `fs.list(path: string, delimiter: string)`
 
 Lists the files and directories in the specified `path`, and allows customization of the delimiter separating the file names.
 
@@ -145,18 +153,18 @@ Lists the files and directories in the specified `path`, and allows customizatio
 
 #### Returns:
 
-- `string[] | null`: A list of file and directory names, separated by the specified delimiter.
+- `string | null`: A list of file and directory names, separated by the specified delimiter.
 
 #### Example:
 
 ```javascript
-const fileList = fileSystem.list("/path/to/directory", "|");
-console.log(fileList); // ["file1.txt|file2.txt|folder1"]
+const fileList = fs.list("/path/to/directory", "|");
+console.log(fileList.split("|")); // ["file1.txt|file2.txt|folder1"]
 ```
 
 ---
 
-### `fileSystem.size(path: string)`
+### `fs.size(path: string)`
 
 Gets the size of the file or directory at the specified `path`.
 
@@ -171,13 +179,13 @@ Gets the size of the file or directory at the specified `path`.
 #### Example:
 
 ```javascript
-const size = fileSystem.size("/path/to/file.txt");
+const size = fs.size("/path/to/file.txt");
 console.log(size); // 1024 (size in bytes)
 ```
 
 ---
 
-### `fileSystem.size(path: string, recursive: boolean)`
+### `fs.size(path: string, recursive: boolean)`
 
 Gets the size of the file or directory at the specified `path`. If `recursive` is `true`, the size includes all files within subdirectories.
 
@@ -193,13 +201,13 @@ Gets the size of the file or directory at the specified `path`. If `recursive` i
 #### Example:
 
 ```javascript
-const totalSize = fileSystem.size("/path/to/directory", true);
+const totalSize = fs.size("/path/to/directory", true);
 console.log(totalSize); // Total size of all files in the directory
 ```
 
 ---
 
-### `fileSystem.stat(path: string)`
+### `fs.stat(path: string)`
 
 Gets the status of the file or directory at the specified `path`. This could include properties like the last modified time or size.
 
@@ -214,13 +222,13 @@ Gets the status of the file or directory at the specified `path`. This could inc
 #### Example:
 
 ```javascript
-const status = fileSystem.stat("/path/to/file.txt");
+const status = fs.stat("/path/to/file.txt");
 console.log(status); // Numeric status value (e.g., last modified timestamp)
 ```
 
 ---
 
-### `fileSystem.stat(path: string, total: boolean)`
+### `fs.stat(path: string, total: boolean)`
 
 Gets the status of the file or directory at the specified `path`, with an option to include the total status for directories (e.g., combined size of all files).
 
@@ -236,13 +244,13 @@ Gets the status of the file or directory at the specified `path`, with an option
 #### Example:
 
 ```javascript
-const totalStatus = fileSystem.stat("/path/to/directory", true);
+const totalStatus = fs.stat("/path/to/directory", true);
 console.log(totalStatus); // Total status value (e.g., combined size of all files)
 ```
 
 ---
 
-### `fileSystem.delete(path: string)`
+### `fs.delete(path: string)`
 
 Deletes the file or directory at the specified `path`.
 
@@ -257,13 +265,13 @@ Deletes the file or directory at the specified `path`.
 #### Example:
 
 ```javascript
-const success = fileSystem.delete("/path/to/file.txt");
+const success = fs.delete("/path/to/file.txt");
 console.log(success); // true if deleted, false otherwise
 ```
 
 ---
 
-### `fileSystem.exists(path: string)`
+### `fs.exists(path: string)`
 
 Checks if a file or directory exists at the specified `path`.
 
@@ -278,7 +286,7 @@ Checks if a file or directory exists at the specified `path`.
 #### Example:
 
 ```javascript
-const exists = fileSystem.exists("/path/to/file.txt");
+const exists = fs.exists("/path/to/file.txt");
 console.log(exists); // true if the file exists, false otherwise
 ```
 
@@ -301,6 +309,8 @@ Creates an instance of the `FileSystem` class with the provided `scope`.
 #### Example:
 
 ```javascript
-const fileSystem = FileSystemFactory("net-switch");
-console.log(fileSystem.read("/path/to/file.txt"));
+import { FileSystemFactory } from "mmrl"
+
+const fs = FileSystemFactory("net-switch");
+console.log(fs.read("/path/to/file.txt"));
 ```

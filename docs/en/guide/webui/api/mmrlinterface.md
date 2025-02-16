@@ -18,21 +18,30 @@ The regex used to sanitize the module ID is as follows:
 
 This means that characters like spaces or special symbols will be replaced with an underscore (`_`).
 
+### Setup 
+
+```js
+import { MMRLInterface } from "mmrl"
+
+const module = new MMRLInterface("mmrl_wpd")
+```
+
+
 ## Methods
 
-### `MMRLInterface.injectStyleSheets()`
+### `module.injectStyleSheets()`
 
 Injects the required stylesheets into the document head to ensure proper styling for MMRL elements.
 
 #### Example:
 
 ```javascript
-mmrl.injectStyleSheets();
+module.injectStyleSheets();
 ```
 
 ---
 
-### `MMRLInterface.manager`
+### `module.manager`
 
 Gets the manager information, which includes the name, version name, and version code.
 
@@ -43,12 +52,12 @@ Gets the manager information, which includes the name, version name, and version
 #### Example:
 
 ```javascript
-console.log(mmrl.manager);
+console.log(module.manager);
 ```
 
 ---
 
-### `MMRLInterface.mmrl`
+### `module.mmrl`
 
 Gets the MMRL information, including various settings related to the runtime environment.
 
@@ -59,12 +68,12 @@ Gets the MMRL information, including various settings related to the runtime env
 #### Example:
 
 ```javascript
-console.log(mmrl.mmrl);
+console.log(module.mmrl);
 ```
 
 ---
 
-### `MMRLInterface.hasAccessToFileSystem`
+### `module.hasAccessToFileSystem`
 
 Checks if the interface has access to the file system.
 
@@ -75,12 +84,12 @@ Checks if the interface has access to the file system.
 #### Example:
 
 ```javascript
-console.log(mmrl.hasAccessToFileSystem);
+console.log(module.hasAccessToFileSystem);
 ```
 
 ---
 
-### `MMRLInterface.hasAccessToAdvancedKernelSuAPI`
+### `module.hasAccessToAdvancedKernelSuAPI`
 
 Checks if the interface has access to the advanced kernel SU API.
 
@@ -91,12 +100,12 @@ Checks if the interface has access to the advanced kernel SU API.
 #### Example:
 
 ```javascript
-console.log(mmrl.hasAccessToAdvancedKernelSuAPI);
+console.log(module.hasAccessToAdvancedKernelSuAPI);
 ```
 
 ---
 
-### `MMRLInterface.windowTopInset`
+### `module.windowTopInset`
 
 Gets the top inset value for the window.
 
@@ -107,12 +116,12 @@ Gets the top inset value for the window.
 #### Example:
 
 ```javascript
-console.log(mmrl.windowTopInset);
+console.log(module.windowTopInset);
 ```
 
 ---
 
-### `MMRLInterface.windowBottomInset`
+### `module.windowBottomInset`
 
 Gets the bottom inset value for the window.
 
@@ -123,12 +132,12 @@ Gets the bottom inset value for the window.
 #### Example:
 
 ```javascript
-console.log(mmrl.windowBottomInset);
+console.log(module.windowBottomInset);
 ```
 
 ---
 
-### `MMRLInterface.lightNavigationBars`
+### `module.lightNavigationBars`
 
 Checks if the navigation bars are in a light theme.
 
@@ -139,12 +148,12 @@ Checks if the navigation bars are in a light theme.
 #### Example:
 
 ```javascript
-console.log(mmrl.lightNavigationBars);
+console.log(module.lightNavigationBars);
 ```
 
 ---
 
-### `MMRLInterface.darkMode`
+### `module.darkMode`
 
 Checks if the dark mode is enabled.
 
@@ -155,12 +164,12 @@ Checks if the dark mode is enabled.
 #### Example:
 
 ```javascript
-console.log(mmrl.darkMode);
+console.log(module.darkMode);
 ```
 
 ---
 
-### `MMRLInterface.lightNavigationBars` (Setter)
+### `module.lightNavigationBars` (Setter)
 
 Sets the navigation bars to light or dark.
 
@@ -171,12 +180,12 @@ Sets the navigation bars to light or dark.
 #### Example:
 
 ```javascript
-mmrl.lightNavigationBars = true;
+module.lightNavigationBars = true;
 ```
 
 ---
 
-### `MMRLInterface.lightStatusBars`
+### `module.lightStatusBars`
 
 Checks if the status bars are in a light theme.
 
@@ -187,12 +196,12 @@ Checks if the status bars are in a light theme.
 #### Example:
 
 ```javascript
-console.log(mmrl.lightStatusBars);
+console.log(module.lightStatusBars);
 ```
 
 ---
 
-### `MMRLInterface.lightStatusBars` (Setter)
+### `module.lightStatusBars` (Setter)
 
 Sets the status bars to light or dark.
 
@@ -203,12 +212,12 @@ Sets the status bars to light or dark.
 #### Example:
 
 ```javascript
-mmrl.lightStatusBars = true;
+module.lightStatusBars = true;
 ```
 
 ---
 
-### `MMRLInterface.sdk`
+### `module.sdk`
 
 Gets the SDK version.
 
@@ -219,12 +228,12 @@ Gets the SDK version.
 #### Example:
 
 ```javascript
-console.log(mmrl.sdk);
+console.log(module.sdk);
 ```
 
 ---
 
-### `MMRLInterface.shareText(text: string, type?: MimeType)`
+### `module.shareText(text: string, type?: MimeType)`
 
 Shares the specified `text` with an optional MIME type.
 
@@ -236,32 +245,32 @@ Shares the specified `text` with an optional MIME type.
 #### Example:
 
 ```javascript
-mmrl.shareText("Hello, world!");
-mmrl.shareText("Hello, world!", "text/plain");
+module.shareText("Hello, world!");
+module.shareText("Hello, world!", "text/plain");
 ```
 
 ---
 
-### `MMRLInterface.requestAdvancedKernelSUAPI()`
+### `module.requestAdvancedKernelSUAPI()`
 
 Requests access to the advanced kernel SU API. This requires MMRL version `33045` or higher.
 
 #### Example:
 
 ```javascript
-mmrl.requestAdvancedKernelSUAPI();
+module.requestAdvancedKernelSUAPI();
 ```
 
 ---
 
-### `MMRLInterface.requestFileSystemAPI()`
+### `module.requestFileSystemAPI()`
 
 Requests access to the file system API, which is required for file operations. This requires MMRL version `33045` or higher.
 
 #### Example:
 
 ```javascript
-mmrl.requestFileSystemAPI();
+module.requestFileSystemAPI();
 ```
 
 ## Factory Function
@@ -282,6 +291,6 @@ Creates an instance of the `MMRLInterface` class.
 #### Example:
 
 ```javascript
-const mmrl = MMRLInterfaceFactory("net-switch");
-mmrl.injectStyleSheets();
+const module = MMRLInterfaceFactory("net-switch");
+module.injectStyleSheets();
 ```
