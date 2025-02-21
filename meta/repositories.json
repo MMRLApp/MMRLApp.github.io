@@ -145,11 +145,37 @@
   {
     "name": "LelouBil Magisk Repo",
     "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://www.github.com/leloubil.png",
+        "name": "leloubil",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/leloubil"
+          }
+        ]
+      }
+    ],
     "url": "https://leloubil.github.io/magisk-repo/"
   },
   {
     "name": "Misaki-Modules Repo",
     "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://www.github.com/misak10.png",
+        "name": "misak10",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/misak10"
+          }
+        ]
+      }
+    ],
     "url": "https://misak10.github.io/mmrl-repo/"
   },
   {
