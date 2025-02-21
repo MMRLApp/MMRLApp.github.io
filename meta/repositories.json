@@ -151,5 +151,23 @@
     "name": "Misaki-Modules Repo",
     "maintainers": [],
     "url": "https://misak10.github.io/mmrl-repo/"
+  },
+  {
+    "name": "ZG089’s modules repo",
+    "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://www.github.com/ZG089.png",
+        "name": "ZG089",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/ZG089"
+          }
+        ]
+      }
+    ],
+    "url": "https://zguation-projects.github.io/ZG-R/"
   }
 ]
