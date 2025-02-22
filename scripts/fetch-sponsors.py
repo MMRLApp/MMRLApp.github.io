@@ -57,6 +57,26 @@ def merge_sponsors(sponsors_list):
     
     return list({"login": k, **v} for k, v in sponsors_dict.items())
 
+def extract_sponsors(data):
+    org_data = data.get("data", {}).get("organization", {})
+    if not org_data:
+        return []
+    
+    sponsorships = org_data.get("sponsorshipsAsMaintainer", {})
+    if not sponsorships:
+        return []
+    
+    nodes = sponsorships.get("nodes", [])
+    return [
+        {
+            "login": node["sponsorEntity"]["login"],
+            "avatarUrl": node["sponsorEntity"]["avatarUrl"],
+            "url": node["sponsorEntity"]["url"],
+            "amount": node["tier"]["monthlyPriceInCents"]
+        }
+        for node in nodes if "sponsorEntity" in node and "tier" in node
+    ]
+
 def main():
     github_token = os.getenv("SPONSORS_TOKEN")
     if not github_token:
@@ -67,15 +87,7 @@ def main():
     
     for org in orgs:
         sponsors_data = fetch_sponsors(github_token, org)
-        sponsors = [
-            {
-                "login": node["sponsorEntity"]["login"],
-                "avatarUrl": node["sponsorEntity"]["avatarUrl"],
-                "url": node["sponsorEntity"]["url"],
-                "amount": node["tier"]["monthlyPriceInCents"]
-            }
-            for node in sponsors_data.get("data", {}).get("organization", {}).get("sponsorshipsAsMaintainer", {}).get("nodes", [])
-        ]
+        sponsors = extract_sponsors(sponsors_data)
         all_sponsors.extend(sponsors)
     
     merged_sponsors = merge_sponsors(all_sponsors)
