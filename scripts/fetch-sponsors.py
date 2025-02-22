@@ -52,6 +52,12 @@ query($login: String!) {
 }
 """
 
+def save_sponsors_to_file(sponsors_data, filename="meta/sponsors.json"):
+    print(sponsors_data)
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    with open(filename, "w") as f:
+        json.dump(sponsors, f, indent=2)
+
 def fetch_sponsors(github_token, login):
     headers = {
         "Authorization": f"Bearer {github_token}",
@@ -115,7 +121,7 @@ def main():
         all_sponsors.extend(sponsors)
     
     merged_sponsors = merge_sponsors(all_sponsors)
-    print(json.dumps(merged_sponsors, indent=2))
+    save_sponsors_to_file(merged_sponsors)
 
 if __name__ == "__main__":
     main()
