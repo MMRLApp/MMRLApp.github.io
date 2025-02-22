@@ -56,7 +56,7 @@ def save_sponsors_to_file(sponsors_data, filename="meta/sponsors.json"):
     print(sponsors_data)
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, "w") as f:
-        json.dump(sponsors, f, indent=2)
+        json.dump(sponsors_data, f, indent=2)
 
 def fetch_sponsors(github_token, login):
     headers = {
