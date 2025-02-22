@@ -6,9 +6,30 @@ from collections import defaultdict
 GRAPHQL_URL = "https://api.github.com/graphql"
 
 GRAPHQL_QUERY = """
-query($org: String!) {
-  organization(login: $org) {
-     sponsorshipsAsMaintainer(activeOnly: false, first: 100) {
+query($login: String!) {
+  user(login: $login) {
+    sponsorshipsAsMaintainer(activeOnly: false, first: 100) {
+      nodes {
+        sponsorEntity {
+          ... on User {
+            login
+            avatarUrl
+            url
+          }
+          ... on Organization {
+            login
+            avatarUrl
+            url
+          }
+        }
+        tier {
+          monthlyPriceInCents
+        }
+      }
+    }
+  }
+  organization(login: $login) {
+    sponsorshipsAsMaintainer(activeOnly: false, first: 100) {
       nodes {
         sponsorEntity {
           ... on User {
@@ -31,7 +52,7 @@ query($org: String!) {
 }
 """
 
-def fetch_sponsors(github_token, org):
+def fetch_sponsors(github_token, login):
     headers = {
         "Authorization": f"Bearer {github_token}",
         "Content-Type": "application/json"
@@ -39,7 +60,7 @@ def fetch_sponsors(github_token, org):
     
     response = requests.post(
         GRAPHQL_URL,
-        json={"query": GRAPHQL_QUERY, "variables": {"org": org}},
+        json={"query": GRAPHQL_QUERY, "variables": {"login": login}},
         headers=headers
     )
     response.raise_for_status()
@@ -58,35 +79,38 @@ def merge_sponsors(sponsors_list):
     return list({"login": k, **v} for k, v in sponsors_dict.items())
 
 def extract_sponsors(data):
-    org_data = data.get("data", {}).get("organization", {})
-    if not org_data:
-        return []
-    
-    sponsorships = org_data.get("sponsorshipsAsMaintainer", {})
-    if not sponsorships:
-        return []
-    
-    nodes = sponsorships.get("nodes", [])
-    return [
-        {
-            "login": node["sponsorEntity"]["login"],
-            "avatarUrl": node["sponsorEntity"]["avatarUrl"],
-            "url": node["sponsorEntity"]["url"],
-            "amount": node["tier"]["monthlyPriceInCents"]
-        }
-        for node in nodes if "sponsorEntity" in node and "tier" in node
-    ]
+    sponsors = []
+    for key in ["user", "organization"]:
+        entity = data.get("data", {}).get(key, {})
+        if not entity:
+            continue
+        
+        sponsorships = entity.get("sponsorshipsAsMaintainer", {})
+        if not sponsorships:
+            continue
+        
+        nodes = sponsorships.get("nodes", [])
+        sponsors.extend([
+            {
+                "login": node["sponsorEntity"]["login"],
+                "avatarUrl": node["sponsorEntity"]["avatarUrl"],
+                "url": node["sponsorEntity"]["url"],
+                "amount": node["tier"]["monthlyPriceInCents"]
+            }
+            for node in nodes if "sponsorEntity" in node and "tier" in node
+        ])
+    return sponsors
 
 def main():
     github_token = os.getenv("SPONSORS_TOKEN")
     if not github_token:
         raise ValueError("GitHub token is not set in environment variables")
     
-    orgs = ["MMRLApp", "DerGoogler"]
+    logins = ["MMRLApp", "DerGoogler"]
     all_sponsors = []
     
-    for org in orgs:
-        sponsors_data = fetch_sponsors(github_token, org)
+    for login in logins:
+        sponsors_data = fetch_sponsors(github_token, login)
         sponsors = extract_sponsors(sponsors_data)
         all_sponsors.extend(sponsors)
     
