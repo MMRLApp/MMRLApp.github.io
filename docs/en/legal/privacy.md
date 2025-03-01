@@ -1,3 +1,10 @@
+---
+title: Privacy Policy
+description: A full declaration of the privacy for MMRL users on the website and the app
+---
+
+# Privacy Policy
+
 This privacy notice for MMRL ("we," "us," or "our"), describes how and why we might collect, store, use, and/or share ("process") your information when you use our services ("Services"), such as when you:
 
 - Visit our website at https://mmrl.dev or any website of ours that links to this privacy notice
@@ -12,7 +19,8 @@ The app does use third-party services that may collect information used to ident
 
 Link to the privacy policy of third-party service providers used by our app's
 
-- [Google Play Services](https://www.google.com/policies/privacy/) (Google Play releases)
+- [Google Play Services](https://www.google.com/policies/privacy) <sup>(Google Play releases only)</sup>
+- [Google Advertising](https://policies.google.com/technologies/ads) <sup>(Website only)</sup>
 
 ## Log Data
 
@@ -52,7 +60,7 @@ These Services do not address anyone under the age of 13. I do not knowingly col
 I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.
 
 ```
-This policy is effective as of 30.01.2025
+This policy is effective as of 01.03.2025
 ```
 
 ## Contact Us
