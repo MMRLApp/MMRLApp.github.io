@@ -1,3 +1,55 @@
+- versionName: v5.32.43
+  versionCode: 33393
+  preRelease: false
+  changes: |-
+    - **WebUI Changes**:
+
+      - Removed permission for WebUI; all APIs are now enabled by default.
+      - Reworked WebUI path and insets handlers.
+      - Added `--tonalSurface` to `https://mui.kernelsu.org/mmrl/colors.css`.
+      - Added dex loader to WebUI for custom JavaScript interfaces.
+      - Added `historyFallback` to WebUI config files.
+      - Added WebUI recompose back.
+      - Use a WebView to display module README files.
+      - Added Eruda to WebUI, which can be enabled from developer settings.
+
+    - **New Features**:
+
+      - Added pull-to-refresh functionality to the local modules and repositories tabs.
+      - Added MMRL version to the action and installer environment.
+      - Introduced a new JavaScript API (`window.mmrl`) to access MMRL's version.
+      - Added a "Thank You" screen.
+      - Added a new theme.
+      - Added install confirmation.
+      - Added a module update notification service.
+      - Added a repositories auto-updater service.
+      - Added a strict mode.
+      - Added a crash handler.
+      - You can now preview screenshots of modules.
+
+    - **Improvements**:
+
+      - Migrated the domain to `mmrl.dev`.
+      - Moved recommended repositories to the main repositories screen.
+      - Improved landscape orientation.
+      - Moved the theme selector to its own screen.
+      - Prioritized `index.mmrl.html` over `index.html`.
+      - Installer now checks for existing files when downloading modules.
+      - Better handling of `MediaStoreCompat.copyToDir` and `MediaStoreCompat.getPathForUri`.
+
+    - **Restored Features**:
+
+      - Added the old log viewer from MRepo back.
+
+    - **Bug Fixes**:
+
+      - Fixed [#321](https://github.com/MMRLApp/MMRL/issues/321).
+      - Fixed analytics storage usage.
+      - Only show modules when the provider is alive.
+
+    - **Codebase Updates**:
+      - Replaced `Timber` with `Arbor`.
+
 - versionName: v5.31.42
   versionCode: 33033
   preRelease: false
