@@ -1,3 +1,12 @@
+- versionName: v5.32.44
+  versionCode: 33404
+  preRelease: false
+  changes: |-
+    - Fixed IFileManager.sizeRecursive
+    - Improved WebUI Window Insets
+    - Fixed URL were unreachable in WebUI
+    - Fixed a issue where modules sizes included symlinks
+
 - versionName: v5.32.43
   versionCode: 33393
   preRelease: false
