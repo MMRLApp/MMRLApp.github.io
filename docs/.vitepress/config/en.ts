@@ -103,6 +103,7 @@ function sidebarGuide() {
           items: [
             { text: "Getting Started in WebUI", link: "/guide/webui/" },
             { text: "Permissions", link: "/guide/webui/permissions" },
+            { text: "Shortcuts", link: "/guide/webui/shortcuts" },
             { text: "Plugins", link: "/guide/webui/plugins" },
             {
               text: "API",
