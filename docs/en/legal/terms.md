@@ -18,6 +18,17 @@ If you’re using the app outside of an area with Wi-Fi, you should remember tha
 
 Along the same lines, Der_Googler cannot always take responsibility for the way you use the app i.e. You need to make sure that your device stays charged – if it runs out of battery and you can’t turn it on to avail the Service, Der_Googler cannot accept responsibility. With respect to Der_Googler’s responsibility for your use of the app, when you’re using the app, it’s important to bear in mind that although we endeavor to ensure that it is updated and correct at all times, we do rely on third parties to provide information to us so that we can make it available to you. Der_Googler accepts no liability for any loss, direct or indirect, you experience as a result of relying wholly on this functionality of the app. At some point, we may wish to update the app. The app is currently available on Android – the requirements for the system(and for any additional systems we decide to extend the availability of the app to) may change, and you’ll need to download the updates if you want to keep using the app. Der_Googler does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you promise to always accept updates to the application when offered to you, We may also wish to stop providing the app, and may terminate use of it at any time without giving notice of termination to you. Unless we tell you otherwise, upon any termination, (a) the rights and licenses granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.
 
+## Upgrades 
+
+To ensure seamless upgrades and maintain optimal performance, the developers of MMRL reserve the right to clear any data associated with the app. This process may include removing outdated or incompatible data to facilitate software updates and improvements.  
+
+By using MMRL, you acknowledge and agree that:  
+- The developers may perform necessary data resets or modifications as part of the upgrade process.  
+- Any such actions will be conducted in compliance with applicable laws and regulations.  
+- While we strive to minimize disruptions, users are responsible for backing up any important data if necessary.  
+
+If you have concerns about data retention or updates, please review our Privacy Policy or contact support for more information.
+
 ## Usage of the MMRL-Repo Format  
 
 You are permitted to use the MMRL-Repo format for non-profit purposes. This means you may freely integrate it into your apps or services as long as they are not used for commercial gain.  
@@ -55,7 +66,7 @@ You are welcome to share our work wherever you like, provided you adhere to the 
 I may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Terms and Conditions on this page.
 
 ```
-These terms are effective as of 18.03.2025
+These terms are effective as of 02.04.2025
 ```
 
 **Contact Us**
