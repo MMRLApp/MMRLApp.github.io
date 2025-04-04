@@ -91,11 +91,29 @@ export const shared = defineConfig({
       });
     };
 
+    const newReleases = async () => {
+      const releases = await (await fetch("https://api.github.com/repos/MMRLApp/MMRL/releases")).json();
+
+      const bodyMatcher = (body: string) => {
+        const match = body.match(/## What's new\?\n([\s\S]*?)(\n{2,}|$)/);
+        return match ? match[1].trim() : "No Changes found";
+      };
+
+      return releases
+        .filter((release: any) => release.tag_name.match(/^v(\d+)$/))
+        .map((release: any) => ({
+          versionName: release.tag_name,
+          versionCode: parseInt(release.tag_name.replace("v", "")),
+          preRelease: release.prerelease,
+          changes: bodyMatcher(release.body),
+        }));
+    };
+
     await writeFile(publicRepoList, JSON.stringify(await Promise.all(newRepositories), null, 4));
     await writeFile(publicSponList, JSON.stringify(await Promise.all(sponsors), null, 4));
     await writeFile(publicConList, JSON.stringify(await newContributors(), null, 4));
     await writeFile(publicBlackList, blacklistJSONstringify);
-    await writeFile(publicChangelogList, changelogJSONstringify);
+    await writeFile(publicChangelogList, JSON.stringify(await newReleases(), null, 4));
     await unlink(placeholder);
   },
 });
