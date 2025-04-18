@@ -17,4 +17,4 @@ WebUI's can only be added as shortcut if the developer support it.
 
 If a WebUI supports it you can hold the module card to add it as shortcut.
 
-[Learn more](./webui/shortcuts)
+[Learn more](./webuix/shortcuts)
