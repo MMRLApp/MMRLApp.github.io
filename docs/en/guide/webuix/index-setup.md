@@ -1,8 +1,4 @@
-# WebUI in MMRL
-
-MMRL supports WebUI from KernelSU but it come with some additions for you all!
-
-You can use the app theme with automatic dark mode support. Also it supports window safe insets which you'll have to set youself.
+# WebUI X Index Setup
 
 | Dark                                                   | Light                                                       |
 |--------------------------------------------------------|-------------------------------------------------------------|
@@ -15,17 +11,8 @@ To use window safe area insets which you basiclly need here, otherwise your conf
 > Why so?  
 > It improves the design and it presents a much more "native" feel
 
-#### JavaScript API
-
-> [!IMPORTANT]
-> `ksu.spawn` and `ksu.exec` needs to be enabled by the user first. You can check it with `<sanitizedModId>.getHasAccessToAdvancedKernelSuAPI()`.
-
-- [FileInterface](./api/filesystem.md)
-- [MMRLInterface](./api/mmrlinterface.md)
-- [Toast](./api/toast.md)
-- [VersionInterface](./api/versioninterface.md)
-- [KernelSU WebUI](https://kernelsu.org/guide/module-webui.html)
-- [KernelSU NPM Package](https://www.npmjs.com/package/kernelsu)
+> [!CAUTION]
+> `https://mui.kernelsu.org/mmrl/` is deprecated use `https://mui.kernelsu.org/internal/` instead please
 
 ::: code-group
 
@@ -36,9 +23,9 @@ To use window safe area insets which you basiclly need here, otherwise your conf
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ModConf Compose WebUI</title>
     <!-- Window Safe Area Insets -->
-    <link rel="stylesheet" type="text/css" href="https://mui.kernelsu.org/mmrl/insets.css" />
+    <link rel="stylesheet" type="text/css" href="https://mui.kernelsu.org/internal/insets.css" />
     <!-- App Theme which the user has currently selected -->
-    <link rel="stylesheet" type="text/css" href="https://mui.kernelsu.org/mmrl/colors.css" />
+    <link rel="stylesheet" type="text/css" href="https://mui.kernelsu.org/internal/colors.css" />
     <!-- Your styles -->
     <link rel="stylesheet" type="text/css" href="styles.css" />
 
@@ -75,9 +62,3 @@ body {
 ```
 
 :::
-
-## Launch a WebUI from Shell
-
-```bash
-am start -n "com.dergoogler.mmrl/.ui.activity.webui.WebUIActivity" -e MOD_ID "your_id"
-```

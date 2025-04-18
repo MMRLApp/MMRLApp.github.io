@@ -98,29 +98,14 @@ function sidebarGuide() {
         { text: "Installer API", link: "/guide/installer" },
         { text: "How a Module Card Works", link: "/guide/how-a-module-card-works" },
         {
-          text: "WebUI",
+          text: "WebUI X",
+          link: "/guide/webuix/",
           collapsed: true,
           items: [
-            { text: "Getting Started in WebUI", link: "/guide/webui/" },
-            { text: "Permissions", link: "/guide/webui/permissions" },
-            { text: "Shortcuts", link: "/guide/webui/shortcuts" },
-            { text: "Plugins", link: "/guide/webui/plugins" },
-            {
-              text: "API",
-              collapsed: true,
-              items: [
-                { text: "FileSystem", link: "/guide/webui/api/filesystem" },
-                {
-                  text: "MMRLInterface",
-                  link: "/guide/webui/api/mmrlinterface",
-                },
-                { text: "Toast", link: "/guide/webui/api/toast" },
-                {
-                  text: "VersionInterface",
-                  link: "/guide/webui/api/versioninterface",
-                },
-              ],
-            },
+            { text: "Index Setup", link: "/guide/webuix/index-setup" },
+            { text: "Config", link: "/guide/webuix/config" },
+            { text: "Sanitized Module ID's", link: "/guide/webuix/sanitized-ids" },
+            { text: "Shortcuts", link: "/guide/webuix/shortcuts" },
           ],
         },
         {
