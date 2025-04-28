@@ -26,7 +26,7 @@ export const shared = defineConfig({
   sitemap: {
     hostname: "https://mmrl.dev",
   },
-  head: [
+ /* head: [
     [
       "script",
       {
@@ -35,7 +35,7 @@ export const shared = defineConfig({
         crossorigin: "anonymous",
       },
     ],
-  ],
+  ],*/
   themeConfig: {
     search: {
       provider: "local",
