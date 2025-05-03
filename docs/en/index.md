@@ -23,7 +23,7 @@ hero:
 features:
   - title: Comprehensive Root Manager Support
     details: Full compatibility with Magisk, KernelSU, and APatch for diverse root management options.
-  - title: WebUI with Advanced Features
+  - title: WebUI X Support
     details: Includes <span class="vp-doc"><a href="https://developer.android.com/develop/ui/compose/layouts/insets">Edge-to-Edge</a></span> support and dynamic app themes for a seamless user experience.
   - title: Bulk Installation Support
     details: Effortlessly install modules in bulk, both online and locally.
