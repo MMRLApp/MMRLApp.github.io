@@ -1,24 +1,14 @@
-# PackageManager API
+import { FileInputInterfaceStream } from "./FileInputInterfaceStream";
+import { WXApplicationInfo } from "./WXApplicationInfo";
 
-```ts
-declare var $packageManager: PackageManagerInterface;
-
-/**
- * This is a non-public interface and cannot accessed from the window scope
- */
-interface FileInputInterfaceStream {
-  read(): number;
-  readChunk(chunkSize: number): string | null;
-  close(): void;
-  skip(n: number): number;
-}
-
-interface WXApplicationInfo {}
+declare var $packageManager: PackageManagerInterface; // accesspoint for webui-x
 
 interface PackageManagerInterface {
   getPackageUid(packageName: string, flags: number, userId: number): number;
+  /**
+   * Method run heavy operations
+   */
   getApplicationIcon(packageName: string, flags: number, userId: number): FileInputInterfaceStream | null;
   getInstalledPackages(flags: number, userId: number): string;
   getApplicationInfo(packageName: string, flags: number, userId: number): WXApplicationInfo;
 }
-```

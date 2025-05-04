@@ -102,6 +102,18 @@ function sidebarGuide() {
           link: "/guide/webuix/",
           collapsed: true,
           items: [
+            {
+              text: "API",
+              collapsed: true,
+              items: [
+                { text: "ModuleInterface", link: "/guide/webuix/api/ModuleInterface" },
+                { text: "FileInterface", link: "/guide/webuix/api/FileInterface" },
+                { text: "FileInputInterface", link: "/guide/webuix/api/FileInputInterface" },
+                { text: "ApplicationInterface", link: "/guide/webuix/api/ApplicationInterface" },
+                { text: "UserManagerInterface", link: "/guide/webuix/api/UserManagerInterface" },
+                { text: "PackageManagerInterface", link: "/guide/webuix/api/PackageManagerInterface" },
+              ],
+            },
             { text: "Index Setup", link: "/guide/webuix/index-setup" },
             { text: "Config", link: "/guide/webuix/config" },
             { text: "Sanitized Module ID's", link: "/guide/webuix/sanitized-ids" },
