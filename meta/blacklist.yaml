@@ -64,13 +64,6 @@
     - NonFreeNet
     - Tracking
 
-- id: encore
-  source: https://encore.rem01gaming.dev/download/
-  notes: ""
-  hidden: false
-  antifeatures:
-    - NoSourceSince
-
 - id: GD
   source: https://t.me/modulosdec/1075
   notes: ""

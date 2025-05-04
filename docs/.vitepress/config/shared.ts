@@ -31,7 +31,7 @@ export const shared = defineConfig({
       "script",
       {
         async: "async",
-        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5042729416879007",
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8761428581890299",
         crossorigin: "anonymous",
       },
     ],
