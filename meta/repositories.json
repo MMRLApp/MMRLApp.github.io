@@ -195,5 +195,23 @@
       }
     ],
     "url": "https://zguation-projects.github.io/ZG-R/"
+  },
+  {
+    "name": "Rem01 Projects",
+    "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://www.github.com/Rem01Gaming.png",
+        "name": "Rem01Gaming",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/Rem01Gaming"
+          }
+        ]
+      }
+    ],
+    "url": "https://mrepo.rem01gaming.dev/"
   }
 ]
