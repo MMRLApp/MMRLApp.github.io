@@ -1,7 +1,3 @@
-Here's the updated and extended FAQ section based on the information in the screenshot:
-
----
-
 # FAQ
 
 ## How to enable JavaScript APIs in MMRL?
