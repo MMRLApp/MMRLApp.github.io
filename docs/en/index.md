@@ -14,8 +14,8 @@ hero:
       text: Get started
       link: /guide/
     - theme: alt
-      text: Get it on GitHub
-      link: https://github.com/MMRLApp/MMRL
+      text: Explore Repositories
+      link: ./repository
     - theme: alt
       text: Get it on Play Store
       link: https://play.google.com/store/apps/details?id=com.dergoogler.mmrl
