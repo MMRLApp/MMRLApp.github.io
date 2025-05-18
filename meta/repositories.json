@@ -213,5 +213,23 @@
       }
     ],
     "url": "https://mrepo.rem01gaming.dev/"
+  },
+  {
+    "name": "SSMG4’s Magisk Modules Repository",
+    "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://www.github.com/SSMG4.png",
+        "name": "SSMG4",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/SSMG4"
+          }
+        ]
+      }
+    ],
+    "url": "https://ssmg4.github.io/SSR/"
   }
 ]
