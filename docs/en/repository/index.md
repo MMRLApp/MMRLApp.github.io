@@ -17,8 +17,8 @@ const repos = repositories.map((repo)=> {
 The website will be every 6 (six) hours re-deployed so that every repository will be updated at [mmrl.dev](https://mmrl.dev)!
 :::
 
-<ol v-for="repository in repos">
-    <li>
+<ol>
+    <li v-for="repository in repos">
         <a :href="repository.href">{{ repository.name }}</a>
     </li>
 </ol>
