@@ -9,21 +9,30 @@ Location: `/data/adb/modules/<ID>/webroot/config.json`
 ```jsonc
 {
   "require": {
+    /**
+      "packages" is available from following apps:
+      - MMRL version code 33633
+      - WebUI X Portable version code 29
+    */
     "packages": [
       {
-        /* required */ "code": 33624,
-        /* required */ "packageName": ["com.dergoogler.mmrl", "com.dergoogler.mmrl.debug"],
+        "code": 33624,
+        "packageName": ["com.dergoogler.mmrl", "com.dergoogler.mmrl.debug"],
         "supportText": "Update",
         "supportLink": "https://github.com/MMRLApp/MMRL/releases"
       },
       {
-        /* required */ "code": 26,
-        /* required */ "packageName": "com.dergoogler.mmrl.wx",
+        "code": 26,
+        "packageName": "com.dergoogler.mmrl.wx",
         "supportText": "Update",
         "supportLink": "https://github.com/MMRLApp/WebUI-X-Portable/releases"
       }
     ],
-    // Deprecated
+    /**
+      "version" is deprecated from following apps:
+      - MMRL version code 33633
+      - WebUI X Portable version code 29
+    */
     "version": {
       "required": 2,
       "supportText": "Please update to the latest version.",
