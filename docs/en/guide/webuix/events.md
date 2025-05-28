@@ -74,6 +74,17 @@ WXEvent.on(window, "resume", (event) => {
     statusEl.style.color = getCssVar('success');
     // Add any additional logic needed when the app resumes
 });
+
+// If you have nested scroll elements you may need to handle it on the JavaScript side
+WXEvent.on(window, 'refresh', () => {
+    webui.setRefreshing(true);
+
+    if (confirm("Do you really wanna refresh the page?")) {
+        location.reload()
+    }
+
+    webui.setRefreshing(false);
+});
 ```
 
 ### How It Works

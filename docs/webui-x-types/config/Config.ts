@@ -1,6 +1,7 @@
 import { Require } from "./Require";
 
 type BackInterceptor = "native" | "javascript" | boolean | null;
+type RefreshInterceptor = "native" | "javascript" | null;
 
 export interface Config {
   /**
@@ -48,6 +49,12 @@ export interface Config {
    * @default null
    */
   backInterceptor: BackInterceptor;
+
+  /**
+   * Whether the WebUI should handle the refresh button/gesture events. Requires `pullToRefresh` to be enabled.
+   * @default null
+   */
+  refreshInterceptor: RefreshInterceptor;
 
   /**
    * Whether the WebUI should support pull-to-refresh functionality.
