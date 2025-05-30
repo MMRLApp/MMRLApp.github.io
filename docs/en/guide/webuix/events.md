@@ -34,13 +34,13 @@ To enable event handling in your module, add the following options to your confi
 You can listen for events using the `WXEvent` API from the `webuix` package. Below are examples for handling the back button and custom pause actions:
 
 ```javascript
-import { WXEvent } from "webuix";
+import { WXEventHandler } from "webuix";
 
 // Initialize the event system (recommended for best compatibility)
-WXEvent.initialize();
+window.wx = new WXEventHandler()
 
 // Handle back event for a specific element (e.g., appDetails)
-WXEvent.on(appDetails, "back", (event) => {
+wx.on(appDetails, "back", (event) => {
   if (appDetails.open) {
     event.stopImmediatePropagation();
     appDetails.open = false; // Close the details panel
@@ -48,7 +48,7 @@ WXEvent.on(appDetails, "back", (event) => {
 });
 
 // Handle back event at the window level
-WXEvent.on(window, "back", (event) => {
+wx.on(window, "back", (event) => {
   const appDetails = document.getElementById("appDetails");
 
   if (appDetails?.open) {
@@ -62,21 +62,21 @@ WXEvent.on(window, "back", (event) => {
 });
 
 // Example: Listen for a custom pause event (replace with your own logic)
-WXEvent.on(window, "pause", (event) => {
+wx.on(window, "pause", (event) => {
   focusInput.focus();
   statusEl.textContent = 'App paused - input focused';
   statusEl.style.color = getCssVar('error');
 });
 
 // Listen for resume events
-WXEvent.on(window, "resume", (event) => {
+wx.on(window, "resume", (event) => {
     statusEl.textContent = 'App resumed';
     statusEl.style.color = getCssVar('success');
     // Add any additional logic needed when the app resumes
 });
 
 // If you have nested scroll elements you may need to handle it on the JavaScript side
-WXEvent.on(window, 'refresh', () => {
+wx.on(window, 'refresh', () => {
     webui.setRefreshing(true);
 
     if (confirm("Do you really wanna refresh the page?")) {
