@@ -57,15 +57,13 @@ This field allows submitting new tracks or modules to the repository.
 "submission": "url"
 ```
 
-### `description
-
-````
+### `description`
 
 A brief description of the repository.
 
 ```json
-"description": "url"
-````
+"description": "My repository description."
+```
 
 ### `max_num`
 
