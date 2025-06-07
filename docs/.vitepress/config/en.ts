@@ -91,47 +91,48 @@ function nav() {
 function sidebarGuide() {
   return [
     {
-      text: "Guide",
+      text: "Introduction",
+      collapsed: false,
       items: [
         { text: "What is MMRL", link: "/guide/" },
+        { text: "How a Module Card Works", link: "/guide/how-a-module-card-works" },
         { text: "Anti-Features", link: "/guide/antifeatures" },
         { text: "Installer API", link: "/guide/installer" },
-        { text: "How a Module Card Works", link: "/guide/how-a-module-card-works" },
-        {
-          text: "WebUI X",
-          link: "/guide/webuix/",
-          collapsed: true,
-          items: [
-            {
-              text: "API",
-              collapsed: true,
-              items: [
-                { text: "ModuleInterface", link: "/guide/webuix/api/ModuleInterface" },
-                { text: "FileInterface", link: "/guide/webuix/api/FileInterface" },
-                { text: "FileInputInterface", link: "/guide/webuix/api/FileInputInterface" },
-                { text: "ApplicationInterface", link: "/guide/webuix/api/ApplicationInterface" },
-                { text: "UserManagerInterface", link: "/guide/webuix/api/UserManagerInterface" },
-                { text: "PackageManagerInterface", link: "/guide/webuix/api/PackageManagerInterface" },
-              ],
-            },
-            { text: "Index Setup", link: "/guide/webuix/index-setup" },
-            { text: "Config", link: "/guide/webuix/config" },
-            { text: "Events", link: "/guide/webuix/events" },
-            { text: "Sanitized Module ID's", link: "/guide/webuix/sanitized-ids" },
-            { text: "Shortcuts", link: "/guide/webuix/shortcuts" },
-          ],
-        },
-        {
-          text: "MMRL-Util",
-          collapsed: true,
-          items: [
-            { text: "Getting Started", link: "/guide/mmrl-util/" },
-            { text: "repo.json", link: "/guide/mmrl-util/repo-json" },
-            { text: "track.json", link: "/guide/mmrl-util/track-json" },
-            { text: "config.json", link: "/guide/mmrl-util/config-json" },
-          ],
-        },
         { text: "FAQ", link: "/guide/faq" },
+      ],
+    },
+    {
+      text: "WebUI X",
+      collapsed: false,
+      items: [
+        {
+          text: "API",
+          collapsed: true,
+          items: [
+            { text: "ModuleInterface", link: "/guide/webuix/api/ModuleInterface" },
+            { text: "FileInterface", link: "/guide/webuix/api/FileInterface" },
+            { text: "FileInputInterface", link: "/guide/webuix/api/FileInputInterface" },
+            { text: "ApplicationInterface", link: "/guide/webuix/api/ApplicationInterface" },
+            { text: "UserManagerInterface", link: "/guide/webuix/api/UserManagerInterface" },
+            { text: "PackageManagerInterface", link: "/guide/webuix/api/PackageManagerInterface" },
+          ],
+        },
+        { text: "What is WebUI X", link: "/guide/webuix" },
+        { text: "Index Setup", link: "/guide/webuix/index-setup" },
+        { text: "Config", link: "/guide/webuix/config" },
+        { text: "Events", link: "/guide/webuix/events" },
+        { text: "Sanitized Module ID's", link: "/guide/webuix/sanitized-ids" },
+        { text: "Shortcuts", link: "/guide/webuix/shortcuts" },
+      ],
+    },
+    {
+      text: "MMRL-Util",
+      collapsed: false,
+      items: [
+        { text: "Getting Started", link: "/guide/mmrl-util/" },
+        { text: "repo.json", link: "/guide/mmrl-util/repo-json" },
+        { text: "track.json", link: "/guide/mmrl-util/track-json" },
+        { text: "config.json", link: "/guide/mmrl-util/config-json" },
       ],
     },
   ];
