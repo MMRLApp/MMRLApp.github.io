@@ -4,13 +4,9 @@ This JSON configuration file contains settings related to a Magisk repository. B
 
 ---
 
-### `id` <Badge type="warning" text="required af of 1 Jan, 2026" />
+### `id` <Badge type="warning" text="required as of 1 Jan, 2026" /> <Badge type="tip" text="R/O" />
 
-An unique id for your repository
-
-```json
-"id": "gmr"
-```
+An unique id for your repository that cannot be modified when using MMRL-Util
 
 
 ### `name` <Badge type="danger" text="required" />
@@ -61,15 +57,13 @@ This field allows submitting new tracks or modules to the repository.
 "submission": "url"
 ```
 
-### `description
-
-````
+### `description`
 
 A brief description of the repository.
 
 ```json
-"description": "url"
-````
+"description": "My repository description."
+```
 
 ### `max_num`
 
