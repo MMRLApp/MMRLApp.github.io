@@ -1,6 +1,6 @@
 # Text Formatting
 
-This document describes a custom text formatting syntax used in both shell scripts and Jetpack Compose UI development. This syntax allows you to add color and style to your text output using simple tags.
+This document describes a custom text formatting syntax used in both shell scripts, module configuration files, and Jetpack Compose UI development. This syntax allows you to add color and style to your text output using simple tags.
 
 ## Overview
 
@@ -57,12 +57,12 @@ echo() {
 }
 ```
 
-**Behavior:**
+**Behavior (Shell Script):**
 
 - If the environment variable `MMRL` is set to `"true"`, the `echo` command will print the message as-is, including all formatting tags. This might be useful for debugging or for systems that can interpret these tags directly.
 - If `MMRL` is not set to `"true"` (or is set to any other value), the function strips out all custom formatting tags using `sed` before printing the message. The output will be plain text.
 
-**Example:**
+**Example (Shell Script):**
 
 ```shell
 # With MMRL not "true" (default behavior)
@@ -73,6 +73,27 @@ echo "This is a [color=red]red[color] message with [bold]bold text[bold]."
 MMRL="true" echo "This is a [color=red]red[color] message with [bold]bold text[bold]."
 # Output: This is a [color=red]red[color] message with [bold]bold text[bold].
 ```
+
+### Module Config (`config.json` in module root)
+
+The custom formatting tags can be used within the `description` field of a module's `config.json` file.
+
+**Note:** Only the `description` field supports this formatting API. It cannot be used with other fields like those in `module.prop`.
+
+```json
+{
+  "name": {
+    "en": "Systemless module",
+    "de": "Systemloses Modul"
+  },
+  "description": {
+    "en": "[bg=red]Hello[bg], [color=primary]World[color]!",
+    "de": "Hallo, [color=green]Welt[color]!"
+  }
+}
+```
+
+When an application (like a module manager that supports this format) reads this `config.json`, it would be responsible for parsing the `description` string and rendering the formatted text in its UI, likely using a mechanism similar to the Jetpack Compose `toStyleMarkup()` function.
 
 ### Jetpack Compose (`String.toStyleMarkup()`)
 
@@ -137,4 +158,4 @@ In the Jetpack Compose implementation (`toStyleMarkup`):
 - Styles are applied segment by segment. When a tag is encountered, the style it defines (e.g., `currentColor`, `isBold`) is set and applied to subsequent text until another relevant tag changes it or the string ends.
 - There isn't explicit "closing" tag logic like `[/bold]`. Instead, a new tag like `[color=green]` would change the current color from whatever it was previously. For boolean styles like `bold`, `italic`, `underline`, the provided Kotlin code currently only sets them to `true`. To turn them _off_, you would need to modify the parsing logic to handle specific "off" tags (e.g., `[bold=false]`) or a general reset tag if that functionality is desired. The current parser only activates these styles.
 
-For the shell script, the `sed` command simply removes any recognized tag pattern. It does not interpret nesting or apply styles.
+For the shell script, the `sed` command simply removes any recognized tag pattern. It does not interpret nesting or apply styles. The same applies to how an application might parse the `config.json`'s `description` field – it would depend on its specific parsing implementation, but would likely follow the Jetpack Compose behavior if aiming for consistency.
