@@ -6,10 +6,22 @@
     "amount": 2000
   },
   {
+    "login": "ApolloGods",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/16455549?u=e2de99a41ea375c22148f6fe071d9b06cf169896&v=4",
+    "url": "https://github.com/ApolloGods",
+    "amount": 500
+  },
+  {
     "login": "roeldebruijn1978",
     "avatarUrl": "https://avatars.githubusercontent.com/u/36719258?v=4",
     "url": "https://github.com/roeldebruijn1978",
     "amount": 300
+  },
+  {
+    "login": "lare354",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/47903733?u=fc7262afddf6a7c201aec9faa27435a5d82d88e4&v=4",
+    "url": "https://github.com/lare354",
+    "amount": 500
   },
   {
     "login": "Duan-rax",
