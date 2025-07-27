@@ -4,7 +4,8 @@ Magisk Module Repo Loader (MMRL) is an advanced, open-source Android application
 
 ## Features
 
-- **Comprehensive Root Manager Support**: MMRL offers full compatibility with Magisk, KernelSU, and APatch, providing users with a versatile platform for root management.
+- **Comprehensive Root Manager Support**: MMRL offer
+  s full compatibility with Magisk, KernelSU, and APatch, providing users with a versatile platform for root management.
 
 - **User-Friendly Interface**: The application boasts a user-centric design, featuring edge-to-edge support and dynamic app themes, ensuring a seamless and intuitive user experience.
 
