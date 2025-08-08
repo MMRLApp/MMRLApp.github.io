@@ -120,6 +120,7 @@ function sidebarGuide() {
         },
         { text: "What is WebUI X", link: "/guide/webuix" },
         { text: "Index Setup", link: "/guide/webuix/index-setup" },
+        { text: "Application Info Flags", link: "/guide/webuix/application-info-flags" },
         { text: "Config", link: "/guide/webuix/config" },
         { text: "Events", link: "/guide/webuix/events" },
         { text: "Sanitized Module ID's", link: "/guide/webuix/sanitized-ids" },
