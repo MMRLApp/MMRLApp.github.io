@@ -38,8 +38,8 @@ onMounted(async () => {
 <h1>Repositories</h1>
 
 <p>
-  As of now, the MMRL provides access to <strong>{{ repoCount }}</strong> repositories,
-  encompassing more than <strong>{{ moduleCount }}</strong> modules in total.
+  As of now, the MMRL provides access to <strong style="color: var(--vp-c-brand-1);">{{ repoCount }}</strong> repositories,
+  encompassing more than <strong style="color: var(--vp-c-brand-1);">{{ moduleCount }}</strong> modules in total.
   These are continually maintained to ensure up-to-date functionality and compatibility.
 </p>
 
