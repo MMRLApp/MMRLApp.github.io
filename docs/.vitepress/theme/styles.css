@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 :root:where(:lang(fa)) {
   --vp-font-family-base:
     'Vazirmatn', 'Inter', ui-sans-serif, system-ui, sans-serif,
