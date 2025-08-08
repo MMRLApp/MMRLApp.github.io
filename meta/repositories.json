@@ -231,5 +231,23 @@
       }
     ],
     "url": "https://ssmg4.github.io/SSR/"
+  },
+  {
+    "name": "Modules Repo by Julia",
+    "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://www.github.com/juliazero.png",
+        "name": "juliazero",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/juliazero"
+          }
+        ]
+      }
+    ],
+    "url": "https://juliazero.github.io/mrbj/"
   }
 ]
