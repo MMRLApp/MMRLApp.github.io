@@ -157,7 +157,7 @@ The website automatically re-deploys every 6 hours to ensure all repositories ar
   border-radius: 16px;
   padding: 24px;
   text-decoration: none !important;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
