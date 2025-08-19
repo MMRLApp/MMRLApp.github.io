@@ -22,9 +22,9 @@ hero:
 
 features:
   - title: Comprehensive Root Manager Support
-    details: Full compatibility with Magisk, KernelSU, and APatch for diverse root management options.
-  - title: WebUI X Support
-    details: Includes <span class="vp-doc"><a href="https://developer.android.com/develop/ui/compose/layouts/insets">Edge-to-Edge</a></span> support and dynamic app themes for a seamless user experience.
+    details: Full compatibility with Magisk, KernelSU (Next), APatch SukiSU Ultra for diverse root management options.
+  - title: Powerful WebUI
+    details: <span class="vp-doc">MMRL brings you <strong>WebUI X</strong>, one of the most powerful WebUI frameworks ever built. It offers developers and end-users advanced tools and a <a href="https://developer.android.com/develop/ui/compose/layouts/insets">true edge-to-edge experience</a> that feels completely native. Prefer not to use HTML, CSS, or JavaScript? Build real native UIs with Plugins powered by <a href="Jetpack Compose">Jetpack Compose</a>. <a href="/guide/webuix/">Learn more →</a></span>
   - title: Bulk Installation Support
     details: Effortlessly install modules in bulk, both online and locally.
   - title: Magisk Modules Repositories

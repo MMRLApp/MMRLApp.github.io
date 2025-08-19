@@ -118,7 +118,7 @@ function sidebarGuide() {
             { text: "PackageManagerInterface", link: "/guide/webuix/api/PackageManagerInterface" },
           ],
         },
-        { text: "What is WebUI X", link: "/guide/webuix" },
+        { text: "Why WebUI X", link: "/guide/webuix/" },
         { text: "Index Setup", link: "/guide/webuix/index-setup" },
         { text: "Application Info Flags", link: "/guide/webuix/application-info-flags" },
         { text: "Config", link: "/guide/webuix/config" },

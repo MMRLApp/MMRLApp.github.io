@@ -1,189 +1,50 @@
-# What is WebUI X?
+# Why WebUI X?
 
-WebUI X is an innovative way to manage WebUIs across different managers like KernelSU, MMRL, APatch, and more.
+WebUI X is the next-generation framework for building modular, secure, and high-performance WebUI applications. It offers significant improvements over Legacy KernelSU WebUI, making it the ideal choice for developers. Below are the key reasons to switch:
 
-The KernelSU developers first introduced this feature in [v0.8.1](https://github.com/tiann/KernelSU/releases/tag/v0.8.1), providing developers with a new way to configure their modules.
+## 🚀 **Key Advantages**
 
-MMRL extended WebUI support in [v32666](https://github.com/MMRLApp/MMRL/releases/tag/v5.27.36), adding features like dynamic theming (Monet), file system access, and many more.
+### 1. **Enhanced Security**
+   - **Content Security Policy (CSP):** Restricts unsafe scripts and resources, preventing XSS attacks.  
+   - **Kill Shell:** Automatically terminates background processes to block unauthorized code execution.  
+   - **Strict Isolation:** Plugins and modules run in controlled environments, reducing vulnerabilities.  
 
-## Setting Up WebUI X in a Manager
+### 2. **Superior Performance**
+   - **Smart Caching:** Configurable `Cache Max Age` and resource caching improve load times.  
+   - **Optimized Rendering:** Features like `Window Resize` and `Auto Style StatusBars` ensure smooth UI adaptation.  
 
-To use WebUI X, your manager must support Jetpack Compose. Without Compose, WebUI X will not function.
+### 3. **Powerful Debugging Tools**
+   - **Built-in Eruda Console:** Auto-injected for real-time debugging.  
+   - **Remote URL Debugging:** Test locally via `http://localhost` for faster iterations.  
+   - **Developer Mode:** Reveals module IDs and advanced metrics for troubleshooting.  
 
-### Add Required Dependencies
+### 4. **Extensibility & Customization**
+   - **Plugin Ecosystem:** Supports APK and DEX plugins (e.g., [WXU](https://github.com/MMRLApp/WXU)) for limitless functionality.  
+   - **SPA-Friendly:** `History Fallback` ensures seamless navigation in single-page apps.  
+   - **UI Control:** Customize back-button behavior, refresh interceptors, and exit confirmations.  
 
-Add the following dependencies to your project:
+### 5. **Modern UX Features**
+   - **Pull-to-Refresh:** User-friendly reloading (beta).  
+   - **Dynamic Theming:** Match status bars to app themes for visual consistency.  
 
-```kts
-implementation("com.github.MMRLApp.MMRL:platform:a0c8fd3785")
-implementation("com.github.MMRLApp.MMRL:webui:a0c8fd3785")
-```
+### 6. **Cross-Platform Compatibility**
+   - Works with **KernelSU (Next), SukiSU Ultra, Magisk, APatch**, and even **non-rooted devices**.  
 
-> **Note:**  
-> The `a0c8fd3785` is a commit hash used to fetch the dependencies.  
-> You can also choose other builds from [JitPack](https://jitpack.io/#MMRLApp/MMRL/).
+## 🔍 **Comparison with Legacy KernelSU WebUI**
 
----
+| Feature                | WebUI X                         | Legacy KernelSU WebUI       |
+|------------------------|---------------------------------|-----------------------------|
+| **Security**           | CSP, Kill Shell, Isolation      | Basic sandboxing            |
+| **Debugging**          | Eruda, Remote URL               | Limited dev tools           |
+| **Plugins**            | APK/DEX support                 | N/A                         |
+| **Performance**        | Smart caching, UI optimizations | N/A                         |
+| **SPA Support**        | History fallback                | Manual routing              |
 
-## Setting Up the Activity
+## 🛠️ **Getting Started**
+1. **Install WebUI X** via GitHub or Google Play Store.  
+2. Explore your installed modules like `App Nuker` and `bindhosts`.  
+3. Tweak settings in `Developer Mode` for advanced control.  
 
-If your manager is a root manager, you may need to build a custom provider, similar to KernelSU/Next. You can configure it according to your requirements.
+> 💡 **Tip:** Enable `Auto Open Eruda` in the settings to debug WebUIs instantly!  
 
-### Example Code
-
-Below is an example implementation of `WebUIActivity` and a custom provider (`KsuLibSuProvider`):
-
-::: code-group
-
-```kotlin [WebUIActivity.kt]
-package com.rifsxd.ksunext.ui.webui
-
-import android.annotation.SuppressLint
-import android.app.ActivityManager
-import android.os.Build
-import android.os.Bundle
-import android.webkit.WebView
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.lifecycleScope
-import com.dergoogler.mmrl.platform.Platform
-import com.dergoogler.mmrl.platform.service.ServiceManagerCompat
-import com.dergoogler.mmrl.webui.component.Loading
-import com.dergoogler.mmrl.webui.model.JavaScriptInterface
-import com.dergoogler.mmrl.webui.screen.WebUIScreen
-import com.dergoogler.mmrl.webui.util.rememberWebUIOptions
-import com.rifsxd.ksunext.BuildConfig
-import com.rifsxd.ksunext.ui.theme.KernelSUTheme
-import com.rifsxd.ksunext.ui.util.KsuLibSuProvider
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-
-@SuppressLint("SetJavaScriptEnabled")
-class WebUIActivity : ComponentActivity() {
-    private lateinit var webviewInterface: WebViewInterface
-    private lateinit var webView: WebView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-
-        webView = WebView(this)
-
-        lifecycleScope.launch {
-            Platform.init {
-                context = baseContext
-                platform = Platform.KsuNext
-                fromProvider = ServiceManagerCompat.from(
-                    KsuLibSuProvider(
-                        context = baseContext,
-                        platform = Platform.KsuNext
-                    )
-                )
-            }
-        }
-
-        val moduleId = intent.getStringExtra("id")!!
-        val name = intent.getStringExtra("name")!!
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            @Suppress("DEPRECATION")
-            setTaskDescription(ActivityManager.TaskDescription("KernelSU - $name"))
-        } else {
-            val taskDescription = ActivityManager.TaskDescription.Builder()
-                .setLabel("KernelSU - $name")
-                .build()
-            setTaskDescription(taskDescription)
-        }
-
-        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
-
-        setContent {
-            KernelSUTheme {
-                var isLoading by remember { mutableStateOf(true) }
-
-                LaunchedEffect(Platform.isAlive) {
-                    while (!Platform.isAlive) {
-                        delay(1000)
-                    }
-                    isLoading = false
-                }
-
-                if (isLoading) {
-                    Loading()
-                    return@KernelSUTheme
-                }
-
-                val webDebugging = prefs.getBoolean("enable_web_debugging", false)
-                val dark = isSystemInDarkTheme()
-
-                val options = rememberWebUIOptions(
-                    modId = moduleId,
-                    debug = webDebugging,
-                    appVersionCode = BuildConfig.VERSION_CODE,
-                    isDarkMode = dark,
-                )
-
-                WebUIScreen(
-                    webView = webView,
-                    options = options,
-                    interfaces = listOf(
-                        JavaScriptInterface(
-                            name = "ksu",
-                            instance = WebViewInterface(
-                                context = this@WebUIActivity,
-                                webView = webView,
-                                modDir = "/data/adb/modules/$moduleId"
-                            ),
-                        )
-                    )
-                )
-            }
-        }
-    }
-}
-```
-
-```kotlin [KsuLibSuProvider.kt]
-package com.rifsxd.ksunext.ui.util
-
-import android.content.Context
-import android.content.ServiceConnection
-import com.dergoogler.mmrl.platform.Platform
-import com.dergoogler.mmrl.platform.service.IProvider
-import com.dergoogler.mmrl.platform.service.ServiceManagerCompat.getPlatformIntent
-import com.topjohnwu.superuser.Shell
-import com.topjohnwu.superuser.ipc.RootService
-import kotlinx.coroutines.suspendCancellableCoroutine
-
-class KsuLibSuProvider(
-    private val context: Context,
-    private val platform: Platform,
-) : IProvider {
-    override val name = "KsuLibSu"
-
-    override fun isAvailable() = true
-
-    override suspend fun isAuthorized() = rootAvailable()
-
-    override fun bind(connection: ServiceConnection) {
-        RootService.bind(getPlatformIntent(context, platform), connection)
-    }
-
-    override fun unbind(connection: ServiceConnection) {
-        RootService.stop(getPlatformIntent(context, platform))
-    }
-}
-```
-
-:::
-
----
-
-This guide should help you set up WebUI X in your manager with ease. If you encounter any issues, refer to the official documentation or community forums for support.
+**Ready to upgrade?** WebUI X delivers **security, speed, and flexibility** — making it the future of Android WebUI frameworks.  
