@@ -1,8 +1,17 @@
+<script setup>
+import SanitizedModId from '../../../components/SanitizedModId.vue'
+</script>
+
+
 ### Sanitized Module in WebUI
 
 The `sanitizedModId` is a property in the `WebUIOptions` class that provides a sanitized version of the `modId` string. This sanitized version ensures that the module ID is safe for use in contexts like file names, JavaScript interfaces, or other identifiers where special characters might cause issues.
 
 The `sanitizedModId` is derived by replacing all characters in the `modId` that are not alphanumeric, underscores (`_`), or dots (`.`) with underscores (`_`). This ensures compatibility and avoids potential errors when the `modId` is used in various parts of the application.
+
+#### Try out yourself
+
+<SanitizedModId />
 
 ### Purpose of `sanitizedModId`
 
