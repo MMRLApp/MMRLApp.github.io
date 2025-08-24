@@ -108,19 +108,12 @@ function sidebarGuide() {
       items: [
         {
           text: "API",
-          collapsed: true,
-          items: [
-            { text: "ModuleInterface", link: "/guide/webuix/api/ModuleInterface" },
-            { text: "FileInterface", link: "/guide/webuix/api/FileInterface" },
-            { text: "FileInputInterface", link: "/guide/webuix/api/FileInputInterface" },
-            { text: "ApplicationInterface", link: "/guide/webuix/api/ApplicationInterface" },
-            { text: "UserManagerInterface", link: "/guide/webuix/api/UserManagerInterface" },
-            { text: "PackageManagerInterface", link: "/guide/webuix/api/PackageManagerInterface" },
-          ],
+          link: "https://docs.mmrl.dev",
         },
         { text: "Why WebUI X", link: "/guide/webuix/" },
         { text: "Index Setup", link: "/guide/webuix/index-setup" },
         { text: "Application Info Flags", link: "/guide/webuix/application-info-flags" },
+        { text: "Patching", link: "/guide/webuix/patching" },
         { text: "Config", link: "/guide/webuix/config" },
         { text: "Events", link: "/guide/webuix/events" },
         { text: "Sanitized Module ID's", link: "/guide/webuix/sanitized-ids" },
