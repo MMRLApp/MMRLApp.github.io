@@ -1,3 +1,15 @@
+---
+title: Custom Patching in WebUI X Portable
+description: Learn how to customize WebUI X Portable using CSS and JavaScript patches, including .js, .cjs, and .mjs scripts.
+tags:
+  - WebUI X
+  - Portable
+  - Customization
+  - CSS
+  - JavaScript
+  - Modules
+---
+
 # Custom Patching in WebUI X Portable
 
 WebUI X Portable allows you to **extend and customize the UI** by injecting your own **CSS** and **JavaScript**.  
