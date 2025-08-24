@@ -1,4 +1,8 @@
-# Installer API
+# Legacy Installer API
+
+> [!WARNING]
+> This API has been removed in **MMRL** *v33870*.   
+> Please use the **Installer V2 API** instead.
 
 You can control some parts of the terminal. The API is listed below
 

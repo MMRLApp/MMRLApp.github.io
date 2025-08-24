@@ -98,7 +98,7 @@ function sidebarGuide() {
         { text: "How a Module Card Works", link: "/guide/how-a-module-card-works" },
         { text: "Anti-Features", link: "/guide/antifeatures" },
         { text: "Text Formatting", link: "/guide/text-formatting" },
-        { text: "Installer API", link: "/guide/installer" },
+        { text: "Legacy Installer API", link: "/guide/installer" },
         { text: "FAQ", link: "/guide/faq" },
       ],
     },
