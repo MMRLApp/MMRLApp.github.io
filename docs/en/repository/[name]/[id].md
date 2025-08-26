@@ -152,24 +152,13 @@ const latestVersion = computed(() => {
 <div :class="$style.versionsSection">
     <h2>Available Versions</h2>
     <div :class="$style.versionsList">
-        <div v-for="(version, index) in versions" :key="index" :class="$style.versionItem">
+        <a v-for="(version, index) in versions" :href="version.zipUrl" :key="index" :class="$style.versionItem">
             <div :class="$style.versionInfo">
                 <span :class="$style.versionNumber">{{ version.version }}</span>
                 <span :class="$style.versionCode">({{ version.versionCode }})</span>
                 <span v-if="index === 0" :class="[$style.chip, $style.chipGreen]">Latest</span>
             </div>
-            <VPButton 
-                :href="version.zipUrl" 
-                target="_blank" 
-                size="small" 
-                theme="alt"
-                :class="$style.versionDownload"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7l7-7z"/>
-                </svg>
-            </VPButton>
-        </div>
+        </a>
     </div>
 </div>
 
