@@ -67,6 +67,7 @@ const latestVersion = computed(() => {
     <div :class="$style.moduleMetaRow">
         <span :class="$style.author">by {{ module.author }}</span>
         <div :class="$style.badges">
+            <span v-if="module.metamodule === '1' || module.metamodule === 'true'" :class="[$style.chip, $style.chipGreen]">META</span>
             <span :class="[$style.chip, $style.chipInfo]">{{ module.version }}</span>
             <span :class="[$style.chip, $style.chipDanger]">{{ module.versionCode }}</span>
             <span v-if="module.verified" :class="[$style.chip, $style.chipGreen]">
