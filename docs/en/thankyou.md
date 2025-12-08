@@ -39,7 +39,7 @@ const _sponsors = sponsors
 
 const totalSponsored = sponsors.reduce((acc, current) => acc + current.amount, 0);
 
-const excludedContris = ["DerGoogler", "dependabot[bot]"]
+const excludedContris = ["DerGoogler", "dependabot[bot]", "weblate", "copilot"]
 
 const contributorsExluded = data
   .filter((con) => !excludedContris.includes(con.login))
