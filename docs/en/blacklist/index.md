@@ -1,6 +1,6 @@
 ---
-title: Blacklist
-descriptions: A list of blacklisted modules in MMRL
+title: MMRL Blacklist - Restricted Modules
+description: View the complete list of blacklisted Magisk modules in MMRL. Transparency about which modules are restricted and why, ensuring user safety and informed decisions.
 editLink: false
 prev: false
 next: false
