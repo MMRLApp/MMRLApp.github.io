@@ -8,7 +8,7 @@ Magisk Module Repo Loader (MMRL) is an advanced, open-source Android application
 
 - **User-Friendly Interface**: The application boasts a user-centric design, featuring edge-to-edge support and dynamic app themes, ensuring a seamless and intuitive user experience.
 
-- **Bulk Module Installation**: Users can install multiple modules simultaneously, whether sourced from [online repositories](../repository) or from local storage, enhancing efficiency in module management.
+- **Bulk Module Installation**: Users can install multiple modules simultaneously, whether sourced from [online repositories](../repository/) or from local storage, enhancing efficiency in module management.
 
 - **Module Dependency Management**: MMRL simplifies the installation process by automatically handling module dependencies, ensuring that all necessary components are in place for optimal functionality.
 
@@ -20,20 +20,20 @@ Magisk Module Repo Loader (MMRL) is an advanced, open-source Android application
 
 - **Command-Line Interface (MMRL-CLI)**: For users who prefer terminal-based interactions, MMRL offers a Command-Line Interface, MMRL-CLI, which facilitates seamless module installation and management directly from the terminal.
 
-- **Powerful WebUI X**: MMRL features [WebUI X](webuix), one of the most advanced module configuration interfaces, providing developers with powerful tools to create native-feeling experiences.
+- **Powerful WebUI X**: MMRL features [WebUI X](webuix/), one of the most advanced module configuration interfaces, providing developers with powerful tools to create native-feeling experiences.
 
 ## How to Use MMRL
 
 To get started with MMRL, follow these steps:
 
 1. **Installation**:
-   - Download the latest version of MMRL from the [downloads page](../downloads) or [Google Play Store](https://play.google.com/store/apps/details?id=com.dergoogler.mmrl).
+   - Download the latest version of MMRL from the [downloads page](../downloads/) or [Google Play Store](https://play.google.com/store/apps/details?id=com.dergoogler.mmrl).
    - Install the application on your rooted Android device.
 
 2. **Adding Repositories**:
    - Open MMRL and navigate to the repository management section.
    - Add your desired module repositories by entering their URLs.
-   - Browse our [curated repositories](../repository) to discover popular modules.
+   - Browse our [curated repositories](../repository/) to discover popular modules.
 
 3. **Managing Modules**:
    - Browse through the available modules in your added repositories.
@@ -64,8 +64,8 @@ For detailed instructions and troubleshooting, please refer to the [MMRL GitHub 
 
 If you're a module developer, check out these resources:
 
-- [MMRL-Util Guide](mmrl-util) - Tools for creating and managing module repositories
-- [WebUI X Documentation](webuix) - Build advanced module configuration interfaces
+- [MMRL-Util Guide](mmrl-util/) - Tools for creating and managing module repositories
+- [WebUI X Documentation](webuix/) - Build advanced module configuration interfaces
 - [Legacy Installer API](installer) - Traditional module installation methods
 
 ## Discussion & Community
