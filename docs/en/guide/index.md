@@ -74,6 +74,5 @@ Join the community discussion to share experiences, seek assistance, and stay up
 
 - **Telegram**: [@MMRLApp](https://t.me/MMRLApp)
 - **GitHub**: [MMRL Repository](https://github.com/MMRLApp/MMRL)
-- **Updates**: Check our [changelog](../changelog/) for the latest features
 
 Engaging with the community can provide valuable insights and support as you navigate the features and functionalities of MMRL. 
