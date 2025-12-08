@@ -11,9 +11,60 @@ const { lang, params } = useData();
 const props = defineProps(["module"]);
 const repo = computed(() => new Repository(params.value.url));
 
-
 const timestamp = computed(() => props.module.timestamp);
 const module = computed(() => props.module);
+
+// Label types enum
+const LabelType = {
+  LICENSE: "LICENSE",
+  ANTIFEATURES: "ANTIFEATURES",
+  CATEGORY: "CATEGORY",
+  METAMODULE: "METAMODULE",
+};
+
+// Labels to show logic
+const labelsToShow = computed(() => {
+  const labels = [];
+
+  if (module.value.license) {
+    labels.push({
+      type: LabelType.LICENSE,
+      text: module.value.license,
+      icon: "tag",
+      style: "default",
+    });
+  }
+
+  if (module.value.track?.antifeatures) {
+    labels.push({
+      type: LabelType.ANTIFEATURES,
+      text: "Anti-Features",
+      icon: "alert-triangle",
+      style: "warning",
+    });
+  }
+
+  if (module.value.categories?.length > 0) {
+    labels.push({
+      type: LabelType.CATEGORY,
+      text: module.value.categories[0],
+      icon: "category",
+      style: "secondary",
+    });
+  }
+
+  if (module.value.metamodule && (module.value.metamodule == "true" || module.value.metamodule == "1")) {
+    labels.push({
+      type: LabelType.METAMODULE,
+      text: "META",
+      style: "success",
+    });
+  }
+
+  return labels;
+});
+
+const hasLabels = computed(() => labelsToShow.value.length > 0);
 
 const getLastUpdated = () => {
   if (!timestamp.value) {
@@ -37,55 +88,39 @@ const getLastUpdated = () => {
         <article :class="$style.box">
           <h2 :class="$style.title" :id="module.id">{{ module.name }}</h2>
           <span :class="$style.author">{{ module.version }} ({{ module.versionCode }}) by {{ module.author }}</span>
+          <span :class="$style.lastUpdated" v-if="module.timestamp">
+            {{ getLastUpdated() }}
+            <span :class="$style.stars" v-if="module.stars">
+              <span>•</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                <use :href="`/assets/icons/star.svg`"></use>
+              </svg>
+              <span>{{ module.stars }}</span>
+            </span>
+          </span>
+
           <span :class="$style.details">{{ module.description }}</span>
-          <ul :class="$style.moduleMetaContainer">
-            <li :class="$style.moduleMeta" v-if="module.size">
-              <svg :class="$style.moduleMetaIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                  <path d="M6 20.735A2 2 0 0 1 5 19V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2h-1" />
-                  <path
-                    d="M11 17a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2m0-12h-1m3 2h-1m-1 2h-1m3 2h-1m-1 2h-1m3 2h-1"
-                  />
-                </g>
+
+          <!-- Labels -->
+          <div v-if="hasLabels" :class="$style.labelsContainer">
+            <div
+              v-for="label in labelsToShow"
+              :key="label.type"
+              :class="[$style.label, $style[`label${label.style.charAt(0).toUpperCase() + label.style.slice(1)}`]]"
+            >
+              <svg
+                v-if="label.icon"
+                :class="$style.labelIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+              >
+                <use :href="`/assets/icons/${label.icon}.svg`"></use>
               </svg>
-              {{ toFormattedFileSize(module.size) }}
-            </li>
-            <li :class="$style.moduleMeta" v-if="module.categories">
-              <svg :class="$style.moduleMetaIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 3a3 3 0 1 0 6 0a3 3 0 1 0-6 0"
-                />
-              </svg>
-              {{ module.categories[0] }}
-            </li>
-            <li :class="$style.moduleMeta" v-if="module.track.antifeatures">
-              <svg :class="$style.moduleMetaIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 9v4m-1.637-9.409L2.257 17.125a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636-2.87L13.637 3.59a1.914 1.914 0 0 0-3.274 0zM12 16h.01"
-                />
-              </svg>
-              Anti-Features
-            </li>
-            <li :class="$style.moduleMeta" v-if="module.timestamp">
-              <svg :class="$style.moduleMetaIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0" />
-                  <path d="M12 7v5l3 3" />
-                </g>
-              </svg>
-              {{ getLastUpdated() }}
-            </li>
-          </ul>
+              <span :class="$style.labelText">{{ label.text }}</span>
+            </div>
+          </div>
         </article>
       </article>
     </div>
@@ -134,6 +169,22 @@ const getLastUpdated = () => {
   color: var(--vp-badge-tip-text);
 }
 
+.lastUpdated {
+  flex-grow: 1;
+  line-height: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-c-gray-1);
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+  color: var(--vp-c-yellow-5);
+}
+
 .details {
   flex-grow: 1;
   padding-top: 8px;
@@ -151,26 +202,95 @@ const getLastUpdated = () => {
   object-fit: cover;
 }
 
-.moduleMeta {
-  align-items: center;
-  align-self: end;
-  display: flex;
-  line-height: 20px;
-  word-break: break-word;
-}
-
-.moduleMetaIcon {
-  flex-shrink: 0;
-  width: 20px;
-  line-height: 20px;
-  margin-right: 4px;
-  height: 20px;
-}
-
 .moduleMetaContainer {
   color: var(--vp-c-text-3);
   margin: 0px !important;
   padding: 0px !important;
   padding-top: 20px !important;
+}
+
+/* Labels Section */
+.labelsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  padding-top: 8px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.label:hover {
+  transform: scale(1.05);
+}
+
+.labelIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.labelText {
+  font-weight: 600;
+}
+
+/* Label Variants */
+.labelDefault {
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-border);
+}
+
+.labelSuccess {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.labelWarning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.labelError {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.labelSecondary {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-soft);
+}
+
+@media (max-width: 768px) {
+  .label {
+    padding: 1px 4px;
+    font-size: 9px;
+  }
+
+  .labelIcon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .labelsContainer {
+    gap: 4px;
+  }
 }
 </style>
