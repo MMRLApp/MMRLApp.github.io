@@ -2,6 +2,8 @@
 editLink: false
 prev: false
 next: false
+title: Download MMRL - Magisk Module Repo Loader
+description: Download the latest version of MMRL (Magisk Module Repo Loader) for Android. Get APK files from GitHub releases and Google Play Store for managing your Magisk modules.
 ---
 
 # MMRL Downloads

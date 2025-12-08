@@ -1,3 +1,8 @@
+---
+title: WebUI X - Next-Generation Module Interface Framework
+description: Learn about WebUI X, MMRL's powerful framework for building secure, high-performance module configuration interfaces. Enhanced security, debugging tools, and modern UX features.
+---
+
 # Why WebUI X?
 
 WebUI X is the next-generation framework for building modular, secure, and high-performance WebUI applications. It offers significant improvements over Legacy KernelSU WebUI, making it the ideal choice for developers. Below are the key reasons to switch:
