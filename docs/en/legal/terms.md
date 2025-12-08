@@ -19,7 +19,7 @@ Any restrictions in this document that conflict with the GPLv3 do **not apply** 
 
 The app may use third-party services that have their own Terms and Conditions. You are responsible for reviewing and agreeing to those terms where applicable.
 
-- [Google Play Services](https://policies.google.com/terms) (Google Play only)
+- [Google Play Services](https://policies.google.com/terms) <sup>(Google Play only)</sup>
 
 ## Data & Privacy
 
