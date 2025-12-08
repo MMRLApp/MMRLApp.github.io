@@ -45,7 +45,7 @@ jobs:
           path: docs/.vitepress/dist
 
   deploy:
-    if: ${{ github.event_name != 'pull_request' && github.event.action != 'opened' }}
+    if: ${{ github.event_name != 'pull_request' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
