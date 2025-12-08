@@ -27,7 +27,7 @@ Magisk Module Repo Loader (MMRL) is an advanced, open-source Android application
 To get started with MMRL, follow these steps:
 
 1. **Installation**:
-   - Download the latest version of MMRL from the [downloads page](../downloads/) or [Google Play Store](https://play.google.com/store/apps/details?id=com.dergoogler.mmrl).
+   - Download the latest version of MMRL from the [downloads page](../downloads) or [Google Play Store](https://play.google.com/store/apps/details?id=com.dergoogler.mmrl).
    - Install the application on your rooted Android device.
 
 2. **Adding Repositories**:
@@ -74,6 +74,6 @@ Join the community discussion to share experiences, seek assistance, and stay up
 
 - **Telegram**: [@MMRLApp](https://t.me/MMRLApp)
 - **GitHub**: [MMRL Repository](https://github.com/MMRLApp/MMRL)
-- **Updates**: Check our [changelog](../changelog) for the latest features
+- **Updates**: Check our [changelog](../changelog/) for the latest features
 
 Engaging with the community can provide valuable insights and support as you navigate the features and functionalities of MMRL. 
