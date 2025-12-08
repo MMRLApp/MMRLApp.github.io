@@ -37,5 +37,5 @@ features:
   - title: Transparency of Included Files
     details: <span class="vp-doc">Detailed breakdown of all files within modules, including APKs, service files, and more, for full user awareness. Read about <a href="guide/antifeatures">anti-features</a> and security considerations.</span>
   - title: Analytics Dashboard
-    details: <span class="vp-doc">Display module-related analytics on the homepage, offering valuable insights into module usage and trends. Stay updated with our <a href="changelog/">changelog</a> for latest features.</span>
+    details: <span class="vp-doc">Display module-related analytics on the homepage, offering valuable insights into module usage and trends.</span>
 
