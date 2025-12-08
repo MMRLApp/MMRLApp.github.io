@@ -5,10 +5,10 @@ description: A full declaration of the privacy for MMRL users on the website and
 
 # Privacy Policy
 
-This privacy notice for MMRL ("we," "us," or "our"), describes how and why we might collect, store, use, and/or share ("process") your information when you use our services ("Services"), such as when you:
+This privacy notice for **MMRL** and **WebUI X: Portable**, developed and published by **Der_Googler** *(aka DerGoogler)*, describes how and why we might collect, store, use, and/or share ("process") your information when you use our Services, such as when you:
 
 - Visit our website at https://mmrl.dev or any website of ours that links to this privacy notice
-- Download and use our mobile application (any app), or any other application of ours that links to this privacy notice
+- Download and use our mobile applications **MMRL** or **WebUI X: Portable** (the "Apps"), or any other application of ours that links to this privacy notice
 - Engage with us in other related ways, including any sales, marketing, or events
 
 ## Information Collection and Use
@@ -59,9 +59,7 @@ These Services do not address anyone under the age of 13. I do not knowingly col
 
 I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.
 
-```
-This policy is effective as of 01.03.2025
-```
+**Effective Date:** 08.12.2025
 
 ## Contact Us
 If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at jimmy@dergoogler.com.
