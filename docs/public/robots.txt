@@ -1,0 +1,20 @@
+# robots.txt for MMRL Website
+# Allow all crawlers to access all content
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://mmrl.dev/sitemap.xml
+
+# Disallow API endpoints from indexing (internal use only)
+Disallow: /api/
+
+# Allow specific important directories
+Allow: /guide/
+Allow: /repository/
+Allow: /downloads/
+Allow: /changelog/
+Allow: /legal/
+Allow: /blacklist/
+Allow: /thankyou/
