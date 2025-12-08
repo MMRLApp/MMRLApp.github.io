@@ -1,6 +1,6 @@
 # Terms of Service
 
-By downloading or using my apps (Der_Googler & DerGoogler) ("we," "us", "our", or "I"), you agree to these Terms. Please read them carefully before using the apps. These Terms govern your use of the apps and any services provided through them.
+By downloading or using our apps — including **MMRL**, **WebUI X: Portable**, and any other applications published under the developer names **Der_Googler** *(aka DerGoogler)* — you agree to these Terms. Please read them carefully before using the apps. These Terms govern your use of the apps and any services provided through them.
 
 ## Licensing and Usage
 
@@ -19,7 +19,7 @@ Any restrictions in this document that conflict with the GPLv3 do **not apply** 
 
 The app may use third-party services that have their own Terms and Conditions. You are responsible for reviewing and agreeing to those terms where applicable.
 
-- [Google Play Services](https://policies.google.com/terms) (Google Play only)
+- [Google Play Services](https://policies.google.com/terms) <sup>(Google Play only)</sup>
 
 ## Data & Privacy
 
@@ -63,7 +63,7 @@ We request that you:
 
 These Terms may be updated over time. Such changes will not override or limit the freedoms granted to you under the GPLv3 license regarding the software. Any changes affecting services, third-party integrations, or our website will be communicated on this page.
 
-**Effective Date:** 23.04.2025
+**Effective Date:** 08.12.2025
 
 ## Contact Us
 

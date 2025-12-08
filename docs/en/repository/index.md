@@ -1,3 +1,8 @@
+---
+title: Magisk Module Repositories - Browse & Install Modules
+description: Discover trusted Magisk module repositories with thousands of modules. Browse, search, and install modules for Magisk, KernelSU, and APatch. Updated every 6 hours.
+---
+
 <script setup>
 import { ref, onMounted } from "vue"
 import { repositories, Repository } from "../../data/repositories"

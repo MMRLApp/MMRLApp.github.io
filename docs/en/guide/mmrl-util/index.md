@@ -1,3 +1,8 @@
+---
+title: MMRL-Util - Build Your Own Module Repository
+description: Complete guide to MMRL-Util for creating custom Magisk module repositories. Learn installation, configuration, and management of your own module repository.
+---
+
 # Magisk Modules Repo Util
 
 This util is to build module repository for [MMRL](https://github.com/DerGoogler/MMRL)

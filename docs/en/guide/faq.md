@@ -1,3 +1,8 @@
+---
+title: MMRL FAQ - Frequently Asked Questions
+description: Common questions about MMRL - Magisk Module Repo Loader. Learn about JavaScript APIs, WebUI shortcuts, APK variants, and module management features.
+---
+
 # FAQ
 
 ## How to enable JavaScript APIs in MMRL?
