@@ -16,7 +16,7 @@ hero:
       link: /guide/
     - theme: alt
       text: Browse Module Repositories
-      link: ./repository/
+      link: https://repo.mmrl.dev
     - theme: alt
       text: Download from Play Store
       link: https://play.google.com/store/apps/details?id=com.dergoogler.mmrl
