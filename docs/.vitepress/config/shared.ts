@@ -126,6 +126,12 @@ export const shared = defineConfig({
         crossorigin: "anonymous",
       },
     ],
+    [
+      "script",
+      {
+        src: "https://keepandroidopen.org/banner.js",
+      },
+    ],
   ],
   themeConfig: {
     search: {
