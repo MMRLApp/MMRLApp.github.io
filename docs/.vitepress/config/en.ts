@@ -112,6 +112,7 @@ function sidebarGuide() {
         },
         { text: "Why WebUI X", link: "/guide/webuix/" },
         { text: "Index Setup", link: "/guide/webuix/index-setup" },
+        { text: "CSS Setup", link: "/guide/webuix/css-setup" },
         { text: "Application Info Flags", link: "/guide/webuix/application-info-flags" },
         { text: "Patching", link: "/guide/webuix/patching" },
         { text: "Config", link: "/guide/webuix/config" },
