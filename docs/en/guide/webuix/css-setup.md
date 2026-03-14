@@ -52,7 +52,7 @@ Example Usage Bottom Insets:
 }
 ```
 
-> [Framework7](https://framework7.io/) is support be default and no future actions are required.
+> [Framework7](https://framework7.io/) has default support and no future actions are required.
 
 # Keyboard Height <Badge type="warning" text="Since v398"/>
 
