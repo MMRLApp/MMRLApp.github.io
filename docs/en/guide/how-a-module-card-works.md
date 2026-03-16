@@ -1,4 +1,8 @@
----
+---MMRLApp.github.io/ documentos/ es/ guía
+/
+how-a-module-card-works.md
+en
+maestro
 title: How a Module Card Works
 descriptions: Here will you learn how the module card works in MMRL
 ---
