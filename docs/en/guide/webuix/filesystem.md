@@ -284,16 +284,6 @@ interface FileSystem {
   accessInfo(path: string): Promise<FileSystemAccessResult>;
 }
 
-/**
- * Extends the Window interface to optionally include a file system API.
- */
-interface Window {
-  /**
-   * Optional file system API instance.
-   */
-  fs?: FileSystem;
-}
-
 export {};
 
 declare global {
