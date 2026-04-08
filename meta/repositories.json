@@ -64,17 +64,6 @@
             "link": "https://github.com/Fox2Code"
           }
         ]
-      },
-      {
-        "avatar": "https://www.github.com/HuskyDG.png",
-        "name": "HuskyDG",
-        "title": "Moderator",
-        "links": [
-          {
-            "icon": "github",
-            "link": "https://github.com/HuskyDG"
-          }
-        ]
       }
     ],
     "url": "https://magisk-modules-alt-repo.github.io/json-v2/"
@@ -159,24 +148,6 @@
       }
     ],
     "url": "https://leloubil.github.io/magisk-repo/"
-  },
-  {
-    "name": "Misaki-Modules Repo",
-    "maintainers": [],
-    "members": [
-      {
-        "avatar": "https://www.github.com/misak10.png",
-        "name": "misak10",
-        "title": "Owner",
-        "links": [
-          {
-            "icon": "github",
-            "link": "https://github.com/misak10"
-          }
-        ]
-      }
-    ],
-    "url": "https://misak10.github.io/mmrl-repo/"
   },
   {
     "name": "ZG089’s modules repo",
