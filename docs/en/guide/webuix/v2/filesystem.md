@@ -1,4 +1,8 @@
-# FileSystem API (WIP)
+# FileSystem API
+
+::: danger Unpublished API!
+You are currently viewing an unpublished version of the WebUI Engine V2 API. This interface is subject to change at any time, including during internal development, alpha stages, and release candidate phases.
+:::
 
 Starting with `v?`, WebUI X: Portable introduces a new FileSystem API for interacting with files on Android devices. This API is fully asynchronous and is restricted to the website origin for improved security. Unlike the previous implementation, it does not expose a native JavaScript interface, ensuring better isolation and compatibility.
 
