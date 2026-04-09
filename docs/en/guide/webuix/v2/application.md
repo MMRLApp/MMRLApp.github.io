@@ -1,5 +1,0 @@
-# Application API
-
-::: danger Unpublished API!
-You are currently viewing an unpublished version of the WebUI Engine V2 API. This interface is subject to change at any time, including during internal development, alpha stages, and release candidate phases.
-:::
