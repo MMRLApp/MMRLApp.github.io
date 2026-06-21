@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSP Builder — Content-Security-Policy Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1116;
+    --panel:#151A21;
+    --panel-2:#1B212B;
+    --border:#262E39;
+    --border-soft:#1E2530;
+    --text:#E7ECF2;
+    --text-dim:#94A1B0;
+    --text-faint:#5C6677;
+    --accent:#FFB454;
+    --accent-soft:#3A2E1B;
+    --good:#4FD1C5;
+    --good-soft:#163330;
+    --bad:#FF6B6B;
+    --bad-soft:#34191c;
+    --locked:#9098A8;
+    --mono:'JetBrains Mono', monospace;
+    --display:'Space Grotesk', sans-serif;
+    --sans:'Inter', system-ui, -apple-system, sans-serif;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.5;
+    min-height:100vh;
+  }
+  ::selection{background:var(--accent-soft); color:var(--accent);}
+  a{color:var(--accent);}
+  button{font-family:inherit; cursor:pointer;}
+  input,textarea{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+  .app{max-width:1280px; margin:0 auto; padding:0 0 64px;}
+
+  /* ---------- header / barrier stripe signature ---------- */
+  .topbar{padding:36px 24px 22px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); margin:0 0 8px;
+  }
+  h1.title{
+    font-family:var(--display); font-weight:700; font-size:clamp(28px,4vw,40px);
+    letter-spacing:-0.02em; margin:0 0 8px; color:var(--text);
+  }
+  .subtitle{color:var(--text-dim); max-width:620px; margin:0; font-size:15px;}
+  .barrier{
+    height:7px; margin-top:24px; border-radius:4px;
+    background:repeating-linear-gradient(135deg, var(--accent) 0 16px, #232323 16px 32px);
+    opacity:.85;
+  }
+
+  .layout{
+    display:grid; grid-template-columns:1fr 380px; gap:20px;
+    padding:24px 24px 0; align-items:start;
+  }
+  @media (max-width:980px){
+    .layout{grid-template-columns:1fr;}
+  }
+
+  main{min-width:0; display:flex; flex-direction:column; gap:18px;}
+
+  .panel{
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 22px;
+  }
+  .panel h2{
+    font-family:var(--display); font-size:15px; font-weight:700; margin:0 0 4px;
+    letter-spacing:.01em; display:flex; align-items:center; gap:8px;
+  }
+  .panel .hint{color:var(--text-faint); font-size:13px; margin:0 0 14px;}
+  .optional{color:var(--text-faint); font-weight:400; font-size:12px; text-transform:none; letter-spacing:0;}
+
+  /* ---------- import ---------- */
+  .import-row{display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap;}
+  textarea#importInput{
+    flex:1; min-width:240px; resize:vertical; background:var(--panel-2); border:1px solid var(--border);
+    color:var(--text); border-radius:8px; padding:10px 12px; font-family:var(--mono); font-size:12.5px;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    border:1px solid var(--border); background:var(--panel-2); color:var(--text);
+    padding:9px 14px; border-radius:7px; font-size:13px; font-weight:500; transition:border-color .15s, background .15s;
+  }
+  .btn:hover{border-color:var(--text-faint);}
+  .btn.primary{
+    background:var(--accent); color:#1a1206; border-color:var(--accent); font-weight:700;
+  }
+  .btn.primary:hover{filter:brightness(1.08);}
+  .btn.danger{color:var(--bad); border-color:var(--bad-soft);}
+  .btn.danger:hover{background:var(--bad-soft);}
+  .link-btn{
+    background:none; border:none; color:var(--text-dim); font-size:12px; padding:2px 6px;
+    text-decoration:underline; text-underline-offset:2px;
+  }
+  .link-btn:hover{color:var(--accent);}
+
+  /* ---------- chip toggle groups (bulk panel) ---------- */
+  .chip-toggle-group{display:flex; flex-wrap:wrap; gap:7px; margin:8px 0 4px;}
+  .chip-toggle{
+    border:1px solid var(--border); background:var(--panel-2); color:var(--text-dim);
+    padding:6px 11px; border-radius:999px; font-family:var(--mono); font-size:12.5px; transition:all .12s;
+  }
+  .chip-toggle:hover{border-color:var(--text-faint); color:var(--text);}
+  .chip-toggle.active{
+    background:var(--accent-soft); border-color:var(--accent); color:var(--accent); font-weight:600;
+  }
+  label.field-label{
+    display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--text-faint); margin-bottom:2px;
+  }
+  .bulk-row{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:16px;}
+  @media (max-width:680px){.bulk-row{grid-template-columns:1fr;}}
+  .bulk-custom{
+    width:100%; margin-top:8px; background:var(--panel-2); border:1px solid var(--border); color:var(--text);
+    border-radius:7px; padding:9px 11px; font-family:var(--mono); font-size:12.5px;
+  }
+  .bulk-actions{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+
+  /* ---------- presets ---------- */
+  .preset-buttons{display:flex; gap:10px; flex-wrap:wrap;}
+
+  /* ---------- directive grid ---------- */
+  .dgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:680px){.dgrid{grid-template-columns:1fr;}}
+
+  .dcard{
+    background:var(--panel-2); border:1px solid var(--border); border-left:4px solid var(--border);
+    border-radius:8px; padding:14px 16px; transition:border-color .4s, background .4s;
+  }
+  .dcard.flash{background:var(--accent-soft);}
+  .dcard.s-empty{border-left-color:var(--border-soft);}
+  .dcard.s-locked{border-left-color:var(--locked);}
+  .dcard.s-self{border-left-color:var(--good);}
+  .dcard.s-open{border-left-color:var(--accent);}
+  .dcard.s-risk{border-left-color:var(--bad);}
+
+  .dcard-head{display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:3px;}
+  .dname{font-family:var(--mono); font-weight:700; font-size:14px; color:var(--text);}
+  .gate-status{font-family:var(--mono); font-size:10.5px; letter-spacing:.07em; padding:2px 7px; border-radius:4px; white-space:nowrap;}
+  .s-empty .gate-status{color:var(--text-faint); background:rgba(255,255,255,.03);}
+  .s-locked .gate-status{color:var(--locked); background:rgba(144,152,168,.12);}
+  .s-self .gate-status{color:var(--good); background:var(--good-soft);}
+  .s-open .gate-status{color:var(--accent); background:var(--accent-soft);}
+  .s-risk .gate-status{color:var(--bad); background:var(--bad-soft);}
+
+  .ddesc{color:var(--text-faint); font-size:12.5px; margin:0 0 10px;}
+
+  .chips{display:flex; flex-wrap:wrap; gap:6px; min-height:6px; margin-bottom:10px;}
+  .chip{
+    display:inline-flex; align-items:center; gap:6px; background:var(--panel); border:1px solid var(--border);
+    color:var(--text); font-family:var(--mono); font-size:12px; padding:4px 6px 4px 10px; border-radius:6px;
+  }
+  .chip.risky{border-color:var(--bad-soft); color:var(--bad);}
+  .chip-x{
+    background:none; border:none; color:var(--text-faint); font-size:13px; line-height:1; padding:2px 4px;
+    border-radius:4px;
+  }
+  .chip-x:hover{color:var(--bad); background:var(--bad-soft);}
+
+  .quick-row{display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px;}
+  .quick-btn{
+    border:1px dashed var(--border); background:none; color:var(--text-faint); font-family:var(--mono);
+    font-size:11px; padding:3px 8px; border-radius:999px;
+  }
+  .quick-btn:hover{color:var(--accent); border-color:var(--accent);}
+  .quick-btn.on{color:var(--accent); border-style:solid; border-color:var(--accent);}
+
+  .add-row{display:flex; gap:6px;}
+  .add-row input{
+    flex:1; min-width:0; background:var(--panel); border:1px solid var(--border); color:var(--text);
+    border-radius:6px; padding:7px 9px; font-family:var(--mono); font-size:12.5px;
+  }
+  .add-row button{
+    background:var(--panel); border:1px solid var(--border); color:var(--text-dim); border-radius:6px;
+    padding:0 12px; font-size:12.5px; font-weight:600;
+  }
+  .add-row button:hover{color:var(--accent); border-color:var(--accent);}
+
+  .advanced-toggle{
+    background:none; border:1px dashed var(--border); color:var(--text-dim); width:100%; padding:11px;
+    border-radius:8px; font-size:13px; font-family:var(--mono);
+  }
+  .advanced-toggle:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* ---------- flags panel ---------- */
+  .switch-row{display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--text); margin-bottom:12px; cursor:pointer;}
+  .switch-row input{width:16px; height:16px; accent-color:var(--accent);}
+  .field-row{margin-bottom:12px;}
+  .field-row input{
+    width:100%; background:var(--panel-2); border:1px solid var(--border); color:var(--text);
+    border-radius:7px; padding:9px 11px; font-family:var(--mono); font-size:12.5px; margin-top:5px;
+  }
+
+  /* ---------- output sidebar ---------- */
+  aside.output-panel{
+    position:sticky; top:20px; display:flex; flex-direction:column; gap:14px;
+  }
+  @media (max-width:980px){ aside.output-panel{position:static;} }
+
+  .checklist{display:flex; flex-direction:column; gap:7px; margin-top:10px;}
+  .check-item{display:flex; gap:8px; align-items:flex-start; font-size:12.5px; color:var(--text-dim);}
+  .check-icon{
+    flex:0 0 auto; width:16px; height:16px; border-radius:50%; display:flex; align-items:center;
+    justify-content:center; font-size:10px; margin-top:1px;
+  }
+  .check-item.ok .check-icon{background:var(--good-soft); color:var(--good);}
+  .check-item.warn .check-icon{background:var(--bad-soft); color:var(--bad);}
+
+  .output-block{border-top:1px solid var(--border); padding-top:14px;}
+  .output-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;}
+  .output-head span{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint);}
+  .copy-btn{
+    background:var(--panel-2); border:1px solid var(--border); color:var(--text-dim); font-size:11px;
+    padding:4px 10px; border-radius:5px; font-family:var(--mono);
+  }
+  .copy-btn:hover{color:var(--accent); border-color:var(--accent);}
+  .copy-btn.copied{color:var(--good); border-color:var(--good);}
+  .code-block{
+    background:var(--panel-2); border:1px solid var(--border); border-radius:7px; padding:11px 12px;
+    font-family:var(--mono); font-size:11.5px; color:var(--text); white-space:pre-wrap; word-break:break-all;
+    margin:0; max-height:160px; overflow:auto;
+  }
+  .meta-note{color:var(--text-faint); font-size:11px; margin:6px 0 0;}
+
+  .toast{
+    position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--panel-2); border:1px solid var(--accent); color:var(--text); padding:10px 18px;
+    border-radius:8px; font-size:13px; font-family:var(--mono); opacity:0; pointer-events:none;
+    transition:opacity .2s, transform .2s; z-index:50; box-shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important; animation:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <p class="eyebrow">Content-Security-Policy</p>
+    <h1 class="title">CSP Builder</h1>
+    <p class="subtitle">Assemble a Content-Security-Policy directive by directive, or select several directives and push sources to all of them in one click.</p>
+    <div class="barrier"></div>
+  </div>
+
+  <div class="layout">
+    <main>
+
+      <section class="panel">
+        <h2>Import existing policy <span class="optional">optional</span></h2>
+        <p class="hint">Paste a CSP header value to load it for editing.</p>
+        <div class="import-row">
+          <textarea id="importInput" rows="2" placeholder="default-src 'self'; script-src 'self' https://cdn.example.com; object-src 'none'"></textarea>
+          <button class="btn primary" id="importBtn">Parse &amp; load</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Bulk add</h2>
+        <p class="hint">Pick directives, pick sources, then apply — adds every source to every selected directive at once.</p>
+        <div class="bulk-row">
+          <div>
+            <label class="field-label">Directives</label>
+            <div class="chip-toggle-group" id="bulkDirectives"></div>
+            <button class="link-btn" id="bulkSelectAll">select all</button>
+            <button class="link-btn" id="bulkSelectNone">clear</button>
+          </div>
+          <div>
+            <label class="field-label">Sources</label>
+            <div class="chip-toggle-group" id="bulkKeywords"></div>
+            <input class="bulk-custom" id="bulkCustom" placeholder="custom sources — space or comma separated, e.g. https://cdn.example.com *.trusted.io">
+          </div>
+        </div>
+        <div class="bulk-actions">
+          <button class="btn primary" id="bulkApplyBtn">Apply to selected directives →</button>
+          <span class="hint" id="bulkSummary" style="margin:0;"></span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Presets</h2>
+        <p class="hint">Common starting points — these add to whatever you already have, except Reset.</p>
+        <div class="preset-buttons">
+          <button class="btn" data-preset="strict">Strict baseline</button>
+          <button class="btn" data-preset="fonts">+ Google Fonts</button>
+          <button class="btn" data-preset="cdn">+ Common CDNs</button>
+          <button class="btn danger" data-preset="reset">Reset all</button>
+        </div>
+      </section>
+
+      <section>
+        <div class="dgrid" id="coreGrid"></div>
+        <button class="advanced-toggle" id="advancedToggle" style="margin-top:14px;"></button>
+        <div class="dgrid" id="advancedGrid" style="margin-top:14px; display:none;"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Policy options</h2>
+        <label class="switch-row"><input type="checkbox" id="reportOnlyToggle"> Report-only mode — log violations without blocking them</label>
+        <label class="switch-row"><input type="checkbox" id="upgradeToggle"> upgrade-insecure-requests — rewrite http:// requests to https://</label>
+        <div class="field-row">
+          <label class="field-label">report-to group name</label>
+          <input id="reportToInput" placeholder="csp-endpoint">
+        </div>
+        <div class="field-row">
+          <label class="field-label">report-uri (legacy, still widely supported)</label>
+          <input id="reportUriInput" placeholder="https://example.com/csp-report">
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="output-panel">
+      <div class="panel">
+        <h2>Checklist</h2>
+        <div class="checklist" id="checklist"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Generated policy</h2>
+
+        <div class="output-block" style="border-top:none; padding-top:6px;">
+          <div class="output-head"><span>HTTP header</span><button class="copy-btn" data-copy="headerOutput">copy</button></div>
+          <pre class="code-block" id="headerOutput"></pre>
+        </div>
+
+        <div class="output-block">
+          <div class="output-head"><span>HTML meta tag</span><button class="copy-btn" data-copy="metaOutput">copy</button></div>
+          <pre class="code-block" id="metaOutput"></pre>
+          <p class="meta-note">Meta tags can't carry frame-ancestors, sandbox, or report-uri/report-to — use the header form for those.</p>
+        </div>
+
+        <div class="output-block">
+          <div class="output-head"><span>Nginx</span><button class="copy-btn" data-copy="nginxOutput">copy</button></div>
+          <pre class="code-block" id="nginxOutput"></pre>
+        </div>
+
+        <div class="output-block">
+          <div class="output-head"><span>Apache</span><button class="copy-btn" data-copy="apacheOutput">copy</button></div>
+          <pre class="code-block" id="apacheOutput"></pre>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DIRECTIVES = [
+    {key:'default-src', desc:'Fallback source list for any fetch directive left unset.', core:true},
+    {key:'script-src', desc:'Where JavaScript is allowed to load and run from.', core:true},
+    {key:'style-src', desc:'Where stylesheets are allowed to load from.', core:true},
+    {key:'img-src', desc:'Where images are allowed to load from.', core:true},
+    {key:'font-src', desc:'Where web fonts are allowed to load from.', core:true},
+    {key:'connect-src', desc:'Targets allowed for fetch, XHR, WebSocket and EventSource.', core:true},
+    {key:'media-src', desc:'Where audio and video are allowed to load from.', core:false},
+    {key:'object-src', desc:'Where <object>, <embed> and <applet> may load from. Best practice: \'none\'.', core:false},
+    {key:'frame-src', desc:'Where this page may embed iframes from.', core:false},
+    {key:'frame-ancestors', desc:'Who is allowed to embed this page in a frame — your clickjacking defense.', core:false},
+    {key:'base-uri', desc:'Restricts URLs usable in a <base> tag.', core:false},
+    {key:'form-action', desc:'Where <form> submissions are allowed to go.', core:false},
+    {key:'worker-src', desc:'Where worker, shared worker and service worker scripts may load from.', core:false},
+    {key:'manifest-src', desc:'Where the web app manifest is allowed to load from.', core:false},
+    {key:'child-src', desc:'Legacy fallback for frames and workers, kept for older browsers.', core:false},
+    {key:'script-src-elem', desc:'Sources for <script> elements specifically (overrides script-src for this).', core:false},
+    {key:'style-src-elem', desc:'Sources for <style> and <link> elements specifically.', core:false}
+  ];
+
+  var KEYWORDS = [
+    {tok:"'self'", label:"self"},
+    {tok:"'none'", label:"none"},
+    {tok:"'unsafe-inline'", label:"unsafe-inline"},
+    {tok:"'unsafe-eval'", label:"unsafe-eval"},
+    {tok:"'strict-dynamic'", label:"strict-dynamic"},
+    {tok:"https:", label:"https:"},
+    {tok:"data:", label:"data:"},
+    {tok:"blob:", label:"blob:"},
+    {tok:"*", label:"*"}
+  ];
+
+  var QUOTE_BARE = ['self','none','unsafe-inline','unsafe-eval','unsafe-hashes','strict-dynamic','wasm-unsafe-eval','report-sample'];
+
+  var state = {
+    sources: {},
+    bulkDirectives: new Set(),
+    bulkKeywords: new Set(),
+    showAdvanced: false,
+    reportOnly: false,
+    upgrade: false,
+    reportTo: '',
+    reportUri: ''
+  };
+  DIRECTIVES.forEach(function(d){ state.sources[d.key] = new Set(); });
+
+  function $(id){ return document.getElementById(id); }
+
+  function normalizeToken(raw){
+    var t = (raw || '').trim();
+    if(!t) return null;
+    var bare = t.replace(/^'+|'+$/g,'').toLowerCase();
+    if(QUOTE_BARE.indexOf(bare) !== -1) return "'" + bare + "'";
+    if(/^nonce-/.test(bare) || /^sha(256|384|512)-/.test(bare)) return "'" + t.replace(/^'+|'+$/g,'') + "'";
+    return t;
+  }
+
+  function parseCustom(raw){
+    if(!raw) return [];
+    return raw.split(/[\s,]+/).map(normalizeToken).filter(Boolean);
+  }
+
+  function isRisky(tok){
+    return tok === "'unsafe-inline'" || tok === "'unsafe-eval'" || tok === "*";
+  }
+
+  function gateInfo(set){
+    if(set.size === 0) return {cls:'s-empty', label:'INHERITS'};
+    if(set.has("'none'")) return {cls:'s-locked', label:'LOCKED'};
+    var arr = Array.from(set);
+    if(arr.some(isRisky)) return {cls:'s-risk', label:'⚠ RISKY'};
+    var selfLike = arr.every(function(t){ return t === "'self'" || t === "'strict-dynamic'" || t === "'wasm-unsafe-eval'"; });
+    if(selfLike) return {cls:'s-self', label:'SELF ONLY'};
+    return {cls:'s-open', label:'EXTERNAL'};
+  }
+
+  // ---------------- toast ------------
