@@ -2,17 +2,6 @@
 
 WebUI X offers a flexible event system that enables your modules to handle UI states, navigation, and custom actions. This system empowers developers to create interactive and responsive user experiences within their modules.
 
-## Availability
-
-> [!IMPORTANT]
-> **WebUI X Events** are currently in active development.  
-> Feature support varies by platform:
->
-> - **MMRL**: Supported from `v33661`
-> - **KernelSU Next**: Not supported
-> - **WebUI X: Portable**: Not supported
-> - **SukiSU Ultra**: Not supported
-
 ## Enabling Event Handling
 
 To enable event handling in your module, add the following options to your configuration file:
@@ -22,14 +11,25 @@ To enable event handling in your module, add the following options to your confi
   // Enables default back button handling (ignored if `backInterceptor` is set)
   "backHandler": true,
   // Use JavaScript to control back button behavior
-  "backInterceptor": "javascript"
+  "backInterceptor": "javascript",
 }
 ```
 
 - **`backHandler`**: Enables the default back button handler.
 - **`backInterceptor`**: Allows you to intercept and handle back events in JavaScript. If both are set, `backInterceptor` takes precedence.
 
+**Supported Interceptor Types:**
+
+- `native`
+- `javascript`
+- `javascript-full`
+  - This is only supported in the _MX Engine_
+
 ## Usage Example
+
+::: warning
+Please note thte the MX Engine lacks the `pause`, `resume` and `refresh` event types as it currently still in development.
+:::
 
 You can listen for events using the `WXEvent` API from the `webuix` package. Below are examples for handling the back button and custom pause actions:
 
@@ -37,7 +37,7 @@ You can listen for events using the `WXEvent` API from the `webuix` package. Bel
 import { WXEventHandler } from "webuix";
 
 // Initialize the event system (recommended for best compatibility)
-window.wx = new WXEventHandler()
+window.wx = new WXEventHandler();
 
 // Handle back event for a specific element (e.g., appDetails)
 wx.on(appDetails, "back", (event) => {
@@ -64,26 +64,59 @@ wx.on(window, "back", (event) => {
 // Example: Listen for a custom pause event (replace with your own logic)
 wx.on(window, "pause", (event) => {
   focusInput.focus();
-  statusEl.textContent = 'App paused - input focused';
-  statusEl.style.color = getCssVar('error');
+  statusEl.textContent = "App paused - input focused";
+  statusEl.style.color = getCssVar("error");
 });
 
 // Listen for resume events
 wx.on(window, "resume", (event) => {
-    statusEl.textContent = 'App resumed';
-    statusEl.style.color = getCssVar('success');
-    // Add any additional logic needed when the app resumes
+  statusEl.textContent = "App resumed";
+  statusEl.style.color = getCssVar("success");
+  // Add any additional logic needed when the app resumes
 });
 
 // If you have nested scroll elements you may need to handle it on the JavaScript side
-wx.on(window, 'refresh', () => {
-    webui.setRefreshing(true);
+wx.on(window, "refresh", () => {
+  webui.setRefreshing(true);
 
-    if (confirm("Do you really wanna refresh the page?")) {
-        location.reload()
-    }
+  if (confirm("Do you really wanna refresh the page?")) {
+    location.reload();
+  }
 
-    webui.setRefreshing(false);
+  webui.setRefreshing(false);
+});
+```
+
+## Using full JavaScript Control
+
+In the MX Engine you can fully control the WebView with new Async APIs. The `backInterceptor` must be set to `javascript-full`
+
+```js
+import { WXEventHandler } from "webuix";
+
+let toastShown = false;
+
+window.wx = new WXEventHandler();
+
+// `backPressed` is the original event type name and `back` is a alias in the MX Engine
+wx.on(appDetails, "backPressed", async (event) => {
+  if (await webui.canGoBack()) {
+    webui.goBack();
+    return;
+  }
+
+  if (await webui.confirm({ title: "Leave?", message: "Are you sure that you want leave this app?" })) {
+    window.exit();
+    return;
+  }
+});
+
+wx.on(document, "backProgressed", (event) => {
+  const data = event.wx;
+  if (data.process >= 50 && !toastShown) {
+    toastShown = true;
+    ksu.toast("STOP PULLING THAT HARD!");
+  }
 });
 ```
 
