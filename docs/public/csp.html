@@ -444,4 +444,315 @@
     return {cls:'s-open', label:'EXTERNAL'};
   }
 
-  // ---------------- toast ------------
+  // ---------------- toast ----------------
+  var toastTimer = null;
+  function toast(msg){
+    var el = $('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.classList.remove('show'); }, 2200);
+  }
+
+  // ---------------- bulk panel ----------------
+  function renderBulkDirectives(){
+    var c = $('bulkDirectives');
+    c.innerHTML = DIRECTIVES.map(function(d){
+      var active = state.bulkDirectives.has(d.key) ? ' active' : '';
+      return '<button type="button" class="chip-toggle' + active + '" data-key="' + d.key + '">' + d.key + '</button>';
+    }).join('');
+  }
+  function renderBulkKeywords(){
+    var c = $('bulkKeywords');
+    c.innerHTML = KEYWORDS.map(function(k){
+      var active = state.bulkKeywords.has(k.tok) ? ' active' : '';
+      return '<button type="button" class="chip-toggle' + active + '" data-tok="' + encodeURIComponent(k.tok) + '">' + k.label + '</button>';
+    }).join('');
+  }
+
+  $('bulkDirectives').addEventListener('click', function(e){
+    var btn = e.target.closest('.chip-toggle');
+    if(!btn) return;
+    var key = btn.dataset.key;
+    if(state.bulkDirectives.has(key)) state.bulkDirectives.delete(key); else state.bulkDirectives.add(key);
+    renderBulkDirectives();
+  });
+  $('bulkKeywords').addEventListener('click', function(e){
+    var btn = e.target.closest('.chip-toggle');
+    if(!btn) return;
+    var tok = decodeURIComponent(btn.dataset.tok);
+    if(state.bulkKeywords.has(tok)) state.bulkKeywords.delete(tok); else state.bulkKeywords.add(tok);
+    renderBulkKeywords();
+  });
+  $('bulkSelectAll').addEventListener('click', function(){
+    DIRECTIVES.forEach(function(d){ state.bulkDirectives.add(d.key); });
+    renderBulkDirectives();
+  });
+  $('bulkSelectNone').addEventListener('click', function(){
+    state.bulkDirectives.clear();
+    renderBulkDirectives();
+  });
+
+  function flashCard(key){
+    var el = document.querySelector('.dcard[data-key="' + key + '"]');
+    if(!el) return;
+    el.classList.add('flash');
+    setTimeout(function(){ el.classList.remove('flash'); }, 500);
+  }
+
+  $('bulkApplyBtn').addEventListener('click', function(){
+    if(state.bulkDirectives.size === 0){ toast('Pick at least one directive first'); return; }
+    var custom = parseCustom($('bulkCustom').value);
+    var tokens = Array.from(state.bulkKeywords).concat(custom);
+    if(tokens.length === 0){ toast('Pick or type at least one source'); return; }
+    state.bulkDirectives.forEach(function(key){
+      tokens.forEach(function(t){ state.sources[key].add(t); });
+      flashCard(key);
+    });
+    toast('Added ' + tokens.length + ' source' + (tokens.length>1?'s':'') + ' to ' + state.bulkDirectives.size + ' directive' + (state.bulkDirectives.size>1?'s':''));
+    renderCards();
+    renderOutput();
+  });
+
+  // ---------------- directive cards ----------------
+  function cardHTML(d){
+    var set = state.sources[d.key];
+    var gate = gateInfo(set);
+    var chips = Array.from(set).map(function(tok){
+      var risky = isRisky(tok) ? ' risky' : '';
+      return '<span class="chip' + risky + '">' + escapeHtml(tok) +
+        '<button type="button" class="chip-x" data-key="' + d.key + '" data-tok="' + encodeURIComponent(tok) + '">&times;</button></span>';
+    }).join('');
+    var quick = KEYWORDS.map(function(k){
+      var on = set.has(k.tok) ? ' on' : '';
+      return '<button type="button" class="quick-btn' + on + '" data-key="' + d.key + '" data-tok="' + encodeURIComponent(k.tok) + '">' + k.label + '</button>';
+    }).join('');
+    return '' +
+      '<div class="dcard ' + gate.cls + '" data-key="' + d.key + '">' +
+        '<div class="dcard-head"><span class="dname">' + d.key + '</span><span class="gate-status">' + gate.label + '</span></div>' +
+        '<p class="ddesc">' + d.desc + '</p>' +
+        '<div class="chips">' + chips + '</div>' +
+        '<div class="quick-row">' + quick + '</div>' +
+        '<div class="add-row">' +
+          '<input type="text" placeholder="add source(s), space or comma separated" data-key="' + d.key + '" class="dadd-input">' +
+          '<button type="button" class="dadd-btn" data-key="' + d.key + '">add</button>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function renderCards(){
+    var core = DIRECTIVES.filter(function(d){ return d.core; });
+    var advanced = DIRECTIVES.filter(function(d){ return !d.core; });
+    $('coreGrid').innerHTML = core.map(cardHTML).join('');
+    $('advancedGrid').innerHTML = advanced.map(cardHTML).join('');
+    $('advancedGrid').style.display = state.showAdvanced ? 'grid' : 'none';
+    $('advancedToggle').textContent = state.showAdvanced
+      ? '— Hide advanced directives'
+      : '+ Show ' + advanced.length + ' advanced directives (object-src, frame-ancestors, base-uri…)';
+  }
+
+  document.addEventListener('click', function(e){
+    var x = e.target.closest('.chip-x');
+    if(x){
+      var key = x.dataset.key, tok = decodeURIComponent(x.dataset.tok);
+      state.sources[key].delete(tok);
+      renderCards(); renderOutput();
+      return;
+    }
+    var q = e.target.closest('.quick-btn');
+    if(q){
+      var key2 = q.dataset.key, tok2 = decodeURIComponent(q.dataset.tok);
+      var set = state.sources[key2];
+      if(set.has(tok2)) set.delete(tok2); else set.add(tok2);
+      renderCards(); renderOutput();
+      return;
+    }
+    var addBtn = e.target.closest('.dadd-btn');
+    if(addBtn){
+      var key3 = addBtn.dataset.key;
+      var input = document.querySelector('.dadd-input[data-key="' + key3 + '"]');
+      var tokens = parseCustom(input.value);
+      tokens.forEach(function(t){ state.sources[key3].add(t); });
+      input.value = '';
+      renderCards(); renderOutput();
+      var newInput = document.querySelector('.dadd-input[data-key="' + key3 + '"]');
+      if(newInput) newInput.focus();
+      return;
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && e.target.classList && e.target.classList.contains('dadd-input')){
+      e.target.nextElementSibling.click();
+    }
+  });
+
+  $('advancedToggle').addEventListener('click', function(){
+    state.showAdvanced = !state.showAdvanced;
+    renderCards();
+  });
+
+  // ---------------- presets ----------------
+  document.querySelectorAll('[data-preset]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var p = btn.dataset.preset;
+      if(p === 'strict'){
+        ['default-src','object-src','base-uri','frame-ancestors','script-src','style-src','form-action'].forEach(function(k){
+          state.sources[k] = new Set();
+        });
+        state.sources['default-src'].add("'self'");
+        state.sources['object-src'].add("'none'");
+        state.sources['base-uri'].add("'self'");
+        state.sources['frame-ancestors'].add("'self'");
+        state.sources['script-src'].add("'self'");
+        state.sources['style-src'].add("'self'");
+        state.sources['form-action'].add("'self'");
+        toast('Applied strict baseline preset');
+      } else if(p === 'fonts'){
+        state.sources['style-src'].add('https://fonts.googleapis.com');
+        state.sources['font-src'].add('https://fonts.gstatic.com');
+        toast('Added Google Fonts sources');
+      } else if(p === 'cdn'){
+        state.sources['script-src'].add('https://cdnjs.cloudflare.com');
+        state.sources['style-src'].add('https://cdnjs.cloudflare.com');
+        toast('Added cdnjs.cloudflare.com');
+      } else if(p === 'reset'){
+        DIRECTIVES.forEach(function(d){ state.sources[d.key] = new Set(); });
+        state.reportOnly = false; state.upgrade = false; state.reportTo = ''; state.reportUri = '';
+        $('reportOnlyToggle').checked = false; $('upgradeToggle').checked = false;
+        $('reportToInput').value = ''; $('reportUriInput').value = '';
+        toast('Cleared everything');
+      }
+      renderCards(); renderOutput();
+    });
+  });
+
+  // ---------------- import ----------------
+  $('importBtn').addEventListener('click', function(){
+    var raw = $('importInput').value.trim();
+    if(!raw){ toast('Paste a policy first'); return; }
+    raw = raw.replace(/^content-security-policy(-report-only)?\s*:\s*/i, function(m, g1){
+      if(g1) state.reportOnly = true;
+      return '';
+    });
+    DIRECTIVES.forEach(function(d){ state.sources[d.key] = new Set(); });
+    var skipped = [];
+    raw.split(';').forEach(function(part){
+      part = part.trim();
+      if(!part) return;
+      var pieces = part.split(/\s+/);
+      var name = pieces.shift().toLowerCase();
+      if(name === 'upgrade-insecure-requests'){ state.upgrade = true; return; }
+      if(name === 'report-to'){ state.reportTo = pieces.join(' ').replace(/['"]/g,''); return; }
+      if(name === 'report-uri'){ state.reportUri = pieces.join(' '); return; }
+      var match = DIRECTIVES.some(function(d){ return d.key === name; });
+      if(!match){ if(name) skipped.push(name); return; }
+      pieces.forEach(function(tok){
+        var n = normalizeToken(tok);
+        if(n) state.sources[name].add(n);
+      });
+    });
+    $('upgradeToggle').checked = state.upgrade;
+    $('reportOnlyToggle').checked = state.reportOnly;
+    $('reportToInput').value = state.reportTo;
+    $('reportUriInput').value = state.reportUri;
+    renderCards(); renderOutput();
+    toast(skipped.length ? 'Loaded — skipped unsupported: ' + skipped.join(', ') : 'Policy loaded');
+  });
+
+  // ---------------- flags ----------------
+  $('reportOnlyToggle').addEventListener('change', function(e){ state.reportOnly = e.target.checked; renderOutput(); });
+  $('upgradeToggle').addEventListener('change', function(e){ state.upgrade = e.target.checked; renderOutput(); });
+  $('reportToInput').addEventListener('input', function(e){ state.reportTo = e.target.value.trim(); renderOutput(); });
+  $('reportUriInput').addEventListener('input', function(e){ state.reportUri = e.target.value.trim(); renderOutput(); });
+
+  // ---------------- output ----------------
+  function buildPolicy(){
+    var parts = [];
+    DIRECTIVES.forEach(function(d){
+      var set = state.sources[d.key];
+      if(set.size > 0) parts.push(d.key + ' ' + Array.from(set).join(' '));
+    });
+    if(state.upgrade) parts.push('upgrade-insecure-requests');
+    if(state.reportTo) parts.push("report-to " + state.reportTo);
+    if(state.reportUri) parts.push('report-uri ' + state.reportUri);
+    return parts.join('; ');
+  }
+
+  function renderChecklist(){
+    var policy = buildPolicy();
+    var checks = [];
+    function has(key, tok){ return state.sources[key] && state.sources[key].has(tok); }
+    checks.push({ok: state.sources['default-src'].size > 0, text:'default-src is set as a fallback'});
+    checks.push({ok: has('object-src',"'none'"), text:"object-src is 'none'"});
+    checks.push({ok: state.sources['base-uri'].size > 0 && !state.sources['base-uri'].has('*'), text:'base-uri is restricted'});
+    checks.push({ok: !has('script-src',"'unsafe-inline'"), text:"script-src avoids 'unsafe-inline'"});
+    checks.push({ok: !has('script-src',"'unsafe-eval'"), text:"script-src avoids 'unsafe-eval'"});
+    checks.push({ok: state.sources['frame-ancestors'].size > 0, text:'frame-ancestors set (clickjacking defense)'});
+    checks.push({ok: Object.keys(state.sources).every(function(k){ return !state.sources[k].has('*'); }), text:'no directive uses a bare wildcard *'});
+    $('checklist').innerHTML = checks.map(function(c){
+      return '<div class="check-item ' + (c.ok?'ok':'warn') + '"><span class="check-icon">' + (c.ok?'✓':'!') + '</span><span>' + c.text + '</span></div>';
+    }).join('');
+    return policy;
+  }
+
+  function renderOutput(){
+    var policy = renderChecklist();
+    var headerName = state.reportOnly ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
+    var headerLine = policy ? headerName + ': ' + policy : '// add at least one directive to generate a policy';
+    $('headerOutput').textContent = headerLine;
+
+    var metaSafe = policy
+      .split('; ')
+      .filter(function(p){ return !/^(frame-ancestors|report-uri|report-to|sandbox)\b/.test(p); })
+      .join('; ');
+    $('metaOutput').textContent = metaSafe
+      ? '<meta http-equiv="Content-Security-Policy" content="' + metaSafe + '">'
+      : '// add at least one directive to generate a meta tag';
+
+    $('nginxOutput').textContent = policy
+      ? 'add_header ' + headerName + ' "' + policy + '" always;'
+      : '// add at least one directive to generate a config line';
+
+    $('apacheOutput').textContent = policy
+      ? 'Header set ' + headerName + ' "' + policy + '"'
+      : '// add at least one directive to generate a config line';
+  }
+
+  // ---------------- copy ----------------
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = $(btn.dataset.copy).textContent;
+      var done = function(){
+        btn.textContent = 'copied';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = 'copy'; btn.classList.remove('copied'); }, 1400);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+      } else {
+        fallbackCopy(text); done();
+      }
+    });
+  });
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  // ---------------- init ----------------
+  renderBulkDirectives();
+  renderBulkKeywords();
+  renderCards();
+  renderOutput();
+})();
+</script>
+</body>
+</html>
