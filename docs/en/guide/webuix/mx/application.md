@@ -129,10 +129,8 @@ interface PromptOptions extends DialogOptions {
 interface WebUI {
     /**
      * The Android platform SDK integer (e.g. `34` for Android 14).
-     *
-     * @remarks **Subject to change** — may be renamed to `platformSdk` in a future release.
      */
-    buildSdk: number;
+    platformSdk: number;
 
     /**
      * Metadata about the Android application hosting this WebUI.
