@@ -137,7 +137,11 @@ _boolean_ — Whether to terminate shell processes when app goes to background. 
 
 ### `contentSecurityPolicy` <Badge type="warning" text="Since v181"/>
 
-_string_ — Content Security Policy header for WebUI X. Supports placeholders like `{domain}`.
+::: info Merge CSP
+Since `v511` in *MX Engine (alpha)* you can add single rules to this prop and it will be merged internally with the default CSP.
+:::
+
+_string_ — Content Security Policy header. Supports placeholders like `{domain}`.
 
 Default value:
 
