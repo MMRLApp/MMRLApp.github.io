@@ -1,3 +1,5 @@
+<img width="736" height="1104" alt="1000339663" src="https://github.com/user-attachments/assets/ee243dcb-3028-4382-a179-b3c22b89eec2" />
+<img width="735" height="1033" alt="1000339664" src="https://github.com/user-attachments/assets/2b47e2b9-d679-4b5c-a050-7eb926da1b4e" />
 ---
 title: WebUI X - Next-Generation Module Interface Framework
 description: Learn about WebUI X, MMRL's powerful framework for building secure, high-performance module configuration interfaces. Enhanced security, debugging tools, and modern UX features.
