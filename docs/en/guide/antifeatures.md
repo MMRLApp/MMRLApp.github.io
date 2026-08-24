@@ -1,4 +1,4 @@
-# Anti-Features in MMRL  
+Free Fire 165Hz# Anti-Features in MMRL  
 
 MMRL supports anti-features similar to F-Droid, allowing modules to be marked with characteristics users may want to avoid.  
 
