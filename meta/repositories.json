@@ -220,5 +220,23 @@
       }
     ],
     "url": "https://juliazero.github.io/mrbj/"
-  }
+  },
+  {
+  "name": "zelect0rs Android Modules Repository",
+  "maintainers": [],
+  "members": [
+    {
+      "avatar": "https://github.com/zelect0r.png",
+      "name": "zelect0r",
+      "title": "Owner",
+      "links": [
+        {
+          "icon": "github",
+          "link": "https://github.com/zelect0r"
+        }
+      ]
+    }
+  ],
+  "url": "https://zelect0r.github.io/zamr/"
+}
 ]
