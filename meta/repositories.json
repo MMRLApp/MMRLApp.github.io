@@ -132,24 +132,6 @@
     "url": "https://codeberg.org/fruitsnack/magisk-font-repo/raw/branch/main/"
   },
   {
-    "name": "LelouBil Magisk Repo",
-    "maintainers": [],
-    "members": [
-      {
-        "avatar": "https://www.github.com/leloubil.png",
-        "name": "leloubil",
-        "title": "Owner",
-        "links": [
-          {
-            "icon": "github",
-            "link": "https://github.com/leloubil"
-          }
-        ]
-      }
-    ],
-    "url": "https://leloubil.github.io/magisk-repo/"
-  },
-  {
     "name": "ZG089’s modules repo",
     "maintainers": [],
     "members": [
@@ -222,21 +204,21 @@
     "url": "https://juliazero.github.io/mrbj/"
   },
   {
-  "name": "zelect0rs Android Modules Repository",
-  "maintainers": [],
-  "members": [
-    {
-      "avatar": "https://github.com/zelect0r.png",
-      "name": "zelect0r",
-      "title": "Owner",
-      "links": [
-        {
-          "icon": "github",
-          "link": "https://github.com/zelect0r"
-        }
-      ]
-    }
-  ],
-  "url": "https://zelect0r.github.io/zamr/"
-}
+    "name": "zelect0rs Android Modules Repository",
+    "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://github.com/zelect0r.png",
+        "name": "zelect0r",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/zelect0r"
+          }
+        ]
+      }
+    ],
+    "url": "https://zelect0r.github.io/zamr/"
+  }
 ]
