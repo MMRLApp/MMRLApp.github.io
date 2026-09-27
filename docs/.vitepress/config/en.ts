@@ -119,6 +119,7 @@ function sidebarGuide() {
         { text: "Events", link: "/guide/webuix/events" },
         { text: "Sanitized Module ID's", link: "/guide/webuix/sanitized-ids" },
         { text: "Shortcuts", link: "/guide/webuix/shortcuts" },
+        { text: "Tools for Easier Development", link: "/guide/webuix/tools-for-development" },
       ],
     },
     {
