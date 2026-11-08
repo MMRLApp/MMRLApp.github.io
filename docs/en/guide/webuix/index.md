@@ -1,55 +1,50 @@
 ---
 title: WebUI X - Next-Generation Module Interface Framework
-description: Learn about WebUI X, MMRL's powerful framework for building secure, high-performance module configuration interfaces. Enhanced security, debugging tools, and modern UX features.
+description: Discover WebUI X, MMRL's flagship framework for running, customizing, and debugging high-performance Android module interfaces across root and non-root environments.
 ---
 
 # Why WebUI X?
 
-WebUI X is the next-generation framework for building modular, secure, and high-performance WebUI applications. It offers significant improvements over Legacy KernelSU WebUI, making it the ideal choice for developers. Below are the key reasons to switch:
+WebUI X is the next-generation framework built to run, extend, and debug web-based interfaces for Android modules. Moving beyond legacy WebView implementations, WebUI X delivers a standardized native runtime (**MX Engine**), advanced security boundaries, deep system integration, and desktop-grade developer tooling.
 
-## 🚀 **Key Advantages**
+## Key Advantages
 
-### 1. **Enhanced Security**
-   - **Content Security Policy (CSP):** Restricts unsafe scripts and resources, preventing XSS attacks.  
-   - **Kill Shell:** Automatically terminates background processes to block unauthorized code execution.  
-   - **Strict Isolation:** Plugins and modules run in controlled environments, reducing vulnerabilities.  
+### 1. Advanced Security & Permission Control
+- **Content Security Policy (CSP):** Full CSP support via customizable policies and domains, with flexible opt-out handling when needed.
+- **Granular Permission Model:** Gate sensitive system APIs, root shell invocation, and local storage access with explicit permission boundaries.
+- **Process Isolation:** Features process safety options, background cleanup, and process kill controls to keep module environments secure.
 
-### 2. **Superior Performance**
-   - **Smart Caching:** Configurable `Cache Max Age` and resource caching improve load times.  
-   - **Optimized Rendering:** Features like `Window Resize` and `Auto Style StatusBars` ensure smooth UI adaptation.  
+### 2. High Performance & Adaptive UI
+- **Native MX Engine:** Standardized on the high-performance MX runtime for uniform behavior, smooth rendering, and security across all platforms.
+- **Automatic System Insets:** Built-in dynamic top and bottom inset injection ensures web layouts automatically adjust to status and navigation bars.
+- **Modern Design Integration:** Seamlessly integrates Material Design 3 and MMRLX theme primitives, including custom native context menus, dialog overlays, and SVG rendering.
 
-### 3. **Powerful Debugging Tools**
-   - **Built-in Eruda Console:** Auto-injected for real-time debugging.  
-   - **Remote URL Debugging:** Test locally via `http://localhost` for faster iterations.  
-   - **Developer Mode:** Reveals module IDs and advanced metrics for troubleshooting.  
+### 3. Desktop-Grade Developer Tooling
+- **In-App DevTools Suite:** Built-in DOM inspector powered by Jsoup, real-time network request logging, and interactive console history.
+- **Chrome DevTools Protocol (CDP):** Deprecates legacy console injection tools in favor of standard CDP-based remote debugging.
+- **Markdown & Utility Viewers:** Integrated native Markdown renderer and asset handlers for instant documentation previewing.
 
-### 4. **Extensibility & Customization**
-   - **Plugin Ecosystem:** Supports APK and DEX plugins (e.g., [WXU](https://github.com/MMRLApp/WXU)) for limitless functionality.  
-   - **SPA-Friendly:** `History Fallback` ensures seamless navigation in single-page apps.  
-   - **UI Control:** Customize back-button behavior, refresh interceptors, and exit confirmations.  
+### 4. Extensibility & Runtime Plugins
+- **Lua & Dex Plugins:** Load custom Java/Kotlin Dex binaries and Lua webroot scripts directly into the runtime context.
+- **Expanded KernelSU & System APIs:** Direct JS access to system package metadata, file streams (`ksu.io`), POSIX filesystem helpers, and custom bridge endpoints.
+- **SPA Navigation:** Built-in `History Fallback` routing for seamless Single Page Application navigation.
 
-### 5. **Modern UX Features**
-   - **Pull-to-Refresh:** User-friendly reloading (beta).  
-   - **Dynamic Theming:** Match status bars to app themes for visual consistency.  
+### 5. Universal Platform Compatibility
+- **Cross-Environment Support:** Full operational support across **KernelSU**, **APatch**, **Magisk**, and **Non-Root ADB** configurations.
+- **Home Screen Shortcuts:** Generate pinned launcher shortcuts for individual module WebUIs.
 
-### 6. **Cross-Platform Compatibility**
-   - Works with **KernelSU (Next), SukiSU Ultra, Magisk, APatch**, and even **non-rooted devices**.  
+## Comparison: WebUI X vs. Legacy WebUI Host
 
-## 🔍 **Comparison with Legacy KernelSU WebUI**
+| Feature | WebUI X (MX Engine) | Legacy WebUI Host |
+| :--- | :--- | :--- |
+| **Security Controls** | Dynamic CSP Manager, API permission gating, process isolation | Unrestricted / basic sandboxing |
+| **Developer Tools** | Jsoup DOM inspector, Network tracker, Console store, CDP support | Basic console logging / Eruda scripts |
+| **Extensibility** | Lua & Dex plugins, custom JS bridge interfaces, `ksu.io` file streams | Fixed JavaScript interface |
+| **Non-Root Support** | Native non-root ADB path resolution & SAF integration | N/A |
 
-| Feature                | WebUI X                         | Legacy KernelSU WebUI       |
-|------------------------|---------------------------------|-----------------------------|
-| **Security**           | CSP, Kill Shell, Isolation      | Basic sandboxing            |
-| **Debugging**          | Eruda, Remote URL               | Limited dev tools           |
-| **Plugins**            | APK/DEX support                 | N/A                         |
-| **Performance**        | Smart caching, UI optimizations | N/A                         |
-| **SPA Support**        | History fallback                | Manual routing              |
+## Getting Started
 
-## 🛠️ **Getting Started**
-1. **Install WebUI X** via GitHub or Google Play Store.  
-2. Explore your installed modules like `App Nuker` and `bindhosts`.  
-3. Tweak settings in `Developer Mode` for advanced control.  
-
-> 💡 **Tip:** Enable `Auto Open Eruda` in the settings to debug WebUIs instantly!  
-
-**Ready to upgrade?** WebUI X delivers **security, speed, and flexibility** — making it the future of Android WebUI frameworks.  
+1. **Install WebUI X** via GitHub or Google Play Store.
+2. Launch installed modules directly or pin them to your home screen.
+3. Edit module files on the go using the built-in **File Explorer** and **TextMate-powered Code Editor**.
+4. Open **DevTools** within the app to inspect the DOM tree, analyze network traffic, and evaluate JavaScript snippets in real time.
