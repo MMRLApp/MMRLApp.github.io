@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { toFormattedFileSize } from "../../helper/toFormattedFileSize";
 import { Repository } from "../../data/repositories";
+import { moduleRouteId } from "../../helper/moduleRouteId";
 import { useData } from "vitepress";
 
 import { VPLink } from "vitepress/theme";
@@ -81,7 +82,7 @@ const getLastUpdated = () => {
 </script>
 
 <template>
-  <VPLink decoration="none" :href="'repository/' + repo.id + '/' + module.id">
+  <VPLink decoration="none" :href="'repository/' + repo.id + '/' + moduleRouteId(module.id)">
     <div :class="$style.feature">
       <article>
         <img v-if="module.cover" :class="$style.moduleCover" :src="module.cover" />

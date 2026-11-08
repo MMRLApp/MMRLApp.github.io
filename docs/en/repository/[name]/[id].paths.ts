@@ -1,4 +1,5 @@
 import { repositories, Repository } from "../../../data/repositories";
+import { moduleRouteId } from "../../../helper/moduleRouteId";
 
 export default {
   async paths() {
@@ -16,7 +17,7 @@ export default {
                 description: module.description,
                 module: module,
                 name: r.id,
-                id: module.id,
+                id: moduleRouteId(module.id),
               },
             };
           })
