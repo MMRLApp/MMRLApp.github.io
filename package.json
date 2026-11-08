@@ -7,13 +7,13 @@
   "author": "Der_Googler",
   "license": "MIT",
   "devDependencies": {
-    "@modyfi/vite-plugin-yaml": "^1.1.0",
+    "@modyfi/vite-plugin-yaml": "^1.1.1",
     "sync-request": "^6.1.0",
-    "terser": "^5.44.1",
-    "vitepress": "^1.6.3",
-    "vitepress-plugin-pagefind": "^0.4.13",
-    "vue": "^3.5.13",
-    "yaml": "^2.7.0"
+    "terser": "^5.51.2",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-pagefind": "^0.4.26",
+    "vue": "^3.5.45",
+    "yaml": "^2.9.1"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
