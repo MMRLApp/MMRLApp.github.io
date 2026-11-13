@@ -112,18 +112,6 @@ _string_ — Filename fallback for history navigation. Default `"index.html"`.
 
 _boolean_ — Automatically style Android status bars. Default `true`.
 
-### `dexFiles` <Badge type="danger" text="Since v53"/> <Badge type="warning" text="Stable on v108"/>
-
-_array of objects_ — Specifies external `.dex` or `.apk` files to load additional JavaScript interfaces dynamically.
-
-Each object includes:
-
-- `type`: `"dex"` or `"apk"` — File type.
-- `path`: Path to the `.dex` or `.apk` file (relative to module root).
-- `className`: Fully qualified Java class name to load from the dex/apk.
-- `cache`: Boolean to enable caching of loaded interface instances. Default `true`.
-  - If you try to load any native library (`*.so`) be aware that you always need `cache` to `true`
-
 ### `killShellWhenBackground` <Badge type="warning" text="Since v96"/>
 
 _boolean_ — Whether to terminate shell processes when app goes to background. Default `true`.
