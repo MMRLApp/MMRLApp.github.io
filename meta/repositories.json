@@ -1,5 +1,52 @@
 [
   {
+    "name": "KernelSU Modules Repository (mirror)",
+    "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://www.github.com/KernelSU-Modules.png",
+        "name": "KernelSU Modules",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/KernelSU-Modules"
+          }
+        ]
+      },
+      {
+        "avatar": "https://www.github.com/MMRLApp.png",
+        "name": "MMRL",
+        "title": "Mirror Maintainer",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/MMRLApp"
+          }
+        ]
+      }
+    ],
+    "url": "https://mmrl.dev/repo/ksu/"
+  },
+  {
+    "name": "MMRL Repsitory",
+    "maintainers": [],
+    "members": [
+      {
+        "avatar": "https://www.github.com/MMRLApp.png",
+        "name": "MMRL",
+        "title": "Owner",
+        "links": [
+          {
+            "icon": "github",
+            "link": "https://github.com/MMRLApp"
+          }
+        ]
+      }
+    ],
+    "url": "https://mmrl.dev/repo/"
+  },
+  {
     "name": "Googlers Magisk Repo",
     "maintainers": [],
     "members": [

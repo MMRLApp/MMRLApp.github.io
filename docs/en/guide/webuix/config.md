@@ -21,18 +21,7 @@ The config file controls essential WebUI X features like:
 ```json
 {
   "modId": "string",
-  "require": {
-    "packages": [
-      {
-        "code": -1,
-        "packageName": "string or array of strings",
-        "supportText": "string",
-        "supportLink": "string"
-      }
-    ]
-  },
-  "permissions": ["string", "..."],
-  "historyFallback": false,
+  "permissions": ["kernelsu.permission.SHELL", "..."],
   "title": "string",
   "icon": "string",
   "windowResize": true,
@@ -41,18 +30,23 @@ The config file controls essential WebUI X features like:
   "refreshInterceptor": "string",
   "exitConfirm": true,
   "pullToRefresh": false,
+  "historyFallback": false,
   "historyFallbackFile": "index.html",
-  "autoStatusBarsStyle": true,
-  "dexFiles": [
+  "dex": [
     {
-      "type": "dex | apk",
-      "path": "string",
-      "className": "string",
-      "cache": true,
+      "path": "string?",
+      "className": "string?"
     }
   ],
   "killShellWhenBackground": true,
-  "contentSecurityPolicy": "string",
+  "responseHeaders": {
+    "*.html": {
+      "X-Custom": "My Header"
+    },
+    "*.png,svg": {
+      "X-Custom": "My Header"
+    }
+  },
   "caching": true,
   "cachingMaxAge": 86400
 }
@@ -65,7 +59,6 @@ The config file controls essential WebUI X features like:
 _object_ — Requirements for WebUI X compatibility.
 
 - `packages` — List of required package sets with optional support info.
-
   - `code` (int, default -1) — Status or error code associated.
   - `packageName` (string or string array) — Package(s) required.
   - `supportText` (string, optional) — Message to display regarding package.
@@ -119,26 +112,14 @@ _string_ — Filename fallback for history navigation. Default `"index.html"`.
 
 _boolean_ — Automatically style Android status bars. Default `true`.
 
-### `dexFiles` <Badge type="danger" text="Since v53"/> <Badge type="warning" text="Stable on v108"/>
-
-_array of objects_ — Specifies external `.dex` or `.apk` files to load additional JavaScript interfaces dynamically.
-
-Each object includes:
-
-- `type`: `"dex"` or `"apk"` — File type.
-- `path`: Path to the `.dex` or `.apk` file (relative to module root).
-- `className`: Fully qualified Java class name to load from the dex/apk.
-- `cache`: Boolean to enable caching of loaded interface instances. Default `true`.
-  - If you try to load any native library (`*.so`) be aware that you always need `cache` to `true`
-
 ### `killShellWhenBackground` <Badge type="warning" text="Since v96"/>
 
 _boolean_ — Whether to terminate shell processes when app goes to background. Default `true`.
 
-### `contentSecurityPolicy` <Badge type="warning" text="Since v181"/>
+### `contentSecurityPolicy` <Badge type="error" text="Deprecated on v626"/>
 
 ::: info Merge CSP
-Since `v511` in *MX Engine (alpha)* you can add single rules to this prop and it will be merged internally with the default CSP.
+Since `v511` in _MX Engine (alpha)_ you can add single rules to this prop and it will be merged internally with the default CSP.
 :::
 
 _string_ — Content Security Policy header. Supports placeholders like `{domain}`.
@@ -151,6 +132,10 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' {domain};
 style-src 'self' 'unsafe-inline' {domain};
 connect-src *
 ```
+
+### `responseHeaders` <Badge type="warning" text="Since v626"/>
+
+_object_ — Ability to define custom headers for files.
 
 ### `caching` <Badge type="warning" text="Since v181"/>
 

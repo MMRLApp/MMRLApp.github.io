@@ -3,6 +3,7 @@ import { defineConfig } from "vitepress";
 import request from "sync-request";
 import { repositories, Repository } from "../../data/repositories";
 import { changelog } from "../../data/changelog";
+import { moduleRouteId } from "../../helper/moduleRouteId";
 
 const require = createRequire(import.meta.url);
 const pkg = require("vitepress/package.json");
@@ -120,6 +121,7 @@ function sidebarGuide() {
         { text: "Sanitized Module ID's", link: "/guide/webuix/sanitized-ids" },
         { text: "Shortcuts", link: "/guide/webuix/shortcuts" },
         { text: "Tools for Easier Development", link: "/guide/webuix/tools-for-development" },
+        { text: "Interface Mutation", link: "/guide/webuix/interface-mutation" },
       ],
     },
     {
@@ -157,7 +159,7 @@ function repos() {
     const modules = rep.modules.map((module) => {
       return {
         text: module.name,
-        link: `/repository/${r.id}/${module.id}`,
+        link: `/repository/${r.id}/${moduleRouteId(module.id)}`,
       };
     });
 
