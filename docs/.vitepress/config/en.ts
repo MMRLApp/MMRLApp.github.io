@@ -122,6 +122,7 @@ function sidebarGuide() {
         { text: "Shortcuts", link: "/guide/webuix/shortcuts" },
         { text: "Tools for Easier Development", link: "/guide/webuix/tools-for-development" },
         { text: "Interface Mutation", link: "/guide/webuix/interface-mutation" },
+        { text: "Overlays", link: "/guide/webuix/overlays" },
       ],
     },
     {
