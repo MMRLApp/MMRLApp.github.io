@@ -4,6 +4,12 @@ The **WebUI X Overlay System** enables developers to build floating, system-wide
 
 Unlike traditional full-screen WebViews that block all screen interaction, WebUI X automatically manages background transparency, touch hit-testing, and keyboard focus based on your DOM layout.
 
+|                                                  Demo 1                                                  |                                                  Demo 2                                                  |
+| :------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: |
+| <video controls width="100%"><source src="/assets/videos/overlay-demo-1.webm" type="video/webm"></video> | <video controls width="100%"><source src="/assets/videos/overlay-demo-2.webm" type="video/webm"></video> |
+
+> Source code: https://github.com/WebUIX/WebUI-Demo
+
 ## Launching an Overlay
 
 Only **one overlay can be active at a time**. You can launch your overlay programmatically via the WebUI bridge:
