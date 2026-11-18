@@ -68,8 +68,6 @@ It runs the MX Engine with some restrictions since it is activityless.
 **Unavailable APIs in Overlays:**
 
 - `ksu.fullScreen()`
-- `fs.openFileChooser()`
-- `fs.createSaveStream()`
 - `webui.updateStatusBarIconTint()`
 - `webui.confirm()`
 - `webui.protectedConfirm()`
